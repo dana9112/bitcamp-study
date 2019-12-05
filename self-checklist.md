@@ -64,7 +64,7 @@
 - [ ] 패키지의 용도를 이해하고 패키지를 생성할 수 있다. `com.ohoracs.basic`, `src/main/java/com/ohoracs/basic 디렉토리 생성`
 - [ ] 소스 파일에 작성한 코드가 패키지에 소속되게 할 수 있다. `src/main/java/com/ohoracs/basic/Hello3.java`
 - [ ] 패키지에 소속된 소스 파일의 적절한 디렉토리 경로와 왜 그 위치에 놓아야 하는지 이해한다.
-- [ ] 컴파일 한 후 생성된 클래스 파일의 디렉토리 경로와 그 위치에 있어야 하는 이유를 안다.
+- [ ] 컴파일 한 후 생성된 클래스 파일의 디렉토리 경로와 그 위치에 있어야 하는 이유를 안다. 
 - [ ] 패키지에 소속된 클래스 파일을 실행할 수 있다. `src/main/java/com/ohoracs/basic/Hello3.java`, `$ java -cp bin/main com.ohoracs.basic.Hello3`
 - [ ] 패키지를 적용하지 않은 채로 그 소스 파일을 그냥 패키지 폴더에 둔다면 컴파일 할 때 어떤 문제가 발생하는지 안다. `src/main/java/com/ohoracs/basic/Hello4.java`
 
