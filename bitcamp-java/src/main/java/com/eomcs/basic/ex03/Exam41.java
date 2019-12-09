@@ -7,8 +7,9 @@ public class Exam41 {
 
     System.out.println('A');
     System.out.println('가');
-    System.out.println('\u4eba');
-    System.out.println('人');
+    System.out.println('\u4eba'); // = 人과 동일
+    
+    
 
     
   }
