@@ -16,26 +16,9 @@
 
 ### 작업1) 그레이들의 빌드 스크립트 파일에 이클립스 플러그인을 추가하라.
 
-build.gradle 파일에 'eclipse' 플러그인을 추가한다.
-
-```
-plugins {
-    id 'java'
-    id 'application'
-    id 'eclipse'
-}
-```
-
 ### 작업2) 이클립스 IDE에서 사용할 프로젝트 설정 파일을 생성하라.
-
-```
-[~/git/eomcs-study/eomcs-java-project]$ gradle eclipse
-```
 
 ### 작업3) 이클립스 IDE의 워크스페이스로 프로젝트를 가져와라.
 
-이클립스 워크스페이스로 가져온다.
-
 ### 작업4) 이클립스 IDE에서 프로젝트를 실행하라.
 
-이클립스 메뉴를 통해 App 클래스를 실행한다.
