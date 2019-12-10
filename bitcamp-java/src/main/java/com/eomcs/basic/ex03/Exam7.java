@@ -26,3 +26,10 @@ public class Exam7 {
 
   }
 }
+
+// 줄바꿈 코드
+// Carrage Return(CR) : 0d (: 타자기의 판)
+// Line Feed(LF) : 0a (: 다음 줄로)
+//
+// - Windows OS 에서는 줄바꿈을 표시하기 위해 CRLF 2바이트 코드를 삽입한다. 
+// - Unix OS 에서는 줄바꿈을 표시하기 위해 LF 1바이트 코드를 삽입한다. 

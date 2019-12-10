@@ -8,7 +8,7 @@ class Hello {
             System.out.println("positive");
     
     } else {
-        System.out.prentln("negative!");
+        //System.out.prentln("negative!");
     }
 
     }

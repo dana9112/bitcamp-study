@@ -16,81 +16,82 @@
 
 #### 중간 언어와 가상 머신
 
-- [ ] 중간 언어와 가상 머신이 등장한 이유와 이점을 설명할 수 있다.
-- [ ] VM과 인터프리터, 런타임, 플레이어, 엔진의 역할을 이해한다.
-- [ ] JIT(Just-in-time)과 AOT(ahead-of-time)이 무엇이고 등장한 이유를 이해한다.
+- [0] 중간 언어와 가상 머신이 등장한 이유와 이점을 설명할 수 있다.
+- [0] VM과 인터프리터, 런타임, 플레이어, 엔진의 역할을 이해한다.
+- [0] JIT(Just-in-time)과 AOT(ahead-of-time)이 무엇이고 등장한 이유를 이해한다.
 
 #### 자바 바이트코드와 자바 가상 머신
 
-- [ ] 자바 바이트코드 실행 환경을 준비할 수 있다. OpenJDK 설치, JAVA_HOME 과 PATH 환경 변수 설정, Sublime 편집기 설치.
-- [ ] 자바 바이트코드를 이해한다. `https://docs.oracle.com/javase/specs/jvms/se13/jvms13.pdf`
-- [ ] 바이트코드와 클래스 파일(.class)의 관계를 이해한다. `/HelloWorld.class`, `https://medium.com/@davethomas_9528/writing-hello-world-in-java-byte-code-34f75428e0ad`
-- [ ] 클래스 파일과 JVM의 관계를 이해한다. `$ javap HelloWorld.class`, `$ javap -verbose HelloWorld.class`
-- [ ] JVM을 이용하여 클래스 파일을 실행할 수 있다. $ java HelloWorld
+- [0] 자바 바이트코드 실행 환경을 준비할 수 있다. OpenJDK 설치, JAVA_HOME 과 PATH 환경 변수 설정, Sublime 편집기 설치.
+- [0] 자바 바이트코드를 이해한다. `https://docs.oracle.com/javase/specs/jvms/se13/jvms13.pdf`
+- [0] 바이트코드와 클래스 파일(.class)의 관계를 이해한다. `/HelloWorld.class`, `https://medium.com/@davethomas_9528/writing-hello-world-in-java-byte-code-34f75428e0ad`
+- [0] 클래스 파일과 JVM의 관계를 이해한다. `$ javap HelloWorld.class`, `$ javap -verbose HelloWorld.class`
+- [0] JVM을 이용하여 클래스 파일을 실행할 수 있다. $ java HelloWorld
 
 #### 프로그래밍 언어와 컴파일
 
-- [ ] 컴파일 방식 프로그래밍이 등장한 이유를 이해한다.
+- [0] 컴파일 방식 프로그래밍이 등장한 이유를 이해한다.
 - [ ] 프로그래밍 언어와 컴파일, CPU 인스트럭션의 관계를 이해한다.
-- [ ] 컴파일러를 이용하여 소스 코드(C 프로그래밍 언어 기준)를 목적 코드(CPU 인스트럭션)로 생성하는 과정을 이해한다. `/module.c`, `/main.c`, `$ gcc -c 소스파일`
+- [0] 컴파일러를 이용하여 소스 코드(C 프로그래밍 언어 기준)를 목적 코드(CPU 인스트럭션)로 생성하는 과정을 이해한다. `/module.c`, `/main.c`, `$ gcc -c 소스파일`
 - [ ] 링커(C 프로그래밍 언어 기준)를 이용하여 목적 코드가 들어 있는 파일을 하나로 묶어 실행 파일을 만드는 과정을 이해한다. `$ ld -o 실행파일 목적파일 목적파일 … -lSystem -macosx_version_min 10.13`
 - [ ] C 프로그래밍 언어 기준, "소스 파일, 목적파일, 실행 파일"과 "컴파일러, 링커"의 관계를 이해한다. 
+
 #### 컴파일러와 인터프리터
 
-- [ ] 인터프리트 방식 프로그래밍과 실행 과정을 이해한다.
-- [ ] Node.js 자바스크립트 인터프리터를 준비할 수 있다. `https://nodejs.org/en/`
-- [ ] 인터프리터(Node.js 기준)를 사용하여 소스 파일을 직접 실행하는 과정을 이해한다. `/hello.js`, `$ node hello.js`
-- [ ] 컴파일 방식과 인터프리트 방식의 구동 원리를 이해한다.
+- [0] 인터프리트 방식 프로그래밍과 실행 과정을 이해한다.
+- [0] Node.js 자바스크립트 인터프리터를 준비할 수 있다. `https://nodejs.org/en/`
+- [0] 인터프리터(Node.js 기준)를 사용하여 소스 파일을 직접 실행하는 과정을 이해한다. `/hello.js`, `$ node hello.js`
+- [0] 컴파일 방식과 인터프리트 방식의 구동 원리를 이해한다.
 - [ ] 컴파일 방식과 인터프리트 방식의 장단점을 비교할 수 있다.
 
 #### 자바 프로그래밍 절차
 
-- [ ] 자바의 프로그래밍 방식과 실행 원리를 이해한다.
-- [ ] 자바 코드와 바이트코드, 소스 파일과 클래스 파일의 관계를 이해한다.
-- [ ] 자바 컴파일러와 JVM의 역할을 이해한다.
-- [ ] CLI 환경에서 컴파일을 수행할 수 있다. `/Hello.java`, `$ javac Hello.java`
-- [ ] CLI 환경에서 자바 클래스 파일을 실행할 수 있다. `/Hello.java`, `$ java Hello`
+- [0] 자바의 프로그래밍 방식과 실행 원리를 이해한다.
+- [0] 자바 코드와 바이트코드, 소스 파일과 클래스 파일의 관계를 이해한다.
+- [0] 자바 컴파일러와 JVM의 역할을 이해한다.
+- [0] CLI 환경에서 컴파일을 수행할 수 있다. `/Hello.java`, `$ javac Hello.java`
+- [0] CLI 환경에서 자바 클래스 파일을 실행할 수 있다. `/Hello.java`, `$ java Hello`
 
 #### 소스 파일과 컴파일 결과 파일 분리
 
-- [ ] Maven 표준 디렉토리 구조를 만들 수 있다. Maven 표준 디렉토리 구조에 맞춰 폴더를 생성한다.
-- [ ] 각 디렉토리의 용도를 이해한다.
-- [ ] 프로젝트 디렉토리에서 소스 디렉토리에 있는 자바 소스 파일을 컴파일 할 수 있다. `src/main/java/Hello2.java`, `$ javac src/main/java/Hello2.java`
-- [ ] 컴파일 할 때 컴파일 결과로 생성된 클래스 파일을 별도 디렉토리에 분리할 수 있다. `src/main/java/Hello2.java`, `$ javac -d bin/main src/main/java/Hello2.java`
-- [ ] 다른 디렉토리에 있는 클래스 파일을 실행할 수 있다. `src/main/java/Hello2.java`, `$ java -classpath bin/main Hello2`
+- [0] Maven 표준 디렉토리 구조를 만들 수 있다. Maven 표준 디렉토리 구조에 맞춰 폴더를 생성한다.
+- [0] 각 디렉토리의 용도를 이해한다.
+- [0] 프로젝트 디렉토리에서 소스 디렉토리에 있는 자바 소스 파일을 컴파일 할 수 있다. `src/main/java/Hello2.java`, `$ javac src/main/java/Hello2.java`
+- [0] 컴파일 할 때 컴파일 결과로 생성된 클래스 파일을 별도 디렉토리에 분리할 수 있다. `src/main/java/Hello2.java`, `$ javac -d bin/main src/main/java/Hello2.java`
+- [0] 다른 디렉토리에 있는 클래스 파일을 실행할 수 있다. `src/main/java/Hello2.java`, `$ java -classpath bin/main Hello2`
 
 #### 패키지와 소스 파일
 
-- [ ] 패키지의 용도를 이해하고 패키지를 생성할 수 있다. `com.ohoracs.basic`, `src/main/java/com/ohoracs/basic 디렉토리 생성`
-- [ ] 소스 파일에 작성한 코드가 패키지에 소속되게 할 수 있다. `src/main/java/com/ohoracs/basic/Hello3.java`
-- [ ] 패키지에 소속된 소스 파일의 적절한 디렉토리 경로와 왜 그 위치에 놓아야 하는지 이해한다.
-- [ ] 컴파일 한 후 생성된 클래스 파일의 디렉토리 경로와 그 위치에 있어야 하는 이유를 안다. 
-- [ ] 패키지에 소속된 클래스 파일을 실행할 수 있다. `src/main/java/com/ohoracs/basic/Hello3.java`, `$ java -cp bin/main com.ohoracs.basic.Hello3`
-- [ ] 패키지를 적용하지 않은 채로 그 소스 파일을 그냥 패키지 폴더에 둔다면 컴파일 할 때 어떤 문제가 발생하는지 안다. `src/main/java/com/ohoracs/basic/Hello4.java`
+- [0] 패키지의 용도를 이해하고 패키지를 생성할 수 있다. `com.ohoracs.basic`, `src/main/java/com/ohoracs/basic 디렉토리 생성`
+- [0] 소스 파일에 작성한 코드가 패키지에 소속되게 할 수 있다. `src/main/java/com/ohoracs/basic/Hello3.java`
+- [0] 패키지에 소속된 소스 파일의 적절한 디렉토리 경로와 왜 그 위치에 놓아야 하는지 이해한다.
+- [0] 컴파일 한 후 생성된 클래스 파일의 디렉토리 경로와 그 위치에 있어야 하는 이유를 안다. 
+- [0] 패키지에 소속된 클래스 파일을 실행할 수 있다. `src/main/java/com/ohoracs/basic/Hello3.java`, `$ java -cp bin/main com.ohoracs.basic.Hello3`
+- [0] 패키지를 적용하지 않은 채로 그 소스 파일을 그냥 패키지 폴더에 둔다면 컴파일 할 때 어떤 문제가 발생하는지 안다. `src/main/java/com/ohoracs/basic/Hello4.java`
 
 #### Gradle 빌드 도구
 
-- [ ] Gradle 빌드 도구를 이용하여 작업 폴더를 자바 프로젝트 폴더로 구성할 수 있다. `/프로젝트폴더`, `$ gradle init`
-- [ ] Gradle로 생성된 src 디렉토리의 구조를 이해하고 설명할 수 있다. `/src`
-- [ ] src 디렉토리 외에 다른 디렉토리나 파일의 용도를 이해한다.
+- [0] Gradle 빌드 도구를 이용하여 작업 폴더를 자바 프로젝트 폴더로 구성할 수 있다. `/프로젝트폴더`, `$ gradle init`
+- [0] Gradle로 생성된 src 디렉토리의 구조를 이해하고 설명할 수 있다. `/src`
+- [0] src 디렉토리 외에 다른 디렉토리나 파일의 용도를 이해한다.
 
 ## 자바 기초 문법 - com.ohoracs.basic
 
 #### 클래스 블록과 컴파일, 실행
 
-- [ ] 소스 파일(.java)과 클래스 블록(class 클래스명 {…}), 클래스 파일(.class) 관계를 이해한다. `ex01/Exam11.java`
-- [ ] 한 소스 파일에 여러 개의 클래스 블록이 있을 때 컴파일하면 어떻게 되는지 안다. `ex01/Exam12.java`
-- [ ] 클래스의 사용 범위(공개/비공개)에 따라 소스 파일과 클래스 블록의 이름이 어떤 관계가 있는지 안다. `ex01/Exam21.java, Exam22.java, Exam23.java`
-- [ ] 컴파일 할 때 소스 파일의 인코딩을 지정할 수 있다. `ex01/Exam3.java`
-- [ ] JVM이 클래스를 실행하는 과정을 이해하고 설명할 수 있다.
-- [ ] main() 메서드의 용도를 알고 있으며 작성할 수 있다. `ex01/Exam4.java`
+- [0] 소스 파일(.java)과 클래스 블록(class 클래스명 {…}), 클래스 파일(.class) 관계를 이해한다. `ex01/Exam11.java`
+- [0] 한 소스 파일에 여러 개의 클래스 블록이 있을 때 컴파일하면 어떻게 되는지 안다. `ex01/Exam12.java`
+- [0] 클래스의 사용 범위(공개/비공개)에 따라 소스 파일과 클래스 블록의 이름이 어떤 관계가 있는지 안다. `ex01/Exam21.java, Exam22.java, Exam23.java`
+- [0] 컴파일 할 때 소스 파일의 인코딩을 지정할 수 있다. `ex01/Exam3.java`
+- [0] JVM이 클래스를 실행하는 과정을 이해하고 설명할 수 있다.
+- [0] main() 메서드의 용도를 알고 있으며 작성할 수 있다. `ex01/Exam4.java`
 
 #### 주석
 
-- [ ] 자바 소스 코드에 주석을 달 수 있다. `ex02/Exam1.java`
-- [ ] 주석(`//, /* … */`)의 종류와 작성법을 안다. `ex02/Exam1.java`
+- [0] 자바 소스 코드에 주석을 달 수 있다. `ex02/Exam1.java`
+- [0] 주석(`//, /* … */`)의 종류와 작성법을 안다. `ex02/Exam1.java`
 - [ ] Javadoc 주석(`/** … */`)의 용도를 이해하고 이 주석을 이용하여 HTML 문서를 생성(`javadoc 사용`)할 수 있다. `ex02/Exam2.java`
-- [ ] 애노테이션(`@Override`)의 용도와 문법을 이해한다. `ex02/Exam3.java`
+- [0] 애노테이션(`@Override`)의 용도와 문법을 이해한다. `ex02/Exam3.java`
 
 #### 데이터 종류에 따른 리터럴 표기법
 
