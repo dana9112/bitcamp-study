@@ -4,6 +4,7 @@ public class App {
   public static void main(String[] args) {
     System.out.println("장르: 페스티벌");
     System.out.println("공연명: Electric Daisy Carnival 2019");
+    System.out.println("장소: 잠실 종합운동장");
     System.out.println("공연시작: 2019-08-31");
     System.out.println("공연종료: 2019-09-01");
     System.out.println("러닝타임: 00");
