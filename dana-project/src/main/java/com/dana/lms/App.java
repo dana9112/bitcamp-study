@@ -1,44 +1,49 @@
 package com.dana.lms;
 
+import java.sql.Date;
 import java.util.Scanner;
 
 public class App {
   public static void main(String[] args) {
-    Scanner keyboard = new java.util.Scanner(System.in);
+    Scanner keyboard = new Scanner(System.in);
     
     System.out.print("장르: ");
     String genre = keyboard.nextLine();
-    
+        
     System.out.print("공연명: ");
     String name = keyboard.nextLine();
     
+    System.out.print("장소: ");
+    String location = keyboard.nextLine();
+    
     System.out.print("공연시작: ");
-    String start = keyboard.nextLine();
+    Date startdate = Date.valueOf(keyboard.next());
     
     System.out.print("공연종료: ");
-    String end = keyboard.nextLine();
+    Date enddate = Date.valueOf(keyboard.next());
     
     System.out.print("러닝타임: ");
-    String runnigtime = keyboard.nextLine();
+    int runningtime = keyboard.nextInt();
     
     System.out.print("관람연령: ");
-    String age = keyboard.nextLine();
+    int age = keyboard.nextInt();
+    
+    keyboard.nextLine();
     
     System.out.print("공연소개: ");
     String introduce = keyboard.nextLine();
     
-    keyboard.close();
-    
     System.out.println();
-
     
     System.out.printf("장르: %s\n", genre);
     System.out.printf("공연명: %s\n", name);
-    System.out.printf("공연일정: %s ~ %s\n", start, end);
-    System.out.printf("러닝타임: %s\n", runnigtime);
-    System.out.printf("관람연령: %s\n", age);
+    System.out.printf("장소: %s\n", location);
+    System.out.printf("공연기간: %s ~ %s 분\n", startdate, enddate);
+    System.out.printf("러닝타임: %d 시간\n ", runningtime);
+    System.out.printf("관람연령: 만 %d세 이상\n", age);
     System.out.printf("공연소개: %s\n", introduce);
     
+    keyboard.close();
     
     
     
