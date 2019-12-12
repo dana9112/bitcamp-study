@@ -28,7 +28,7 @@ public class Exam15 {
     j = i * 3; // 표현식
     j = Math.abs(-200); // 표현식
     j = (i > 100) ? 1 : -1; // 표현식
-    //j = System.out.println(100);
+    //j = System.out.println(100); 그냥 문장이다. 
 
 
     // 문장(statement)
