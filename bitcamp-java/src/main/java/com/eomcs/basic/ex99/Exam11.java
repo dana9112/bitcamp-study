@@ -9,7 +9,7 @@ public class Exam11 {
     System.out.println(3.14);
     System.out.println(true);
     System.out.println('가');
-    System.out.println("안녕↓");
+    System.out.println("안녕!");
 
     System.out.println();
 
@@ -80,7 +80,9 @@ public class Exam11 {
 
     // 2019-12-12 12:37:45
     System.out.printf("\n%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",  today);
-
+    // 하나의 값으로 출력하기 위해서 $ 표시를 함 
+    
+    
     String str;
     str = String.format("\n%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", today);
     System.out.println(str);
