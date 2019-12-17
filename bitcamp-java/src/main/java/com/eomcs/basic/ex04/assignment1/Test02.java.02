@@ -1,0 +1,22 @@
+package com.eomcs.basic.ex04.assignment1;
+
+/*Test02 (비교, 반복문)
+입력 7 4 12 8 9
+최소값: 4
+최대값: 12 */
+
+public class Test02 {
+
+  public static void main(String[] args) {
+
+    System.out.println("입력? 4 17 -1 6 9");
+    System.out.println("최소값: -1");
+    System.out.println("최대값: 17");
+
+
+
+
+
+  }
+
+}

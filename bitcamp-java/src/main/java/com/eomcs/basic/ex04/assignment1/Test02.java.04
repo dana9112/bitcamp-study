@@ -1,0 +1,59 @@
+package com.eomcs.basic.ex04.assignment1;
+
+import java.util.Scanner;
+
+/*Test02 (비교, 반복문)
+입력 7 4 12 8 9
+최소값: 4
+최대값: 12 */
+
+public class Test02 {
+
+  public static void main(String[] args) {
+    Scanner keyScan = new Scanner(System.in);
+    
+    System.out.print("입력? ");
+    int no1 = keyScan.nextInt(); 
+    int no2 = keyScan.nextInt();  
+    int no3 = keyScan.nextInt();  
+    int no4 = keyScan.nextInt();  
+    int no5 = keyScan.nextInt();  
+    
+    System.out.printf("%d, %d, %d, %d, %d\n", no1, no2, no3, no4, no5);
+    int min = no1, max = no1;   
+    
+    if (no2 < min) {  
+      min = no2;
+    } else if (no2 > max) {
+      max = no2; 
+    }
+    
+    if (no3 < min) { 
+      min = no3;
+    } else if (no3 > max) {
+      max = no3; 7
+    }
+    
+    if (no4 < min) {
+      min = no4;
+    } else if (no4 > max) {
+      max = no4; 
+    }
+    
+    if (no5 < min) {
+      min = no5; 
+    } else if (no5 > max) {
+      max = no5; 
+    }
+ 
+    
+    System.out.printf("최소값: %d\n", min);
+    System.out.printf("최대값: %d\n", max);
+
+
+    keyScan.close();
+
+
+  }
+
+}

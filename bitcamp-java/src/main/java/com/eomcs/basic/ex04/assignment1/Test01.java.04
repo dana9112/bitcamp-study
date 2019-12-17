@@ -17,15 +17,16 @@ public class Test01 {
     Scanner keyScan = new Scanner(System.in);
     
     System.out.printf("입력? ");
-    int start = keyScan.nextInt();
-    int end = keyScan.nextInt();
+    int no1 = keyScan.nextInt();
+    int no2 = keyScan.nextInt();
     
     int sum = 0;
-    for (int no = start; no <= end; no++ ) {
-      sum += no;
+    while (no1 <= no2 ) {
+      sum = sum + no1;
+      no1 = no1 + 1;
     }
-    
-    System.out.printf("%d에서 %d까지의 합은 %d입니다.\n", start, end, sum);
+    // 2 + 3 + 4 + 5 + 6 + 7 = 27
+    System.out.printf("%d에서 %d까지의 합은 %d입니다.\n", no1, no2, sum);
     
     
     keyScan.close();
