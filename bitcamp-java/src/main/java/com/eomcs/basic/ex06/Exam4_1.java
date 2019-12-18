@@ -11,6 +11,9 @@ public class Exam4_1 {
     for (int i = 1; i <= 5; i++) 
       System.out.println(i);
 
+    // for 문에서 선언한 변수는 그 for문 안에서만 사용할 수 있다. 
+    //System.out.println(i); //컴파일 오류!
+    
     System.out.println("----------------------");
     for (int i = 1; i <= 5;) {
       System.out.println(i);
@@ -19,14 +22,16 @@ public class Exam4_1 {
 
     System.out.println("----------------------");
     int i = 1;
-    for (; i <= 5;) {
+    for (; i <= 5;) { // ;(세미콜론) 빠뜨리면 안됨
       System.out.println(i);
       i++; 
     }
-
+    //System.out.println(i); // i가 밖에 있으면 출력이 가능하다. // ;(세미콜론) 빠뜨리면 안됨
+    
+    
     System.out.println("----------------------");
     i = 1;
-    for (;;) {
+    for (;;) { //while로 쓸 것
       if (i > 5)
         break;
       System.out.println(i);

@@ -1,0 +1,52 @@
+package com.eomcs.basic.ex06.assignment;
+
+import java.util.Scanner;
+
+/*
+과제1
+
+ *
+ **
+ ***
+ ****
+ *****
+
+반복문을 사용할 때는 while 또는 do ~ while 문만을 사용하라!
+
+ */
+public class Test01 {
+  public static void main(String[] args) {
+    Scanner keyScan = new Scanner(System.in);
+  
+    // 하기와 같은 2가지 방법으로도 출력할 수 있다. 
+   
+    // #1
+    System.out.print("밑변 길이? ");
+    int width = keyScan.nextInt();
+   
+    int line = 0;
+    while (line++ < width) {
+      int x = 1;
+      while (x++ <= line){ 
+        System.out.print("*");
+      }
+      System.out.println();
+    }
+    
+    /*
+      #2
+      int line = 0;
+      while (line < width) {
+        line++;
+        int x = 0;
+        while (x++ < line){ 
+          System.out.print("*");
+      }
+      System.out.println();
+    }
+     */
+    
+    keyScan.close();
+
+  } //main
+} //class
