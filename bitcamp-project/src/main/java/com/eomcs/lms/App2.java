@@ -6,42 +6,51 @@ import java.util.Scanner;
 public class App2 {
   public static void main(String[] args) {
     Scanner keyboard = new Scanner(System.in);
-
-    final int SIZE = 100;
-
-    int[] no = new int[SIZE];
-    String[] name = new String [SIZE];
-    String[] email = new String [SIZE];
-    String[] password = new String [SIZE];
-    String[] photo = new String [SIZE];
-    String[] tell= new String [SIZE];
-    Date[] registeredDate = new Date[SIZE];
     
+    class Memory {
+      int no;
+      String name;
+      String email;
+      String password;
+      String photo;
+      String tell;
+      Date registeredDate;
+      
+    }
+    
+    final int Size = 300;
+    Memory[] memories = new Memory[300];
+  
     int count = 0; 
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < Size; i++) {
+      Memory memory = new Memory();
+      
       count++;
 
       System.out.print("번호? " );  
-      no[i] = keyboard.nextInt();
+      memory.no = keyboard.nextInt();
 
       keyboard.nextLine(); //줄바꿈 기호 제거용
 
       System.out.print("이름? ");
-      name[i] = keyboard.nextLine();
+      memory.name = keyboard.nextLine();
 
       System.out.print("이메일? ");
-      email[i] = keyboard.nextLine();
+      memory.email = keyboard.nextLine();
 
       System.out.print("암호? ");
-      password[i] = keyboard.nextLine();
+      memory.password = keyboard.nextLine();
 
       System.out.print("사진? ");
-      photo[i] = keyboard.nextLine();
+      memory.photo = keyboard.nextLine();
 
       System.out.print("전화? ");
-      tell[i] = keyboard.nextLine();
+      memory.tell = keyboard.nextLine();
       
-      registeredDate[i] = new Date(System.currentTimeMillis());
+      memory.registeredDate = new Date(System.currentTimeMillis());
+      
+      memories[i] = memory;
+      
       
       System.out.println("계속 입력하시겠습니까?(Y/n) ");
       String response = keyboard.nextLine();
@@ -53,8 +62,9 @@ public class App2 {
     System.out.println();
 
     for (int i = 0; i < count; i++) {
+      Memory memory = memories[i];
       System.out.printf("%d, %s, %s, %s, %s\n",
-              no[i], name[i], email[i], tell[i], registeredDate[i]);
+          memory.no, memory.name, memory.email, memory.tell, memory.registeredDate);
     }
   } // main end
 } //class end
