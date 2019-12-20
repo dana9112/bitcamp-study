@@ -1,53 +1,49 @@
 package com.dana.lms;
 
-import java.sql.Date;
-import java.util.Scanner;
-
 public class App {
   public static void main(String[] args) {
-    Scanner keyboard = new Scanner(System.in);
     
-    System.out.print("장르: ");
-    String genre = keyboard.nextLine();
-        
-    System.out.print("공연명: ");
-    String name = keyboard.nextLine();
+    // 입력 값 : x, 리턴 값: x
+    m1();
     
-    System.out.print("장소: ");
-    String location = keyboard.nextLine();
-    
-    System.out.print("공연시작: ");
-    Date startdate = Date.valueOf(keyboard.next());
-    
-    System.out.print("공연종료: ");
-    Date enddate = Date.valueOf(keyboard.next());
-    
-    System.out.print("러닝타임: ");
-    int runningtime = keyboard.nextInt();
-    
-    System.out.print("관람연령: ");
-    int age = keyboard.nextInt();
-    
-    keyboard.nextLine();
-    
-    System.out.print("공연소개: ");
-    String introduce = keyboard.nextLine();
-    
-    System.out.println();
-    
-    System.out.printf("장르: %s\n", genre);
-    System.out.printf("공연명: %s\n", name);
-    System.out.printf("장소: %s\n", location);
-    System.out.printf("공연기간: %s ~ %s 분\n", startdate, enddate);
-    System.out.printf("러닝타임: %d 시간\n ", runningtime);
-    System.out.printf("관람연령: 만 %d세 이상\n", age);
-    System.out.printf("공연소개: %s\n", introduce);
-    
-    keyboard.close();
+    // 입력 값 : o, 리턴 값: x
+    m2("홍길동");
+  
+    String s;
+    s = m3();
+    System.out.println(s);
     
     
     
     
-    
+  
+  } // main() end
+  
+  static void m1() {
+    System.out.println("Hello!");
   }
-}
+  
+  static void m2(String name) {
+    
+    // 함수 안에 선언된 변수를 "로컬변수"라 부른다.
+    // 로컬 변수 중에서 함수(메서드)가 호출될 때 넘어 온 값을 
+    // 받는 변수를 "파라미터"라 부른다. 
+    // 함수를 호출할 때 넘겨주는 값을 "아규먼트"라 부른다. 
+    
+    System.out.println("Hello, " + name);
+  }
+  
+  static String m3() {
+    String message = "Hello!";
+    return message;
+  }
+  
+  
+} // class() end
+
+
+
+
+
+
+
