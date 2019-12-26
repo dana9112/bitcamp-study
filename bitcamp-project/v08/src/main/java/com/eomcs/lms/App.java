@@ -174,7 +174,7 @@ public class App {
 
       }
 
-    } while (!command.equalsIgnoreCase("quit"));
+    } while (!command.equalsIgnoreCase("quit")); //do ~ while 문의 끝나는 문단
 
     System.out.println("안녕!");
 
