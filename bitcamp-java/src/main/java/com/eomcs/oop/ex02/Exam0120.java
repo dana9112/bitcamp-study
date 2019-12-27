@@ -16,7 +16,7 @@ public class Exam0120 {
         score.sum = score.kor + score.eng + score.math;
         score.average = score.sum / 3f;
      */
-    Score2.calculate(score2);
+    Score2.calculate(score);
 
     System.out.printf("%s, %d, %d, %d, %d, %.1f\n", 
         score.name, score.kor, score.eng, score.math, 
