@@ -27,7 +27,7 @@ public class Exam0430 {
       this.eng = eng;
       this.math = math;
       this.compute();
-    }
+    } 
 
     public void compute() {
       this.sum = this.kor + this.eng + this.math;

@@ -6,31 +6,26 @@ import com.eomcs.lms.domain.Member;
 
 public class MemberHandler {
   
-  // 인스턴스 필드 = 논-스태틱 필드
-  // => 개별적으로 관리해야 하는 변수
-  // => new 명령을 통해 생성된다.
-  //
-  Member[] members;
-  int memberCount = 0;
-
   public Scanner input;
+  MemberList memberList;
 
-  // 클래스 필드 = 스태틱 필드
-  // => 공유하는 변수 
-  // => 클래스가 메모리에 로딩될 때 자동으로 생성된다.
-  //
-  static final int MEMBER_SIZE = 100;
   
   public MemberHandler(Scanner input) {
     this.input = input;
-    this.members = new Member[MEMBER_SIZE];
+    memberList = new MemberList();
   }
   
+  public MemberHandler(Scanner input, int capacity) {
+    this.input = input;
+    memberList = new MemberList();
+  }
+  
+  
   public void listMember() {
-    for (int i = 0; i < this.memberCount; i++) {
-      Member m = this.members[i];
+    Member[] members = memberList.toArray();
+    for (Member m : members) {
       System.out.printf("%d, %s, %s, %s, %s\n", 
-          m.no, m.name, m.email, m.tell, m.registeredDate);
+          m.getNo(), m.getName(), m.getEmail(), m.getTell(), m.getRegisteredDate());
     }
   }
 
@@ -38,27 +33,27 @@ public class MemberHandler {
     Member member = new Member();
 
     System.out.print("번호? ");
-    member.no = input.nextInt();
+    member.setNo(input.nextInt());
     input.nextLine(); // 줄바꿈 기호 제거용
 
     System.out.print("이름? ");
-    member.name = input.nextLine();
+    member.setName(input.nextLine());
 
     System.out.print("이메일? ");
-    member.email = input.nextLine();
+    member.setEmail(input.nextLine());
 
     System.out.print("암호? ");
-    member.password = input.nextLine();
+    member.setPassword(input.nextLine());
 
     System.out.print("사진? ");
-    member.photo = input.nextLine();
+    member.setPhoto(input.nextLine());
 
     System.out.print("전화? ");
-    member.tell = input.nextLine();
+    member.setTell(input.nextLine());
 
-    member.registeredDate = new Date(System.currentTimeMillis());
+    member.setRegisteredDate(new Date(System.currentTimeMillis()));
     
-    this.members[this.memberCount++] = member;
+    memberList.add(member);
     System.out.println("저장하였습니다.");
   }
 }
