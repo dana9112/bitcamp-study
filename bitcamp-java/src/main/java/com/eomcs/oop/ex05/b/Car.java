@@ -23,7 +23,7 @@ public class Car {
             boolean sunroof, boolean auto) {
         // 이 클래스의 다른 생성자를 먼저 호출할 수 있다.
         // => 이때 this()를 사용한다.
-        this(model, maker, capacity);
+        this(model, maker, capacity); //반드시 첫번째 문장에 생성자가 와야한다. 
         
         this.sunroof = sunroof;
         this.auto = auto;
