@@ -7,7 +7,7 @@ import com.eomcs.oop.ex07.b.sub.C;
 public class Exam0210 extends C {
     
     public static void main(String[] args) {
-        A obj1 = new A();
+        A obj1 = new A(); // obj => 인스턴스 맴버만 접근이 가능하다 (논 스태틱 맴버)
         
         //obj1.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용가능.
         obj1.defaultVar = 100; // OK! 이 클래스는 A 클래스와 같은 패키지에 소속되어 있다.

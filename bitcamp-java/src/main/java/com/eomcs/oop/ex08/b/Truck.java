@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex08.b;
 
-public class Truck extends Car {
+public class Truck extends Car { // generalization
     @Override
     public void run() {
         System.out.println("덜컹 덜컹 달린다.");
