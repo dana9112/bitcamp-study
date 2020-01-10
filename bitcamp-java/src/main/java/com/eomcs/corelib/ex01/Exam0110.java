@@ -4,6 +4,7 @@ package com.eomcs.corelib.ex01;
 public class Exam0110 {
   public static void main(String[] args) {
     // Heap 메모리 영역에 String 인스턴스를 생성하는 방법 (
+    // s1 레퍼런스
     String s1 = new String("Hello");
     String s2 = new String("Hello");
     // => 내용물의 동일 여부를 검사하지 않고 무조건 인스턴스를 생성한다.
@@ -12,6 +13,7 @@ public class Exam0110 {
 
 
     // string constant pool 메모리 영역에 String 인스턴스를 생성하는 방법
+    // 상수만 저장하는 풀이 있는데 상수풀에 저장이 된다. 
     String x1 = "Hello"; // String 인스턴스의 주소를 리턴한다.
     String x2 = "Hello"; // 기존의 String 인스턴스 주소를 리턴한다. 
     
