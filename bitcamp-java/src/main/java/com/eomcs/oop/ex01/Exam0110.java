@@ -18,11 +18,8 @@ public class Exam0110 {
     eng = 90;
     math = 85;
     sum = kor + eng + math;
-    
-    // 정수를 정수로 나누면 정수로 나오기 때문에 명시적(float)으로 변환을 해줘야 함
-    // **암시적 형변화에 대해서도 다시 확인해보기.(인트는 부동소수점이랑 있을 경우 부동소수점으로 자동 변환된다.)
-    aver = (float)sum / 3;  
-      
+    aver = (float)sum / 3;
+
     System.out.printf("이름: %s\n", name);
     System.out.printf("국어: %d\n", kor);
     System.out.printf("영어: %d\n", eng);

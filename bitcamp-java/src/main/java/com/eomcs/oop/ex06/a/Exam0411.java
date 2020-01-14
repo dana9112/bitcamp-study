@@ -4,13 +4,13 @@ package com.eomcs.oop.ex06.a;
 public class Exam0411 {
 
   // Sedan과 Truck의 모델명과 cc를 출력하라!
-  // (추가) 세단 하위 클래스의 인스터스까지 다 받을 수 있음. 하위 클래스의 인스턴스를 막을 방법은 없음
-  public static void printSedan(Sedan sedan ) {   
+
+  public static void printSedan(Sedan sedan) {
     System.out.printf("모델명: %s\n", sedan.model);
     System.out.printf("cc: %d\n", sedan.cc);
     System.out.println("-------------------------");
   }
-
+  
   public static void main(String[] args) {
     Sedan car1 = new Sedan();
     car1.model = "티코";
@@ -25,8 +25,10 @@ public class Exam0411 {
     // printSedan()의 파라미터는 Sedan 객체의 주소만 받을 수 있다.
     // 그래서 Truck 객체를 전달할 수 없다.
     printSedan(car2); // 컴파일 오류!
+    
+    // Truck 인스턴스에서 model과 cc 값을 꺼내서 출력할 메서드를 
+    // 따로 만들어야 한다.
 
-    // Truck 인스턴스에서 model과 cc 값을 꺼내서 출력할 메서드를 따로 만들어야 한다. 
   }
 
 }

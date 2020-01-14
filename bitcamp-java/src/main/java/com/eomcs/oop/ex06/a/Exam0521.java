@@ -7,7 +7,7 @@ public class Exam0521 {
   // 단, 한 개의 메서드로 처리하라!
 
   public static void print(Vehicle v) {
-    // 
+    
     System.out.println("[기본정보]");
     System.out.printf("모델명: %s\n", v.model);
     System.out.printf("수용인원: %d\n", v.capacity);
@@ -21,6 +21,7 @@ public class Exam0521 {
       Bike bike = (Bike) v;
       System.out.println("[바이크 정보]");
       System.out.printf("엔진의 존재: %b\n", bike.engine);
+      
     } else if (v instanceof Car) {
       Car car = (Car) v;
       System.out.println("[자동차 기본정보]");
@@ -32,6 +33,7 @@ public class Exam0521 {
         System.out.println("[승용차 기본정보]");
         System.out.printf("썬루프: %b\n", sedan.sunroof);
         System.out.printf("자동변속: %b\n", sedan.auto);
+        
       } else if (v instanceof Truck) {
         Truck truck = (Truck) v;
         System.out.println("[트럭 정보]");
@@ -65,7 +67,9 @@ public class Exam0521 {
     truck.ton = 15;
 
     print(bike);
+    
     print(sedan);
+    
     print(truck);
 
 

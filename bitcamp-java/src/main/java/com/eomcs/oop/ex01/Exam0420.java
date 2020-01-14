@@ -9,6 +9,7 @@ package com.eomcs.oop.ex01;
 // => bin/main/com/eomcs/oop/ex01/A.class
 class A {}
 
+// => bin/main/com/eomcs/oop/ex01/Exam0420.class
 public class Exam0420 {
 
   // 중첩 클래스(nested class)
@@ -22,13 +23,12 @@ public class Exam0420 {
     // => 메서드 블록 안에 정의된 클래스
     // => 오직 그 메서드 블록 안에서만 사용된다.
     // => bin/main/com/eomcs/oop/ex01/Exam0420$1C.class
-    // nested class이기도 함. 
     class C {}
   }
 
   public void m1() {
     A ref1;
     B ref2;
-    //C ref3; // 컴파일 오류!, 다른 메소드에서 사용할 수 없기때문에 컴파일 오류가 생기는 것임
+    //C ref3; // 컴파일 오류!
   }
 }

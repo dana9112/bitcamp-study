@@ -7,15 +7,12 @@ package com.eomcs.oop.ex01;
 //   main() {} 블록 안에 정의한 클래스는 
 //   main() {} 블록 안에서만 사용할 수 있다.
 // - 이렇게 별도의 파일로 정의 클래스는 
-//   다른 클래스에서도 사용할 수 있다.
-public class Score { 
-  public String name;  
+//   다른 클래스에서도 사용할 수 있다. 
+public class Score {
+  public String name;
   public int kor;
   public int eng;
   public int math;
   public int sum;
   public float aver;
 }
-
-// project - clean은 전체 파일을 다시 class파일을 만드는 것이고, 
-// score의 bin/main - class파일을 지우고 src/main - java에서 새로 저장을 할 경우 score파일만 class파일로 만들어 진다. 

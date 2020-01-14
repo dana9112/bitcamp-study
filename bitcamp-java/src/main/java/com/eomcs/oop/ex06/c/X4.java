@@ -12,9 +12,9 @@ public class X4 extends X3 {
 
     this.m2(); // X3의 m2()
     super.m2(); // X3의 m2()
-
+  
     //super.super.m1(); // 컴파일 오류! 이런 문법은 없다! 무협지 문법!
-    // x의 m1, m2는 호출할 수 없다. 
+
   }
 }
 

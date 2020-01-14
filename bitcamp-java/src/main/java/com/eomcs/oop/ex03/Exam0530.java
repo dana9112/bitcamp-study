@@ -4,7 +4,6 @@ package com.eomcs.oop.ex03;
 public class Exam0530 {
   static class A {
     int a = 200;
-    //int a; // 0의 값이 나옴
 
     // 생성자는 초기화 문장을 실행한 후에 호출된다.
     A() {
