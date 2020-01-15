@@ -1,23 +1,16 @@
 package com.eomcs.lms.handler;
 
 import com.eomcs.lms.domain.Lesson;
+import com.eomcs.util.Iterator;
 import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 
 public class LessonHandler {
-
-  //목록을 다루는 객체를 지정할 때,
-  // => 특정 클래스(예: AbstractList, LinkedList, ArrayList)를 지정하는 대신에,
-  // => 사용 규칙(예: List)을 따르는 객체를 지정함으로써 
-  // 더 다양한 타입의 객체로 교체할 수 있게 만든다.
-  // => List 사용 규칙을 구현한 객체라면 어떤 클래스의 객체든지 사용할 수 있다.
-  // 결국 유지보수를 더 유연하게 하기 위함이다.
   List<Lesson> lessonList;
 
   Prompt prompt;
 
   public LessonHandler(Prompt prompt, List<Lesson> list) {
-    // list 파라미터는 List 인터페이스를 구현한 객체를 받는다. 
     this.prompt = prompt;
     this.lessonList = list;
 
@@ -40,10 +33,11 @@ public class LessonHandler {
   }
 
   public void listLesson() {
-    // 수업 객체 목록을 복사 받을 배열을 준비하고, toArray()를 실행한다.
-    // toArray()의 리턴 값은 파라미터로 넘겨준 배열의 주소이다.
-    Lesson[] arr = this.lessonList.toArray(new Lesson[this.lessonList.size()]);
-    for (Lesson l : arr) {
+ Iterator<Lesson> iterator = lessonList.iterator();
+    
+    // Iterator 객체를 통해 LessonList에 보관되어 있는 값을 꺼낸다.
+    while (iterator.hasNext()) {
+      Lesson l = iterator.next();
       System.out.printf("%d, %s, %s ~ %s, %d\n",
           l.getNo(), l.getTitle(), 
           l.getStartDate(), l.getEndDate(), l.getTotalHours());
