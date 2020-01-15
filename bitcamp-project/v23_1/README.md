@@ -41,7 +41,7 @@
 - LinkedList.java
     - `AbstractList`를 상속 받는다.
     - 상속 받은 추상 메서드를 구현한다.
-- LessonHandler.java
+- LessonHandler.java (여기서 부터 시작)
     - ArrayList 또는 LinkedList를 직접 지정하는 대신에 추상클래스를 필드로 선언한다.
     - 생성자에서 구체적으로 구현한 서브 클래스를 공급받도록 변경한다.
     - 따라서 특정 클래스(ArrayList나 LinkedList)에 의존하는 코드를 제거한다.
