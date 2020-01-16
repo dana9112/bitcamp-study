@@ -82,13 +82,16 @@ public class Queue<E> extends LinkedList<E> implements Cloneable {
 }
 
 /*
- ## 클래스 멤머:
+ ## 클래스 멤버:
    
    class 클래스 {
      필드 선언(스태틱, 인스턴스)
      초기화 블록(스태틱, 인스턴스)
      생성자
-     메서드(스태틱, 인스턴스)
+     메서드(스태틱, 인스턴스) {
+       로컬 변수
+       중첩 클래스
+       }
      중첩클래스(스태틱, 인스턴스)
      }
      
