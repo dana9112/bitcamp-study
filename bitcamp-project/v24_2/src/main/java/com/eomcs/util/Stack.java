@@ -65,20 +65,16 @@ public class Stack<E> implements Cloneable {
     }
   }
   public Iterator<E> iterator() {
-    // this = 인스턴스 주소;
-    // inner class를 생성하려면 바깥 클래스의 인스턴스 주소를 앞쪽에 줘야 한다. 
-    return this.new StackIterator<E>(this);
+    return new StackIterator<E>(this);
   }
-  
-  // non-static nested class = inner class
-  class StackIterator<T> implements Iterator<T>{
 
-    Stack<T> stack;
+  static class StackIterator<E> implements Iterator<E>{
+
+    Stack<E> stack;
     int cursor;
 
-    @SuppressWarnings("unchecked")
-    public StackIterator(Stack<T> stack) {
-      this.stack = (Stack<T>) Stack.this.clone();
+    public StackIterator(Stack<E> stack) {
+      this.stack = stack.clone();
     }
 
     @Override
@@ -87,7 +83,7 @@ public class Stack<E> implements Cloneable {
     }
 
     @Override
-    public T next() {
+    public E next() {
       return stack.pop();
     }
   }

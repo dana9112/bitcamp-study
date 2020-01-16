@@ -52,47 +52,10 @@ public class Queue<E> extends LinkedList<E> implements Cloneable {
     return temp;
   }
   public Iterator<E> iterator() {
-    // this = 인스턴스 주소;
-    // inner class의 생성자를 호출할 때는 바깥 클래스의 인스턴스 주소를 파라미터로 넘기지 말고 
-    // 앞에서 넘겨라. 
     return new QueueIterator<>(this);
   }
   
-  // non-static nested class = inner class
-  class QueueIterator<T> implements Iterator<T>{
-    
-    Queue<T> queue;
-    
-    @SuppressWarnings("unchecked")
-    public QueueIterator(Queue<T> queue) {
-      this.queue = (Queue<T>) Queue.this.clone(); // 바깥 클래스의 this (주소)를 사용하고 싶을때 바깥 "클래스명. this" 를 사용해야 함
-    }
-
-    @Override
-    public boolean hasNext() {
-      return queue.size() > 0;
-    }
-    
-    
-    @Override
-    public T next() {
-      return queue.poll();
-    }
-  }
 }
-
-/*
- ## 클래스 멤머:
-   
-   class 클래스 {
-     필드 선언(스태틱, 인스턴스)
-     초기화 블록(스태틱, 인스턴스)
-     생성자
-     메서드(스태틱, 인스턴스)
-     중첩클래스(스태틱, 인스턴스)
-     }
-     
- */
 
 
 

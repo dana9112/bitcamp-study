@@ -14,7 +14,6 @@ public class QueueIterator<E> implements Iterator<E>{
     return queue.size() > 0;
   }
   
-  // queue.size() > 0
   
   @Override
   public E next() {
