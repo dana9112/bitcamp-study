@@ -19,16 +19,16 @@
 
 - AbstractList.java
   - ListIterator 클래스를 논스태틱 중첩 클래스로 변경한다.
-  - interator() 메서드를 변경한다.
+  - iterator() 메서드를 변경한다.
 
 ### 훈련2. QueueIterator 중첩 클래스를 논스태틱 중첩클래스로 만들라.
 
 - Queue.java
   - QueueIterator 클래스를 논스태틱 중첩 클래스로 변경한다.
-  - interator() 메서드를 변경한다.
+  - iterator() 메서드를 변경한다.
 
 ### 훈련3. StackIterator 중첩 클래스를 논스태틱 중첩클래스로 만들라.
 
 - Stack.java
   - StackIterator 클래스를 논스태틱 중첩 클래스로 변경한다.
-  - interator() 메서드를 변경한다.
+  - iterator() 메서드를 변경한다.

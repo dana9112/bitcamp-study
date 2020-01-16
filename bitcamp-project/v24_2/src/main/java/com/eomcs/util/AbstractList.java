@@ -31,12 +31,7 @@ public abstract class AbstractList<E> implements List<E> {
     public E next() {
       return list.get(cursor++);
     }
-    
-    
-    
   }
-  
-  
 }
 
 

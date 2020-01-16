@@ -70,8 +70,9 @@ public class Stack<E> implements Cloneable {
     // anoymous class : 인스턴스를 한 개만 생성한다면 로컬(중첩) 클래스를 익명 클래스로 정의하라
     return new Iterator<E>() {
 
+      // 단순히 값을 할당하는 경우에는 인스턴스 블록에 넣지 않고, 필드 선언에 바로 할당 연산자를 사용할 수 있다.
       Stack<E> stack =(Stack<E>) Stack.this.clone();
-
+      
       @Override
       public boolean hasNext() {
         return ! stack.empty();
