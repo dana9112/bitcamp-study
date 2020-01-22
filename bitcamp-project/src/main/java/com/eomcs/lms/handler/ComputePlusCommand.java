@@ -3,12 +3,14 @@ package com.eomcs.lms.handler;
 import com.eomcs.util.Prompt;
 
 // "/hello" 명령 처리
-public class ComputeCommand implements Command {
+public class ComputePlusCommand implements Command {
   Prompt prompt;
 
-  public ComputeCommand(Prompt prompt) {
+  public ComputePlusCommand(Prompt prompt) {
     this.prompt = prompt;
   }
+
+
 
   @Override
   public void execute() {
