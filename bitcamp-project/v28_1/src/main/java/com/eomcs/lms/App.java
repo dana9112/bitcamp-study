@@ -55,11 +55,6 @@ public class App {
     loadBoardData();
     loadMemberData();
 
-    // 데이터를 파일에 저장
-    saveLessonData();
-    saveBoardData();
-    saveMemberData();
-
     Prompt prompt = new Prompt(keyboard);
     HashMap<String, Command> commandMap = new HashMap<>();
 
@@ -124,6 +119,10 @@ public class App {
 
     keyboard.close();
 
+    // 데이터를 파일에 저장
+    saveLessonData();
+    saveBoardData();
+    saveMemberData();
 
 
   }// main()
@@ -238,7 +237,17 @@ public class App {
 
       while (true) {
         try {
-          boardList.add(Board.valueOf(dataScan.nextLine()));
+          String Line = dataScan.nextLine(); // no search date Exception이 될때 까지
+          String[] data = Line.split(",");
+
+          Board board = new Board();
+
+          board.setNo(Integer.parseInt(data[0]));
+          board.setTitle(data[1]);
+          board.setDate(Date.valueOf(data[2]));
+          board.setViewCount(Integer.parseInt(data[3]));
+
+          boardList.add(board);
           count++;
 
 
@@ -362,7 +371,11 @@ public class App {
       int count = 0;
 
       for (Board board : boardList) {
-        out.write(board.toCsvString() + "\n");
+        // 수업 목록에서 수업 데이터를 꺼내 CSV 형식의 문자열로 만든다.
+        String line = String.format("%d,%s,%s,%d\n", board.getNo(), board.getTitle(),
+            board.getDate(), board.getViewCount());
+
+        out.write(line);
         count++;
       }
       System.out.printf("총 %d의 게시물 데이터를 저장했습니다.\n", count);
