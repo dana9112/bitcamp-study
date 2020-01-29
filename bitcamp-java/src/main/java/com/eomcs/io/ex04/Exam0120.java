@@ -14,7 +14,7 @@ public class Exam0120 {
 
     in.close();
 
-    System.out.printf("%1$x(%1$d)\n", value);
+    System.out.printf("%1$x(%1$d)\n", value); // 값을 중복해서 넣기 위해선 1$를 넣어준다.
   }
 }
 
