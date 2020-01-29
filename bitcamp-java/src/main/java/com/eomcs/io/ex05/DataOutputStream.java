@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 public class DataOutputStream extends FileOutputStream {
 
   public DataOutputStream(String filename) throws Exception {
-    super(filename);
+    super(filename); // 설정 안해주면 수퍼 생성자의 디폴트 값을 출력함.
   }
 
   public void writeUTF(String str) throws Exception {
@@ -25,26 +25,23 @@ public class DataOutputStream extends FileOutputStream {
 
   public void writeLong(long value) throws Exception {
     // 상속 받은 write() 메서드를 사용하여 long 값 출력
-    this.write((int)(value >> 56));
-    this.write((int)(value >> 48));
-    this.write((int)(value >> 40));
-    this.write((int)(value >> 32));
-    this.write((int)(value >> 24));
-    this.write((int)(value >> 16));
-    this.write((int)(value >> 8));
-    this.write((int)value);
+    this.write((int) (value >> 56));
+    this.write((int) (value >> 48));
+    this.write((int) (value >> 40));
+    this.write((int) (value >> 32));
+    this.write((int) (value >> 24));
+    this.write((int) (value >> 16));
+    this.write((int) (value >> 8));
+    this.write((int) value);
   }
 
   public void writeBoolean(boolean value) throws Exception {
     // 상속 받은 write() 메서드를 사용하여 boolean 값 출력
-    if (value) 
+    if (value)
       this.write(1);
-    else 
+    else
       this.write(0);
   }
 }
-
-
-
 
 
