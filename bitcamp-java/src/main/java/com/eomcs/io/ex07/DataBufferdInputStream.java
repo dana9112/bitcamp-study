@@ -1,25 +1,19 @@
 package com.eomcs.io.ex07;
 
-import java.io.ByteArrayInputStream;
+import com.eomcs.io.ex06.BufferedInputStream;
 
-public class ByteArrayDataInputStream extends ByteArrayInputStream {
+public class DataBufferdInputStream extends BufferedInputStream {
 
-  public ByteArrayDataInputStream(byte[] buf) {
-    super(buf);
+  public DataBufferdInputStream(String filename) throws Exception {
+    super(filename);
   }
 
   public String readUTF() throws Exception {
     // 상속 받은 read() 메서드를 사용하여 문자열 출력
     int size = this.read();
     byte[] bytes = new byte[size];
-    this.read(bytes); // 이름 배열 개수 만큼 바이트를 읽어 배열에 저장한다. 
+    this.read(bytes); // 이름 배열 개수 만큼 바이트를 읽어 배열에 저장한다.
     return new String(bytes, "UTF-8");
-    
-    // [해석방법]
-    // 문자열 바이트 개수를 읽어서 알아낸 다음 
-    // 그 갯수만큼 바이트 배열을 만들고
-    // 그 개수 만큼 바이트를 읽어 배열에 저장한 다음
-    // 문자열 데이터를 가지고 스트링 객체로 만들어 "UTF-8" 문자코드로 리턴한다. 
   }
 
   public int readInt() throws Exception {
@@ -54,5 +48,6 @@ public class ByteArrayDataInputStream extends ByteArrayInputStream {
     else
       return false;
   }
-
 }
+
+
