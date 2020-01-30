@@ -27,10 +27,13 @@ public class Exam0110 {
     // - 즉 같은 부모의 자식이 되게 한다.
     // - 다른 부품을 붙일 수 있도록 생성자를 만든다.
 
-    FileOutputStream fileOut = new FileOutputStream("temp/test7.data");
+    // 첫 번째 부품
+    FileOutputStream fileOut = new FileOutputStream("temp/test6.data");
 
-    // 기존의 FileOutputStream 객체에 String,int,boolean 값을 출력하는
+    // 부품 추가
+    // - 기존의 FileOutputStream 객체에 String,int,boolean 값을 출력하는
     // 장신구/보조장치/플러그인(decorator)을 장착한다.
+    // - 장신구 객체를 생성할 때 이 장신구가 사용할 부품을 생성자 파라미터로 전달한다.
     DataOutputStream out = new DataOutputStream(fileOut);
 
     Member member = new Member();
