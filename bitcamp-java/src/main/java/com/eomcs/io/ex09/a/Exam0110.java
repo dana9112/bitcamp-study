@@ -31,48 +31,44 @@ public class Exam0110 {
     System.out.println("데이터 출력 완료!");
     System.out.println(endTime - startTime);
   }
+
 }
 
 // java.io 패키지의 클래스들
 // 1) byte(binary) stream class
 // - 입력: InputStream
-//   - data sink stream class 
-//     - 실제 데이터를 저장하고 꺼내는 일을 한다.
-//     - 예) FileInputStream, ByteArrayInputStream, PiedInputStream
-
-//   - data processing stream class(=decorator)
-//     - 데이터를 중간에서 가공하는 일을 한다.
-//     - 예) BufferedInputStream, DataInputStream, ObjectInputStream
+//    - data sink stream class
+//       - 실제 데이터를 꺼내는 일을 한다
+//       - 예) FileInputStream, ByteArrayInputStream, PipedInputStream
+//    - data processing stream class(=decorator)
+//       - 데이터를 중간에서 가공하는 일을 한다.
+//       - 예) BufferedInputStream, DataInputStream, ObjectInputStream
 
 // - 출력: OutputStream
-//   - data sink stream class 
-//     - 실제 데이터를 저장하고 꺼내는 일을 한다.
-//     - 예) FileOutputStream, ByteArrayOutputStream, PiedOutputStream
-//   - data processing stream class(=decorator)
-//     - 데이터를 중간에서 가공하는 일을 한다.
-//     - 예) BufferedOutputStream, DataOutputStream, ObjectOutputStream, PrintStream
+//    - data sink stream class
+//       - 실제 데이터를 저장하는 일을 한다.
+//       - 예) FileOutputStream, ByteArrayOutputStream, PipedOutputStream
+//    - data processing stream class(=decorator)
+//       - 데이터를 중간에서 가공하는 일을 한다.
+//       - 예) BufferedOutputStream, DataOutputStream, ObjectOutputStream, PrintStream
 //
 // 2) character stream class
 // - 입력: Reader
-//   - data sink stream class 
-//     - 실제 데이터를 읽는 일을 한다.
-//     - 예) FileReader, CharArrayReader, StringReader, PipedReader
-//   - data processing stream class(=decorator)
-//     - 데이터를 중간에서 가공하는 일을 한다.
-//     - 예) BufferedReader, LineNumberReader
-//
+//    - data sink stream class
+//       - 실제 데이터를 읽는 일을 한다.
+//       - 예) FileReader, CharArrayReader, StringReader, PipedReader
+
+//    - data processing stream class(=decorator)
+//       - 데이터를 중간에서 가공하는 일을 한다.
+//       - 예) BufferedReader, LineNumberReader
+
 // - 출력: Writer
-//   - data sink stream class 
-//     - 실제 데이터를 읽는 일을 한다.
-//     - 예) FileWriter, CharArrayWriter, StringWriter, PipedWriter
-//   - data processing stream class(=decorator)
-//     - 데이터를 중간에서 가공하는 일을 한다.
-//     - 예) BufferedWriter, LineNumberWriter
+//    - data sink stream class
+//       - 실제 데이터를 읽는 일을 한다.
+//       - 예) FileWriter, CharArrayWriter, StringWriter, PipedWriter
 
-
-
-
-
-
+//    - data processing stream class(=decorator)
+//       - 데이터를 중간에서 가공하는 일을 한다.
+//       - 예) BufferedWriter, PrintWriter
 
 
