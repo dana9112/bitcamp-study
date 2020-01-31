@@ -5,6 +5,7 @@ import com.eomcs.lms.domain.Lesson;
 import com.eomcs.util.Prompt;
 
 public class LessonDeleteCommand implements Command {
+
   List<Lesson> lessonList;
 
   Prompt prompt;
@@ -12,7 +13,6 @@ public class LessonDeleteCommand implements Command {
   public LessonDeleteCommand(Prompt prompt, List<Lesson> list) {
     this.prompt = prompt;
     this.lessonList = list;
-
   }
 
   @Override
@@ -37,9 +37,6 @@ public class LessonDeleteCommand implements Command {
     }
     return -1;
   }
-
-
-
 }
 
 

@@ -5,6 +5,7 @@ import com.eomcs.lms.domain.Lesson;
 import com.eomcs.util.Prompt;
 
 public class LessonDetailCommand implements Command {
+
   List<Lesson> lessonList;
 
   Prompt prompt;
@@ -12,9 +13,7 @@ public class LessonDetailCommand implements Command {
   public LessonDetailCommand(Prompt prompt, List<Lesson> list) {
     this.prompt = prompt;
     this.lessonList = list;
-
   }
-
 
   @Override
   public void execute() {
@@ -36,7 +35,6 @@ public class LessonDetailCommand implements Command {
     System.out.printf("일수업시간: %d\n", lesson.getDayHours());
   }
 
-
   private int indexOfLesson(int no) {
     for (int i = 0; i < this.lessonList.size(); i++) {
       if (this.lessonList.get(i).getNo() == no) {
@@ -45,9 +43,6 @@ public class LessonDetailCommand implements Command {
     }
     return -1;
   }
-
-
-
 }
 
 

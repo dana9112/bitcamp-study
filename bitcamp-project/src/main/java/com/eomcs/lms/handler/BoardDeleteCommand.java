@@ -4,7 +4,9 @@ import java.util.List;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.util.Prompt;
 
+// "/board/delete" 명령 처리
 public class BoardDeleteCommand implements Command {
+
   List<Board> boardList;
 
   Prompt prompt;
@@ -12,9 +14,7 @@ public class BoardDeleteCommand implements Command {
   public BoardDeleteCommand(Prompt prompt, List<Board> list) {
     this.prompt = prompt;
     this.boardList = list;
-
   }
-
 
   @Override
   public void execute() {

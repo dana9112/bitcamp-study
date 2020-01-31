@@ -3,16 +3,13 @@ package com.eomcs.lms.handler;
 import java.util.Iterator;
 import java.util.List;
 import com.eomcs.lms.domain.Lesson;
-import com.eomcs.util.Prompt;
 
 public class LessonListCommand implements Command {
-  List<Lesson> lessonList;
 
-  Prompt prompt;
+  List<Lesson> lessonList;
 
   public LessonListCommand(List<Lesson> list) {
     this.lessonList = list;
-
   }
 
   @Override
@@ -24,9 +21,6 @@ public class LessonListCommand implements Command {
           l.getEndDate(), l.getTotalHours());
     }
   }
-
-
-
 }
 
 

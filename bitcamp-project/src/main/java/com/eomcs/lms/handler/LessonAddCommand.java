@@ -5,6 +5,7 @@ import com.eomcs.lms.domain.Lesson;
 import com.eomcs.util.Prompt;
 
 public class LessonAddCommand implements Command {
+
   List<Lesson> lessonList;
 
   Prompt prompt;
@@ -12,7 +13,6 @@ public class LessonAddCommand implements Command {
   public LessonAddCommand(Prompt prompt, List<Lesson> list) {
     this.prompt = prompt;
     this.lessonList = list;
-
   }
 
   @Override
@@ -31,8 +31,6 @@ public class LessonAddCommand implements Command {
 
     System.out.println("저장하였습니다.");
   }
-
-
 }
 
 

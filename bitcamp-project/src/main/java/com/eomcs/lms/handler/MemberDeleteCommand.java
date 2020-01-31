@@ -7,6 +7,7 @@ import com.eomcs.util.Prompt;
 public class MemberDeleteCommand implements Command {
 
   List<Member> memberList;
+
   Prompt prompt;
 
   public MemberDeleteCommand(Prompt prompt, List<Member> list) {

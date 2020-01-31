@@ -7,13 +7,13 @@ import com.eomcs.util.Prompt;
 public class MemberUpdateCommand implements Command {
 
   List<Member> memberList;
+
   Prompt prompt;
 
   public MemberUpdateCommand(Prompt prompt, List<Member> list) {
     this.prompt = prompt;
     this.memberList = list;
   }
-
 
   @Override
   public void execute() {
@@ -52,7 +52,6 @@ public class MemberUpdateCommand implements Command {
     this.memberList.set(index, newMember);
     System.out.println("회원을 변경했습니다.");
   }
-
 
   private int indexOfMember(int no) {
     for (int i = 0; i < this.memberList.size(); i++) {

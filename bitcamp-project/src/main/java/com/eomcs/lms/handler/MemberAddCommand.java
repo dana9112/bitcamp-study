@@ -8,13 +8,13 @@ import com.eomcs.util.Prompt;
 public class MemberAddCommand implements Command {
 
   List<Member> memberList;
+
   Prompt prompt;
 
   public MemberAddCommand(Prompt prompt, List<Member> list) {
     this.prompt = prompt;
     this.memberList = list;
   }
-
 
   @Override
   public void execute() {
@@ -32,6 +32,4 @@ public class MemberAddCommand implements Command {
 
     System.out.println("저장하였습니다.");
   }
-
-
 }

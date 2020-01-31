@@ -7,6 +7,7 @@ import com.eomcs.util.Prompt;
 public class MemberDetailCommand implements Command {
 
   List<Member> memberList;
+
   Prompt prompt;
 
   public MemberDetailCommand(Prompt prompt, List<Member> list) {
@@ -32,8 +33,6 @@ public class MemberDetailCommand implements Command {
     System.out.printf("사진: %s\n", member.getPhoto());
     System.out.printf("전화: %s\n", member.getTel());
   }
-
-
 
   private int indexOfMember(int no) {
     for (int i = 0; i < this.memberList.size(); i++) {

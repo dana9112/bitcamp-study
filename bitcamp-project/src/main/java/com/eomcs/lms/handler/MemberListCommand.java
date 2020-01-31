@@ -21,6 +21,4 @@ public class MemberListCommand implements Command {
           m.getRegisteredDate());
     }
   }
-
-
 }

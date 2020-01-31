@@ -7,6 +7,7 @@ import com.eomcs.lms.domain.Board;
 import com.eomcs.util.Prompt;
 
 public class BoardAddCommand implements Command {
+
   List<Board> boardList;
 
   Prompt prompt;
@@ -29,6 +30,7 @@ public class BoardAddCommand implements Command {
 
     System.out.println("저장하였습니다.");
   }
+
 }
 
 

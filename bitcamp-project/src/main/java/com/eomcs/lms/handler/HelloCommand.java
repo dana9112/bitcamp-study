@@ -13,12 +13,10 @@ public class HelloCommand implements Command {
 
   @Override
   public void execute() {
-    String name = prompt.inputString("이름 ");
+    String name = prompt.inputString("이름? ");
 
-    System.out.printf("%s님 반갑습니다!.\n", name);
+    System.out.printf("%s님 반갑습니다!\n", name);
   }
-
-
 }
 
 

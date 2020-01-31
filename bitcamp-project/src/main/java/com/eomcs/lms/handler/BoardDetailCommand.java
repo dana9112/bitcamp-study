@@ -6,6 +6,7 @@ import com.eomcs.util.Prompt;
 
 // "/board/detail" 명령 처리
 public class BoardDetailCommand implements Command {
+
   List<Board> boardList;
 
   Prompt prompt;

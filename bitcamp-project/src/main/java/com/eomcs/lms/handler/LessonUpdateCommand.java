@@ -5,6 +5,7 @@ import com.eomcs.lms.domain.Lesson;
 import com.eomcs.util.Prompt;
 
 public class LessonUpdateCommand implements Command {
+
   List<Lesson> lessonList;
 
   Prompt prompt;
@@ -12,7 +13,6 @@ public class LessonUpdateCommand implements Command {
   public LessonUpdateCommand(Prompt prompt, List<Lesson> list) {
     this.prompt = prompt;
     this.lessonList = list;
-
   }
 
   @Override
@@ -60,7 +60,6 @@ public class LessonUpdateCommand implements Command {
     System.out.println("수업을 변경했습니다.");
   }
 
-
   private int indexOfLesson(int no) {
     for (int i = 0; i < this.lessonList.size(); i++) {
       if (this.lessonList.get(i).getNo() == no) {
@@ -69,9 +68,6 @@ public class LessonUpdateCommand implements Command {
     }
     return -1;
   }
-
-
-
 }
 
 
