@@ -13,10 +13,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import com.eomcs.lms.handler.BoardAddCommand;
+import com.eomcs.lms.handler.BoardDeleteCommand;
 import com.eomcs.lms.handler.BoardDetailCommand;
 import com.eomcs.lms.handler.BoardListCommand;
 import com.eomcs.lms.handler.BoardUpdateCommand;
 import com.eomcs.lms.handler.Command;
+import com.eomcs.lms.handler.LessonAddCommand;
+import com.eomcs.lms.handler.LessonDetailCommand;
+import com.eomcs.lms.handler.LessonListCommand;
 import com.eomcs.util.Prompt;
 
 public class ClientApp {
@@ -69,7 +73,10 @@ public class ClientApp {
     commandMap.put("/board/add", new BoardAddCommand(out, in, prompt));
     commandMap.put("/board/detail", new BoardDetailCommand(out, in, prompt));
     commandMap.put("/board/update", new BoardUpdateCommand(out, in, prompt));
-    commandMap.put("/board/delete", new BoardUpdateCommand(out, in, prompt));
+    commandMap.put("/board/delete", new BoardDeleteCommand(out, in, prompt));
+    commandMap.put("/lesson/list", new LessonListCommand(out, in));
+    commandMap.put("/lesson/add", new LessonAddCommand(out, in, prompt));
+    commandMap.put("/lesson/detail", new LessonDetailCommand(out, in, prompt));
 
 
     try {

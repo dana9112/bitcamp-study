@@ -21,7 +21,6 @@ public class BoardDetailCommand implements Command {
 
   @Override
   public void execute() {
-
     try {
       int no = prompt.inputInt("번호? ");
 
@@ -35,7 +34,6 @@ public class BoardDetailCommand implements Command {
         System.out.println(in.readUTF());
         return;
       }
-
 
       Board board = (Board) in.readObject();
       System.out.printf("번호: %d\n", board.getNo());

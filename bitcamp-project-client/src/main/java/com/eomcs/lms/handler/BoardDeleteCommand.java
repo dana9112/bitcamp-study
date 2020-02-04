@@ -33,14 +33,12 @@ public class BoardDeleteCommand implements Command {
         System.out.println(in.readUTF());
         return;
       }
-
       System.out.println("게시글을 삭제했습니다.");
+
     } catch (Exception e) {
-      System.out.println("통신 오류 발생!");
+      System.out.println("명령 실행 중 오류 발생!");
     }
   }
-
-
 }
 
 

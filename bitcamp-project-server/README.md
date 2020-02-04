@@ -50,4 +50,12 @@
 - ServerApp.java 변경
   - processRequest() 메서드 변경  
   
+### 훈련 7: 클라이언트의 게시물 삭제 요청(/lesson/*)을 처리하라
+- ServerApp.java 변경
+  - processRequest() 메서드 변경  
+  
+### 훈련 8: 클라이언트의 게시물 삭제 요청(/member/*)을 처리하라
+- ServerApp.java 변경
+  - processRequest() 메서드 변경  
+  
   

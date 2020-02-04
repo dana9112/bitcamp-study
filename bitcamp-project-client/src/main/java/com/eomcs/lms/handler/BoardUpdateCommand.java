@@ -25,7 +25,7 @@ public class BoardUpdateCommand implements Command {
     try {
       int no = prompt.inputInt("번호? ");
 
-      // 기존의 게시물을 가지고 온다.
+      // 기존의 게시물을 가져온다.
       out.writeUTF("/board/detail");
       out.writeInt(no);
       out.flush();
@@ -50,7 +50,7 @@ public class BoardUpdateCommand implements Command {
         return;
       }
 
-      out.writeUTF("board/update");
+      out.writeUTF("/board/update");
       out.writeObject(newBoard);
       out.flush();
 
@@ -60,14 +60,12 @@ public class BoardUpdateCommand implements Command {
         return;
       }
 
-
+      System.out.println("게시글을 변경했습니다.");
 
     } catch (Exception e) {
       System.out.println("명령 실행 중 오류 발생!");
     }
   }
-
-
 }
 
 
