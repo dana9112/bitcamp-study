@@ -36,6 +36,18 @@
 ### 훈련 3: 클라이언트의 게시물 등록 요청(/board/add)을 처리하라.
 - ServerApp.java 변경
   - processRequest() 메서드 변경 
-    
+
+### 훈련 4: 클라이언트의 게시물 조회 요청(/board/detail)을 처리하라.
+- ServerApp.java 변경
+  - processRequest() 메서드 변경  
 
 
+### 훈련 5: 클라이언트의 게시물 변경 요청(/board/detail)을 처리하라
+- ServerApp.java 변경
+  - processRequest() 메서드 변경  
+  
+### 훈련 6: 클라이언트의 게시물 삭제 요청(/board/delete)을 처리하라
+- ServerApp.java 변경
+  - processRequest() 메서드 변경  
+  
+  
