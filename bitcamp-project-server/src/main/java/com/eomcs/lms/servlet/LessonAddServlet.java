@@ -2,15 +2,15 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.List;
+import com.eomcs.lms.dao.LessonFileDao;
 import com.eomcs.lms.domain.Lesson;
 
 public class LessonAddServlet implements Servlet {
 
-  List<Lesson> lessons;
+  LessonFileDao lessonDao;
 
-  public LessonAddServlet(List<Lesson> lessons) {
-    this.lessons = lessons;
+  public LessonAddServlet(LessonFileDao lessonDao) {
+    this.lessonDao = lessonDao;
   }
 
 
@@ -20,15 +20,8 @@ public class LessonAddServlet implements Servlet {
 
     Lesson lesson = (Lesson) in.readObject();
 
-    int i = 0;
-    for (; i < lessons.size(); i++) {
-      if (lessons.get(i).getNo() == lesson.getNo()) {
-        break;
-      }
-    }
 
-    if (i == lessons.size()) {
-      lessons.add(lesson);
+    if (lessonDao.insert(lesson) > 0) {
       out.writeUTF("OK");
 
     } else {

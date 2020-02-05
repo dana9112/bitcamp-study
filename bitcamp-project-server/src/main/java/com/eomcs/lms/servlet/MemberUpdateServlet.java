@@ -2,15 +2,15 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.List;
+import com.eomcs.lms.dao.MemberFileDao;
 import com.eomcs.lms.domain.Member;
 
 public class MemberUpdateServlet implements Servlet {
 
-  List<Member> members;
+  MemberFileDao memberDao;
 
-  public MemberUpdateServlet(List<Member> members) {
-    this.members = members;
+  public MemberUpdateServlet(MemberFileDao memberDao) {
+    this.memberDao = memberDao;
   }
 
 
@@ -19,16 +19,8 @@ public class MemberUpdateServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Member member = (Member) in.readObject();
 
-    int index = -1;
-    for (int i = 0; i < members.size(); i++) {
-      if (members.get(i).getNo() == member.getNo()) {
-        index = i;
-        break;
-      }
-    }
 
-    if (index != -1) {
-      members.set(index, member);
+    if (memberDao.update(member) > 0) {
       out.writeUTF("OK");
     } else {
       out.writeUTF("FAIL");

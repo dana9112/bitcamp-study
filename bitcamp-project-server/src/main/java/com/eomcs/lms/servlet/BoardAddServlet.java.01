@@ -5,11 +5,11 @@ import java.io.ObjectOutputStream;
 import com.eomcs.lms.dao.BoardFileDao;
 import com.eomcs.lms.domain.Board;
 
-public class BoardUpdateServlet implements Servlet {
+public class BoardAddServlet implements Servlet {
 
   BoardFileDao boardDao;
 
-  public BoardUpdateServlet(BoardFileDao boardDao) {
+  public BoardAddServlet(BoardFileDao boardDao) {
     this.boardDao = boardDao;
   }
 
@@ -20,12 +20,17 @@ public class BoardUpdateServlet implements Servlet {
 
     Board board = (Board) in.readObject();
 
+    Board originBoard = boardDao.findByNo(board.getNo());
+    // 원래의 Board게시물에서 겟 넘버가 있는지 boardDao에 있는지 찾아봐라.
 
-    if (boardDao.update(board) > 0) { // 오리진 보드가 널 값이 아니면 보드의 내용으로 업데이트 해라.
+
+    if (originBoard == null) { // 같은 번호의 게시물이 없다면,
+      boardDao.insert(board); // 새 게시물을 등록한다.
       out.writeUTF("OK");
+
     } else {
       out.writeUTF("FAIL");
-      out.writeUTF("해당 번호의 게시물이 없습니다.");
+      out.writeUTF("같은 번호의 게시물이 있습니다.");
     }
   }
 }

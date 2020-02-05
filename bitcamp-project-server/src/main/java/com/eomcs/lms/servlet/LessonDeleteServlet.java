@@ -2,15 +2,14 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.List;
-import com.eomcs.lms.domain.Lesson;
+import com.eomcs.lms.dao.LessonFileDao;
 
 public class LessonDeleteServlet implements Servlet {
 
-  List<Lesson> lessons;
+  LessonFileDao lessonDao;
 
-  public LessonDeleteServlet(List<Lesson> lessons) {
-    this.lessons = lessons;
+  public LessonDeleteServlet(LessonFileDao lessonDao) {
+    this.lessonDao = lessonDao;
   }
 
 
@@ -20,16 +19,7 @@ public class LessonDeleteServlet implements Servlet {
 
     int no = in.readInt();
 
-    int index = -1;
-    for (int i = 0; i < lessons.size(); i++) {
-      if (lessons.get(i).getNo() == no) {
-        index = i;
-        break;
-      }
-    }
-
-    if (index != -1) {
-      lessons.remove(index);
+    if (lessonDao.delete(no) > 0) {
       out.writeUTF("OK");
 
     } else {
