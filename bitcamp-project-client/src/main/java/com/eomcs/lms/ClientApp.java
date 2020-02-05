@@ -1,5 +1,4 @@
 // LMS 클라이언트
-
 package com.eomcs.lms;
 
 import java.io.ObjectInputStream;
@@ -35,7 +34,6 @@ public class ClientApp {
   Scanner keyboard = new Scanner(System.in);
   Prompt prompt = new Prompt(keyboard);
 
-
   public void service() {
 
     String serverAddr = null;
@@ -55,7 +53,7 @@ public class ClientApp {
         ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
         ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
 
-      System.out.println("서버와 연결되었음!");
+      System.out.println("서버와 연결을 되었음!");
 
       processCommand(out, in);
 
@@ -67,7 +65,6 @@ public class ClientApp {
     }
 
     keyboard.close();
-
   }
 
   private void processCommand(ObjectOutputStream out, ObjectInputStream in) {
@@ -75,18 +72,12 @@ public class ClientApp {
     Deque<String> commandStack = new ArrayDeque<>();
     Queue<String> commandQueue = new LinkedList<>();
 
-    HashMap<String, Command> commandMap = new HashMap<>(); // 순서를 왜 이렇게 바꿔야 하는지??
+    HashMap<String, Command> commandMap = new HashMap<>();
     commandMap.put("/board/list", new BoardListCommand(out, in));
     commandMap.put("/board/add", new BoardAddCommand(out, in, prompt));
     commandMap.put("/board/detail", new BoardDetailCommand(out, in, prompt));
     commandMap.put("/board/update", new BoardUpdateCommand(out, in, prompt));
     commandMap.put("/board/delete", new BoardDeleteCommand(out, in, prompt));
-
-    commandMap.put("/lesson/list", new LessonListCommand(out, in));
-    commandMap.put("/lesson/add", new LessonAddCommand(out, in, prompt));
-    commandMap.put("/lesson/detail", new LessonDetailCommand(out, in, prompt));
-    commandMap.put("/lesson/update", new LessonUpdateCommand(out, in, prompt));
-    commandMap.put("/lesson/delete", new LessonDeleteCommand(out, in, prompt));
 
     commandMap.put("/member/list", new MemberListCommand(out, in));
     commandMap.put("/member/add", new MemberAddCommand(out, in, prompt));
@@ -94,10 +85,15 @@ public class ClientApp {
     commandMap.put("/member/update", new MemberUpdateCommand(out, in, prompt));
     commandMap.put("/member/delete", new MemberDeleteCommand(out, in, prompt));
 
+    commandMap.put("/lesson/list", new LessonListCommand(out, in));
+    commandMap.put("/lesson/add", new LessonAddCommand(out, in, prompt));
+    commandMap.put("/lesson/detail", new LessonDetailCommand(out, in, prompt));
+    commandMap.put("/lesson/update", new LessonUpdateCommand(out, in, prompt));
+    commandMap.put("/lesson/delete", new LessonDeleteCommand(out, in, prompt));
 
     try {
-      String command;
       while (true) {
+        String command;
         command = prompt.inputString("\n명령> ");
 
         if (command.length() == 0)
@@ -107,7 +103,6 @@ public class ClientApp {
           out.writeUTF(command);
           out.flush();
           System.out.println("서버: " + in.readUTF());
-
           System.out.println("안녕!");
           break;
         } else if (command.equals("history")) {
@@ -137,12 +132,11 @@ public class ClientApp {
       }
     } catch (Exception e) {
       System.out.println("프로그램 실행 중 오류 발생!");
-
     }
+
     keyboard.close();
 
-  } // service() end
-
+  }
 
   private void printCommandHistory(Iterator<String> iterator) {
     int count = 0;
@@ -159,14 +153,10 @@ public class ClientApp {
     }
   }
 
-
   public static void main(String[] args) throws Exception {
     System.out.println("클라이언트 수업 관리 시스템입니다.");
 
     ClientApp app = new ClientApp();
     app.service();
-
-
-
   }
 }
