@@ -2,22 +2,24 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.BoardFileDao;
+import com.eomcs.lms.dao.MemberObjectFileDao;
 
-public class BoardListServlet implements Servlet {
+public class MemberListServlet implements Servlet {
 
-  BoardFileDao boardDao;
+  MemberObjectFileDao memberDao;
 
-  public BoardListServlet(BoardFileDao boardDao) {
-    this.boardDao = boardDao;
+  public MemberListServlet(MemberObjectFileDao memberDao) {
+    this.memberDao = memberDao;
   }
+
+
 
   // 커맨드 패턴이란 메소드를 객
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     out.writeUTF("OK");
     out.reset();
-    out.writeObject(boardDao.findAll());
+    out.writeObject(memberDao.findAll());
   }
 
 }

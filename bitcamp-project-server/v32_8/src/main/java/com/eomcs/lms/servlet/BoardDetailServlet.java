@@ -2,13 +2,14 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.BoardFileDao;
+import com.eomcs.lms.dao.BoardObjectFileDao;
+import com.eomcs.lms.domain.Board;
 
-public class BoardDeleteServlet implements Servlet {
+public class BoardDetailServlet implements Servlet {
 
-  BoardFileDao boardDao;
+  BoardObjectFileDao boardDao;
 
-  public BoardDeleteServlet(BoardFileDao boardDao) {
+  public BoardDetailServlet(BoardObjectFileDao boardDao) {
     this.boardDao = boardDao;
   }
 
@@ -20,8 +21,11 @@ public class BoardDeleteServlet implements Servlet {
 
     int no = in.readInt();
 
-    if (boardDao.delete(no) > 0) { // 삭제했다면,
+    Board board = boardDao.findByNo(no);
+
+    if (board != null) {
       out.writeUTF("OK");
+      out.writeObject(board);
 
     } else {
       out.writeUTF("FAIL");

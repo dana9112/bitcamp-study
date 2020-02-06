@@ -59,8 +59,7 @@ public class BoardObjectFileDao extends AbstractObjectFileDao<Board> { // 6. Abs
   @Override
   protected <K> int indexOf(K key) {
     for (int i = 0; i < list.size(); i++) {
-      if (list.get(i).getNo() == (int) key) { // K가 어떤 타입인지 형변환해서 사용하라.
-        // 번호를 키 => 인트라고 타입케스팅 해주기
+      if (list.get(i).getNo() == (int) key) { // 번호를 키 => 인트라고 타입케스팅 해주기
         return i;
       }
     }

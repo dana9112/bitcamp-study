@@ -2,14 +2,14 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.BoardFileDao;
+import com.eomcs.lms.dao.BoardObjectFileDao;
 import com.eomcs.lms.domain.Board;
 
 public class BoardAddServlet implements Servlet {
 
-  BoardFileDao boardDao;
+  BoardObjectFileDao boardDao;
 
-  public BoardAddServlet(BoardFileDao boardDao) {
+  public BoardAddServlet(BoardObjectFileDao boardDao) {
     this.boardDao = boardDao;
   }
 
@@ -20,12 +20,7 @@ public class BoardAddServlet implements Servlet {
 
     Board board = (Board) in.readObject();
 
-    Board originBoard = boardDao.findByNo(board.getNo());
-    // 원래의 Board게시물에서 겟 넘버가 있는지 boardDao에 있는지 찾아봐라.
-
-
-    if (originBoard == null) { // 같은 번호의 게시물이 없다면,
-      boardDao.insert(board); // 새 게시물을 등록한다.
+    if (boardDao.insert(board) > 0) {
       out.writeUTF("OK");
 
     } else {

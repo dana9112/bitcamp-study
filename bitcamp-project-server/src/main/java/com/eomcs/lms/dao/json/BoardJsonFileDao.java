@@ -1,12 +1,12 @@
-package com.eomcs.lms.dao;
+package com.eomcs.lms.dao.json;
 
 import java.util.List;
 import com.eomcs.lms.domain.Board;
 
-public class BoardObjectFileDao extends AbstractObjectFileDao<Board> { // 6. AbstractObjectFileDao
-                                                                       // 상속 받기
+public class BoardJsonFileDao extends AbstractJsonFileDao<Board> { // 6. AbstractObjectFileDao
+                                                                   // 상속 받기
 
-  public BoardObjectFileDao(String filename) {
+  public BoardJsonFileDao(String filename) {
     super(filename);
   }
 
