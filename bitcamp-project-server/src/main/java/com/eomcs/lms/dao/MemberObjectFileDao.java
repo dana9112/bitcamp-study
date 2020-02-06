@@ -10,17 +10,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import com.eomcs.lms.domain.Board;
+import com.eomcs.lms.domain.Member;
 
-public class BoardFileDao {
+public class MemberObjectFileDao {
 
   String filename;
-  List<Board> list;
+  List<Member> list;
 
-  public BoardFileDao(String filename) { // 파일 이름을 생성자에서 받는다.
+  public MemberObjectFileDao(String filename) {
     this.filename = filename;
     list = new ArrayList<>();
-    loadData(); // 파일에 객체가 생성되었을때 로딩된다.
+    loadData();
   }
 
   @SuppressWarnings("unchecked")
@@ -29,8 +29,8 @@ public class BoardFileDao {
 
     try (ObjectInputStream in =
         new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
-      list = (List<Board>) in.readObject();
-      System.out.printf("총 %d 개의 게시물 데이터를 로딩했습니다.\n", list.size());
+      list = (List<Member>) in.readObject();
+      System.out.printf("총 %d 개의 회원 데이터를 로딩했습니다.\n", list.size());
 
     } catch (Exception e) {
       System.out.println("파일 읽기 중 오류 발생! - " + e.getMessage());
@@ -42,32 +42,29 @@ public class BoardFileDao {
 
     try (ObjectOutputStream out =
         new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
-      out.reset(); // 기존의 직렬화(serialize) 수행 중에 캐시된(임시보관된) 데이터를 초기화시킨다.
       out.writeObject(list);
-      System.out.printf("총 %d 개의 게시물 데이터를 저장했습니다.\n", list.size());
+      System.out.printf("총 %d 개의 회원 데이터를 저장했습니다.\n", list.size());
 
     } catch (IOException e) {
       System.out.println("파일 쓰기 중 오류 발생! - " + e.getMessage());
-
     }
   }
 
-  // 서블릿 객체들이 데이터를 다룰 때 사용할 메서드를 정의한다.
-  public int insert(Board board) throws Exception { // 인서트의 리턴타입은 인트이다. 인서트가 안되면 0을 리턴한다.
+  public int insert(Member member) throws Exception { // 인서트의 리턴타입은 인트이다. 인서트가 안되면 0을 리턴한다.
 
-    if (indexOf(board.getNo()) > -1) { // 같은 번호의 게시물이 있다면,
+    if (indexOf(member.getNo()) > -1) { // 같은 번호의 게시물이 있다면,
       return 0;
     }
-    list.add(board); // 새 게시물을 등록한다.
+    list.add(member); // 새 게시물을 등록한다.
     saveData(); // 데이터가 세이브 될때마다 저장한다.
     return 1;
   }
 
-  public List<Board> findAll() throws Exception { // 보드 객체의 리스트를 달라.
+  public List<Member> findAll() throws Exception { // 보드 객체의 리스트를 달라.
     return list;
   }
 
-  public Board findByNo(int no) throws Exception {
+  public Member findByNo(int no) throws Exception {
     int index = indexOf(no);
     if (index == -1) {
       return null;
@@ -75,26 +72,21 @@ public class BoardFileDao {
     return list.get(index);
   }
 
-  public int update(Board board) throws Exception {
-    int index = indexOf(board.getNo());
+  public int update(Member member) throws Exception {
+    int index = indexOf(member.getNo());
     if (index == -1) {
       return 0;
     }
-    list.set(index, board); // 기존 객체를 파라미터로 받은 객체로 바꾼다.
+    list.set(index, member);
     saveData();
     return 1;
   }
 
   public int delete(int no) throws Exception {
     int index = indexOf(no);
-    if (index == -1) {
-      return 0;
-    }
-
     list.remove(index);
     saveData();
     return 1;
-
   }
 
   private int indexOf(int no) {
