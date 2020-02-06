@@ -58,7 +58,7 @@ public class LessonUpdateCommand implements Command {
           oldLesson.getDayHours()));
 
 
-      if (newLesson.equals(oldLesson)) {
+      if (oldLesson.equals(newLesson)) {
         System.out.println("수업 변경을 취소하였습니다.");
         return;
       }
