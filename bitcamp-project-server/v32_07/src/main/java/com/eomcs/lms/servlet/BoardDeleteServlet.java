@@ -17,10 +17,11 @@ public class BoardDeleteServlet implements Servlet {
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
 
-
     int no = in.readInt();
+    Board originBoard = boardDao.findAll(no);
 
-    if (boardDao.delete(no) > 0) { // 삭제했다면,
+    if (originBoard !=null) { // 삭제하려는 번호의 게시물을 찾았다면
+      boardDao.delete(no);
       out.writeUTF("OK");
 
     } else {

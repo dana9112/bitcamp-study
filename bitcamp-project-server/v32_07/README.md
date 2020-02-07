@@ -30,7 +30,7 @@
 ### 훈련 2: BoardObjectFileDao 객체를 적용하라.
 - com.eomcs.lms.DataLoaderListener를 변경한다.
   - 게시물 데이터를 로딩하고 저장하는 기존 코드를 제거한다.
-  - 대신에 BoardFileDao 객체를 생성한다. 
+  - 대신에 BoardObjectFileDao 객체를 생성한다. 
 - com.eomcs.lms.App을 변경한다.
   - Map에서 BoardObjectFileDao를 꺼내 관련 커맨드 객체에 주입한다.
 - BoardXxxxServlet을 변경한다.
