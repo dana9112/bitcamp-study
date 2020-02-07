@@ -1,22 +1,19 @@
 // "/board/add" 명령어 처리
 package com.eomcs.lms.handler;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.sql.Date;
+import com.eomcs.lms.dao.BoardDao;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.util.Prompt;
 
 public class BoardAddCommand implements Command {
 
-  ObjectOutputStream out;
-  ObjectInputStream in;
 
   Prompt prompt;
+  BoardDao boardDao; // 1. 입출력 지우고 삽입해줌
 
-  public BoardAddCommand(ObjectOutputStream out, ObjectInputStream in, Prompt prompt) {
-    this.out = out;
-    this.in = in;
+  public BoardAddCommand(BoardDao boardDao, Prompt prompt) {
+    this.boardDao = boardDao;
     this.prompt = prompt;
   }
 
@@ -30,20 +27,13 @@ public class BoardAddCommand implements Command {
     board.setViewCount(0);
 
     try {
-      out.writeUTF("/board/add");
-      out.writeObject(board);
-      out.flush();
+      boardDao.insert(board); // 보드 디에이오에서 인서트를 출력하여
+      System.out.println("저장하였습니다. ");
 
-      String response = in.readUTF();
-      if (response.equals("FAIL")) {
-        System.out.println(in.readUTF());
-        return;
-      }
     } catch (Exception e) {
-      System.out.println("통신 오류 발생!");
+      System.out.println("데이터 저장 실패!");
 
     }
-    System.out.println("저장하였습니다.");
   }
 
 }
