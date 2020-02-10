@@ -27,15 +27,18 @@ public class Server0120 {
         byte[] buf = new byte[100];
         int size = in.read(buf); // blocking 모드로 작동한다.
         System.out.printf("읽은 바이트 수 %d\n", size);
+        for (int i = 0; i < size; i++) {
+          if (i > 0 && (i % 20) == 0) {
+            System.out.println(); // 20바이트 출력한 후 줄 바꾼다.
+          }
+          System.out.printf("%x\n ", buf[i]);
+        }
 
-        // 서버가 데이터를 보내지 않으면 클라이언트의 read()는 리턴하지 않는다.
-        // 이를 확인하기 위해 잠시 실행을 멈춘다.
         System.out.print("데이터를 보내기 전에 잠깐!");
         keyboard.nextLine();
 
-        // => 클라이언트에게 받은 문자열을 그대로 보낸다.
-        // 물론 클라이언트가 보낸 데이터를 다 읽을 때까지 리턴하지 않는다.
-        out.write(request);
+        // 클라이언트에서 받은 바이트 개수 만큼 배열을 출력한다.
+        out.write(buf, 0, size);
         System.out.println("클라인트에게 데이터를 보냈음.");
 
       }

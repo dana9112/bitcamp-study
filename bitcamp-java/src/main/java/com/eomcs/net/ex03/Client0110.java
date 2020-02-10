@@ -30,6 +30,8 @@ public class Client0110 {
       // 따라서 write() 호출 후 즉시 리턴될 것이다.
       out.write(100);
       // out.flush();
+      // OutputStream을 사용할 때는 바로 출력한다.
+      // 따라서 flush()를 호출하지 않아도 된다.
       System.out.println("서버에 데이터를 보냈음!");
 
       // 서버의 응답을 받는다.
