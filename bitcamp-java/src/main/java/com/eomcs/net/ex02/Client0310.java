@@ -18,6 +18,9 @@ public class Client0310 {
 
     // 2) 연결할 서버의 주소를 준비한다.
     SocketAddress socketAddress = new InetSocketAddress("localhost", 8888);
+    // SocketAddress는 추상클래스이다.
+    // 추상클래스는 객체를 만들 수 없으니 상속받은 서브 클래스를 통해서 객체를 만들어 주세요.
+
 
     // 3) 서버와의 연결을 시도한다.
     // => 타임아웃으로 지정된 시간 안에 서버와 연결되지 않으면 즉시 예외가 발생한다.
