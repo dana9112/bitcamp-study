@@ -1,5 +1,5 @@
-// stateful 방식 - 다중 클라이언트의 요청 처리 시 문제점과 해결책
-package com.eomcs.net.ex04.stateful3;
+// stateful 방식의 이점 활용 - 계산기 서버 만들기 (예: 게임 서버에 접속하는 순간 기록 남는거)
+package com.eomcs.net.ex04.stateful2;
 
 import java.io.DataOutputStream;
 import java.net.Socket;
