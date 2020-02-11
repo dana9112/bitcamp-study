@@ -51,7 +51,7 @@ public class CalcClient {
       }
     }
 
-    // keyScan.close();
+    keyScan.close();
   }
 }
 

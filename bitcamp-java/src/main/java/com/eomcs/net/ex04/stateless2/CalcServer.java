@@ -41,7 +41,7 @@ public class CalcServer {
       // 클라이언트를 구분하기 위한 아이디
       // => 0: 아직 클라이언트 아이디가 없다는 의미
       // => x: 서버가 클라이언트에게 아이디를 부여했다는 의미
-      long clientId = in.readInt();
+      long clientId = in.readLong();
 
       // 연산자와 값을 입력 받는다.
       String op = in.readUTF();
