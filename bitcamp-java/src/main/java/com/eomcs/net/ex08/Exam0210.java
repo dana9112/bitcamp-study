@@ -11,7 +11,7 @@ public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
 
-    // => RL 주소를 준비한다.
+    // => URL 주소를 준비한다.
     URL url = new URL("https://www.daum.net");
 
     // => URL 정보를 가지고 HTTP 요청을 수행할 객체를 얻는다.
