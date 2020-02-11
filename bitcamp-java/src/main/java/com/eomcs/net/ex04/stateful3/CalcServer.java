@@ -27,6 +27,7 @@ public class CalcServer {
         processRequest(socket); // 생성자에서 받아서 써라.
       } catch (Exception e) {
         System.out.println("클라이언트 요청 처리 중 오류 발생!");
+      } finally {
         System.out.println("클라이언트 연결 종료!");
       }
     }
