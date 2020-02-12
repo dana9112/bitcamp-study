@@ -4,19 +4,18 @@ package com.eomcs.concurrent.ex4;
 public class Exam0120 {
   public static void main(String[] args) throws Exception {
     System.out.println("스레드 실행 전");
-    Thread t = new Thread() {
-      public void run() {
-        for (int i = 0; i < 1000; i++) {
-          System.out.println("===> " + i);
-        }
+
+    Thread t = new Thread(() -> {
+      for (int i = 0; i < 1000; i++) {
+        System.out.println("===> " + i);
       }
-    };
-    t.start();
+    } /* 익명 객체가 넘어간다. */);
+    t.start(); // 스레드를 생성하고 시작시킨다.
 
     t.join(); // t 스레드가 종료될 때까지 "main" 스레드는 기다린다.
 
     // 즉 t 스레드가 종료된 후 다음 코드를 실행한다.
-    System.out.println("스레드 실행 후");
+    System.out.println("스레드 종료 후");
 
     // 스레드 종료 후 다시 시작시킨다면?
     // => IllegalThreadStateException 발생!
