@@ -160,7 +160,9 @@ public class ServerApp {
 
       out.flush();
       System.out.println("클라이언트에게 응답하였음!");
-      return 0;
+      return 0; 
+      // 각 상황이 끝났다라는 것을 구분하기 위해 리턴값 0을 표시해줌
+      // 메소드가 int이기 때문에 리턴값을 0으로 출력함. 
 
     } catch (Exception e) {
       System.out.println("예외 발생:");

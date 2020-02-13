@@ -1,4 +1,11 @@
 // LMS 클라이언트
+
+// (동영)
+// 32의 경우 Server를 실행하면 바로 Socket을 연결시켜서 값이 나올 수 있었음
+// 위의 방식이 Stateful 방식이며, 33의 내용은 Stateless로 변화한 코드이다.
+// 33은 Server가 실행이 되어도 바로 Socket이랑 연결되는 것이 아니라 
+// 명령어(Command)가 들어오면 그 때 Socket을 만들어서 연결한 후 바로 연결을 끊기 위해서 만든 방식이다. 
+// 
 package com.eomcs.lms;
 
 import java.io.ObjectInputStream;
