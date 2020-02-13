@@ -36,25 +36,14 @@ public class ClientApp {
 
   Scanner keyboard = new Scanner(System.in);
   Prompt prompt = new Prompt(keyboard);
-  
-  String host;
-  int port;
-
-  Deque<String> commandStack;
-  Queue<String> commandQueue;
-  
-  public ClientApp() {
-    // 생성자?
-    // => 객체가 작업할 때 사용할 자원들을 준비하는 일을 한다.
-    
-    commandStack = new ArrayDeque<>();
-    commandQueue = new LinkedList<>();
-    
-  }
 
   public void service() {
+
+    String serverAddr = null;
+    int port = 0;
+
     try {
-      host = prompt.inputString("서버? ");
+      serverAddr = prompt.inputString("서버? ");
       port = prompt.inputInt("포트? ");
 
     } catch (Exception e) {
@@ -63,22 +52,28 @@ public class ClientApp {
       return;
     }
 
-    
-
-    keyboard.close();
-  }
-
-  private void processCommand(ObjectOutputStream out, ObjectInputStream in) {
-    
     try (Socket socket = new Socket(serverAddr, port);
         ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
         ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
 
       System.out.println("서버와 연결을 되었음!");
 
-      
-    
+      processCommand(out, in);
 
+      System.out.println("서버와 연결을 끊었음!");
+
+    } catch (Exception e) {
+      System.out.println("예외 발생:");
+      e.printStackTrace();
+    }
+
+    keyboard.close();
+  }
+
+  private void processCommand(ObjectOutputStream out, ObjectInputStream in) {
+
+    Deque<String> commandStack = new ArrayDeque<>();
+    Queue<String> commandQueue = new LinkedList<>();
 
     // DAO 프록시 객체 준비
     BoardDaoProxy boardDao = new BoardDaoProxy(in, out);
