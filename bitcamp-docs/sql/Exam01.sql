@@ -4,15 +4,16 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
 - 데이터베이스(database) = 스키마(schema)
 - 테이블(table)
 - 뷰(view)
-- 트리거(trigger)
+- 트리거(trigger) (=> 옵저버 역할)
   - 특정 조건에서 자동으로 호출되는 함수
   - 특정 조건? SQL 실행 전/후 등
+  - oop 디자인 패턴에서 옵저버에 해당한다. 
 - 함수(function)
 - 프로시저(procedure)
 - 인덱스(index)
 
 ## 데이터베이스
-데이터베이스 생성
+데이터베이스 생성 (파일 생성라고 생각하면 됨)
 > create database 데이터베이스명 옵션들...;
 
 데이터베이스 삭제
@@ -293,7 +294,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 - 입력 테스트:
 > insert into test1(name, age, kor, eng, math) values('aa', 10, 100, 100, 100);
 > insert into test1(name, age, kor, eng, math) values('bb', 20, 90, 90, 90);
-> insert into test1(name, age, kor, eng, math) values('aa', 11, 88, 88, 88);
+> insert into test1(name, age, kor, eng, math) values('aa', 11, 88, 88, 88);  
 > insert into test1(name, age, kor, eng, math) values('ab', 10, 88, 88, 88);
 
 /* 이름과 나이가 같으면 중복되기 때문에 입력 거절이다. */
@@ -336,6 +337,18 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
   math int,
   constraint test1_uk unique (name, age)
   );
+  
+ /* 다음과 같이 제약 조건을 모든 컬럼 뒤에 놓을 수 있다. */
+create table test1(
+  no int,
+  name varchar(20),
+  age int,
+  kor int,
+  eng int,
+  math int,
+  constraint test1_pk primary key(no),
+  constraint test1_uk unique (name, age)
+  );
 
 - 입력 테스트:
 > insert into test1(no,name,age,kor,eng,math) values(1,'a',10,90,90,90);
@@ -354,6 +367,14 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 ##### index
 - 검색 조건으로 사용되는 컬럼은 정렬되어야만 데이터를 빨리 찾을 수 있다.
 - 특정 컬럼의 값을 A-Z 또는 Z-A로 정렬시키는 문법이 인덱스이다.
+- DBMS는 해당 컬럼의 값으로 정렬한 데이터 정보를 별도로 생성한다. 
+- 보통 책 맨 뒤에 붙어있는 인덱스 정보와 같다. 
+- 인덱스로 지정된 컬럼의 값이 추가/변경/삭제 될 때 인덱스 정보도 갱신한다.
+- 따라서 입력/변경/삭제가 자주 발생하는 테이블에 대해 인덱스 컬럼을 지정하면,
+  입력/변경/삭제 시 인덱스 정보를 갱신해야 하기 때문에 입력/변경/삭제 속도가 느리다. 
+- 대신 조회 속도는 빠르다. 
+
+  
 ```
 create table test1(
   no int primary key,
@@ -374,7 +395,7 @@ insert into test1(no,name,age,kor,eng,math) values(5,'eee',20,80,80,80);
 ```
 - name 컬럼은 인덱스 컬럼으로 지정되었기 때문에 
   DBMS는 데이터가 추가되거나 삭제되거나 name 컬럼 값이 변경될 때마다
-  색인표를 갱신한다.
+  인덱스를 갱신한다.
 - 단점, 이런 이유로 이름으로 검색할 때 찾기 속도는 빠르지만,
   입력,변경,삭제 속도는 느리게 된다.
    
@@ -461,13 +482,19 @@ create table test1(
 ``` 
 
 - 특정 컬럼의 값을 자동으로 증가하게 선언한다.
-- 단 반드시 primary key여야 한다.
+- 단 반드시 primary key(ex: primary key 나 unique)여야 한다.
 ```
 alter table test1
   modify column no int not null auto_increment; /* 아직 no가 pk가 아니기 때문에 오류*/
+  // 변경할때는 다 적어줘야함
   
 alter table test1
   add constraint primary key (no); /* 일단 no를 pk로 지정한다.*/
+
+
+alter table test1
+  add constraint unique(no);  /*  no를 unique로 지정해되 된다. - auto-increment도 자동 지정된다.*/ 
+
 
 alter table test1
   modify column no int not null auto_increment; /* 그런 후 auto_increment를 지정한다.*/
@@ -475,11 +502,31 @@ alter table test1
 
 - 입력 테스트
 ```
+/*auto - increment 컬럼의 값을 직접 지정할 수 있다.*/
+insert into test1(no,name) values(1, 'xxx');
+
+/* auto - increment 컬럼의 값을 생력하면 마지막 값을 증가시켜서 입력한다.*/ 
 insert into test1(name) values('aaa');
-insert into test1(name) values('bbb');
-insert into test1(name) values('ccc');
-insert into test1(name) values('ddd');
-insert into test1(name) values('eee');
+
+insert into test1(no,name) values(100, 'yyy');
+insert into test1(name) values('bbb'); /* no는 101이 입력된다.*/
+
+insert into test1(name) values('ccc'); /* no=102*/
+insert into test1(name) values('ddd');/* no=103*/
+
+/*값을 삭제하더라도 auto increment 는 계혹 앞으로 증가한다. */
+delete from test1 where no=103;
+
+insert into test1(name) values('eee'); /* no=104*/
+
+insert into test1(name) values('1234567891234567891234');
+
+/* 다른 DBMS의 경우 입력 오류가 발생하더라도 번호는 자동 증가하기 때문에
+   다음 값을 입력할 때는 증가된 값이 들어간다.
+   그러나 MySQL(MariaDB)는 증가되지 않는다.
+*/
+insert into test1(name) values('fff'); /* no=? */
+
 ```
 
 ## 뷰(view)

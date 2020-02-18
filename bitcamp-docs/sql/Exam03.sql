@@ -11,6 +11,7 @@ create table test1 (
   tel varchar(20)
 );
 
+
 insert into test1(name,class,working) values('aaa','java100','Y');
 insert into test1(name,class,working) values('bbb','java100','N');
 insert into test1(name,class,working) values('ccc','java100','Y');
@@ -31,12 +32,17 @@ select * from 테이블;
 select * from test1;
 
 /* 특정 컬럼의 값만 조회할 때 => "프로젝션(projection)"이라 부른다.*/
+/* 셀렉션(조건에 맞춰 데이터를 뽑아내는 것)은 데이터를 선택하는 것이고 
+프로젝션은 컬럼값만 하는 것
+*/
 select 컬럼명,컬럼명 from 테이블;
 select no, name, tel from test1;
+
 
 /* 가상의 컬럼 값을 조회하기*/
 select no, concat(name,'(',class,')') from test1;
 ```
+
 
 ### 조회하는 컬럼에 별명 붙이기 
 - 별명을 붙이지 않으면 원래의 컬럼명이 조회 결과의 컬럼이름으로 사용된다.
@@ -84,9 +90,21 @@ from test1
 where working='Y' or class='java100';
 
 /* java100기 학생 중에 재직자만 조회하라!*/
+/*먼저 조건을 정해둔 다음 컬럼을 다음에 정의하라*/
 select no, name, class, working
 from test1
 where working='Y' and class='java100';
+
+/* 주의!
+ where 절을 통해 결과 데이터를 먼저 선택(selection)한 다음
+ 결과 데이터에서 로 가져올 컬럼을 선택(projection)한다.
+ 따라서 실행 순서는:
+ from ==> where ==> select   
+*/
+select no, name
+from test1
+where working='Y' and class='java100';
+
 
 /* 재직자가 아닌 사람만 조회하라!*/
 select no, name, class, working
@@ -253,7 +271,7 @@ where regdt >= '2017-11-1' and regdt <= '2017-12-31';
 
 - 날짜를 다루는 연산자와 함수
 ```
-/* 현재 날짜 및 시간 알아내기 */
+/* 현재 날짜 및 시간 알아내기 (오라클에는 없음)*/
 select now();
 
 /* 현재 날짜 알아내기 */
