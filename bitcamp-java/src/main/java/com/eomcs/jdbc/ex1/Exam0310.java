@@ -12,13 +12,16 @@ public class Exam0310 {
             .getConnection("jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
 
         // java.sql.Statement 구현 객체를 얻는다.
-        // - SQL문을 DBMS의 형식에 따라 인코딩하여 서버에 전달하는 일을 하는 객체.
+        // - SQL문을 DBMS의 형식에 따라 인코딩하여 "서버에 전달하는 일을 하는 객체".
         java.sql.Statement stmt = con.createStatement();) {
+
+      // MariaDB의 Connection 객체가 리턴하는 Statement 구현체의 클래스 이름은?
+      System.out.println(stmt.getClass().getName());
 
       // Statement 객체 사용법:
       //
       // 1) INSERT/UPDATE/DELETE 등 DML 관련 SQL문 전송
-      // => executeUpdate()
+      // => executeUpdate() // 업데이트만 되는 것이 아님.
       // => 리턴값: 변경(insert/update/delete)된 데이터의 개수
       //
       // 2) SELECT 등 DQL 관련 SQL문 전송

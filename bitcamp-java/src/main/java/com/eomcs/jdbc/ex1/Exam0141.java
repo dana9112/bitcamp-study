@@ -8,7 +8,7 @@ public class Exam0141 {
   public static void main(String[] args) {
 
     // JDBC 드라이버 로딩 방법4: Driver 구현체 자동 로딩
-    // => DriverManager를 사용할 때,
+    // => **DriverManager를 사용할 때,
     // DriverManager 는 다음 절차에 따라 Driver 구현체를 찾아서 자동 로딩한다.
 
     // 2) java.sql.Driver 클래스의 서비스 제공자를 찾아 로딩한다.
@@ -25,8 +25,11 @@ public class Exam0141 {
       // mariadb의 Driver 구현체가 로딩되고 객체가 생성되어 등록될 것이다.
 
       // DriverManager에 자동 등록된 것을 확인해보자!
+      // 드라이버 메니저가 로딩될때 사용됨.
       java.sql.Driver driver = DriverManager.getDriver("jdbc:mariadb:");
       System.out.println(driver);
+
+      System.out.println("테스트!");
 
     } catch (Exception e) {
       e.printStackTrace();
