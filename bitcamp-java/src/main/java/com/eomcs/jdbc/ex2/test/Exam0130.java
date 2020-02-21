@@ -31,7 +31,7 @@ public class Exam0130 {
     try (Connection con = DriverManager.getConnection(//
         "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement(//
-            "select * from x_board order by board_id = ?");) {
+            "select * from x_board order by board_id = ?")) {
 
       stmt.setString(1, no);
 
