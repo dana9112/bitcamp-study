@@ -13,7 +13,7 @@
      |             |         |
      주키       대안키    이메일(PK)
 = primary key  =Alternate
-                key
+                key 
                  |
                  | 설정
                Unique        
