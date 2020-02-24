@@ -17,7 +17,7 @@ public class MemberSearchServlet implements Servlet {
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
     out.println("검색어? ");
-    out.println("!{}!"); // 입력값 받기
+    out.println("!{}!");
     out.flush();
 
     String keyword = in.nextLine();

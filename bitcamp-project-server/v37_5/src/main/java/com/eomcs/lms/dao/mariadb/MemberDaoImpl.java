@@ -98,9 +98,8 @@ public class MemberDaoImpl implements MemberDao {
     }
   }
 
-
   @Override
-  public List<Member> findByKeyword(String keyword) throws Exception { // 조건에 일치하는 것만 셀렉션 한다.
+  public List<Member> findByKeyword(String keyword) throws Exception {
     try (Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select member_id, name, email, tel, cdt" //
@@ -126,7 +125,5 @@ public class MemberDaoImpl implements MemberDao {
       return list;
     }
   }
-
-
 
 }
