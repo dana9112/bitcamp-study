@@ -48,14 +48,13 @@ public class ClientApp {
 
       processCommand(command);
 
-      // 사용자가 서버 종료를 요청했다면,
+      // 사용자가 서버에 종료를 요청했다면,
       if (command.endsWith("/server/stop")) {
         // 서버는 다음 클라이언트 요청이 들어 올 때 처리할 것이다.
         // 이를 즉시 처리하도록 하기 위해,
         // 임의 요청을 한 번 더 보내자.
         processCommand(command);
       }
-
     }
     keyboard.close();
   }
