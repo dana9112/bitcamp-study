@@ -1,26 +1,46 @@
-# 39_1 - Connection 개별화하기: 메서드 호출마다 DBMS와 연결하기
-
+# 40_3 - Connection을 스레드에 보관하기: 트랜젝션 적용하기 
 
 ## 학습목표
 
-- Connection을 공유할 때 발생하는 문제점을 안다.
-- 왜 그런 문제가 발생하는지 이해한다.
+- ConnectionFactory를 통해 얻은 Connection 객체를 가지고 트랜젝션을 다루기
+
+### 메서드 별로 커넥션을 개별화 한 상태에서 트랜잭션을 적용하기
+
+- 39,40 단계로 가면서 커넥션을 메서드에서 준비하여 사용하였따.
+- 이런 관계로 PhotoBoardAddServlet/PhotoBoardUpdateServlet/ PhotoBoardDeleteServlet
+- 이제 다시 현 상태에서 트랜잭션 제어코드를 추가해보자. 
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/dao/mariadb/XxxDaoImpl.java 변경
-- src/main/java/com/eomcs/lms/DataLoaderListener.java 변경
+- src/main/java/com/eomcs/sql/ConnectionProxy.java 추가
+- src/main/java/com/eomcs/util/ConnectionFactory.java 변경
+- src/main/java/com/eomcs/lms/ServletApp.java 변경
 
 ## 실습  
 
-### 훈련1: 각 메서드를 호출할 때 DBMS와 연결하라.
+### 훈련1: PhotoBoardAddServler
 
-- com.eomcs.lms.dao.mariadb.XxxDaoImpl 변경
-  - 생성자에서 파라미터로 Connection 객체를 받는 대신에 DB 연결 정보를 받는다. 
-  - 각 메서드에서 JDBC URL과 username, password를 사용하여 DBMS에 연결한다.
-- com.eomcs.lms.DataLoaderListener 변경
-  - Connection 객체를 생성하지 않는다.
-  - 대신 DBMS 연결 정보를 준비하여 DAO 구현체를 생성할 때 넘겨준다.
+- com.eomcs.sql.ConnectionProxy 추가
+  - close()를 구현한다.
+    - 호출되면 아무런 일을 하지 않게 한다.
+    - 즉 커넥션을 닫지 않는다.
+  - realClose() 추가한다.
+    - 실제 커넥션을 닫는 일을 한다.
+  - 나머지 메서드는 원래 Connection 객체에 위임한다.
+    - eclipse / 소스창의 컨텍스트 메뉴 / source /generate delegate methods... 실행 
+    
+### 훈련2: ConnectionFactory가 ConnectionProxy 객체를 리턴하게 하라.
 
+- com.eomcs.util.ConnectionFactory 변경
+  - getConnection() 변경
+  - 원래의 Connection 객체 대신에 ConnectionProxy를 리턴한다.
+  
+### 훈련3: 스레드에서 Connection을 제거하기 전에 서버와의 연결을 끊어라.
 
+- com.eomcs.util.ConnectionFactory 변경
+  - removeConnection()이 스레드에서 제거한 Connection을 리턴하게 변경한다.
+- com.eomcs.lms.ServerApp 변경
+  - ConnectionFactory에서 리턴 받은 Connection 객체에 대해 
+    realClose()를 호출한다.
+    
   
