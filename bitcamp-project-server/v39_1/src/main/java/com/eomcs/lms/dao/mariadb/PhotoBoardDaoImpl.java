@@ -1,6 +1,7 @@
 package com.eomcs.lms.dao.mariadb;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -8,20 +9,23 @@ import java.util.List;
 import com.eomcs.lms.dao.PhotoBoardDao;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.domain.PhotoBoard;
-import com.eomcs.util.ConnectionFactory;
 
 public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
-  ConnectionFactory conFactory;
+  String jdbcUrl;
+  String username;
+  String password;
 
-  public PhotoBoardDaoImpl(ConnectionFactory conFactory) {
-    this.conFactory = conFactory;
+  public PhotoBoardDaoImpl(String jdbcUrl, String username, String password) {
+    this.jdbcUrl = jdbcUrl;
+    this.username = username;
+    this.password = password;
   }
 
   @Override
   public int insert(PhotoBoard photoBoard) throws Exception { // photoBoar의 주소를 가지고 오는 것이다. (객체를 가지고
                                                               // 오는게 아니고)
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
 
@@ -48,7 +52,7 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public List<PhotoBoard> findAllByLessonNo(int lessonNo) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement();
 
         // MariaDB의 lms_PhotoBoard 테이블에 있는 데이터를 가져올 도구를 준비
@@ -79,7 +83,7 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public PhotoBoard findByNo(int no) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select" //
@@ -119,7 +123,7 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public int update(PhotoBoard photoBoard) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate(//
@@ -132,7 +136,7 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public int delete(int no) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
       int result = stmt.executeUpdate("delete from lms_photo " + " where photo_id=" + no);
       return result;

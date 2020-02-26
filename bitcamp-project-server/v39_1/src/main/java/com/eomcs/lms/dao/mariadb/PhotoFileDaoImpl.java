@@ -1,25 +1,29 @@
 package com.eomcs.lms.dao.mariadb;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.eomcs.lms.dao.PhotoFileDao;
 import com.eomcs.lms.domain.PhotoFile;
-import com.eomcs.util.ConnectionFactory;
 
 public class PhotoFileDaoImpl implements PhotoFileDao {
 
-  ConnectionFactory conFactory;
+  String jdbcUrl;
+  String username;
+  String password;
 
-  public PhotoFileDaoImpl(ConnectionFactory conFactory) {
-    this.conFactory = conFactory;
+  public PhotoFileDaoImpl(String jdbcUrl, String username, String password) {
+    this.jdbcUrl = jdbcUrl;
+    this.username = username;
+    this.password = password;
   }
 
   @Override
   public int insert(PhotoFile photoFile) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("insert into lms_photo_file(photo_id, file_path) values(" //
@@ -33,7 +37,7 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
 
   @Override
   public List<PhotoFile> findAll(int boardNo/* 게시물 번호 */) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement();
 
         // MariaDB의 lms_PhotoBoard 테이블에 있는 데이터를 가져올 도구를 준비
@@ -66,7 +70,7 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
 
   @Override
   public int deleteAll(int boardNo) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
       int result = stmt.executeUpdate(//
           "delete from lms_photo_file " // 게시글을 지우는 것이 아니라 첨부파일을 지우는 것

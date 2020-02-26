@@ -1,26 +1,29 @@
 package com.eomcs.lms.dao.mariadb;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.eomcs.lms.dao.BoardDao;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.util.ConnectionFactory;
-
 
 public class BoardDaoImpl implements BoardDao {
 
-  ConnectionFactory conFactory;
+  String jdbcUrl;
+  String username;
+  String password;
 
-  public BoardDaoImpl(ConnectionFactory conFactory) {
-    this.conFactory = conFactory;
+  public BoardDaoImpl(String jdbcUrl, String username, String password) {
+    this.jdbcUrl = jdbcUrl;
+    this.username = username;
+    this.password = password;
   }
 
   @Override
   public int insert(Board board) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("insert into lms_board(conts) values('" //
@@ -32,7 +35,7 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public List<Board> findAll() throws Exception {
-    try (Connection con = conFactory.getConnection();
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement();
 
         ResultSet rs = stmt.executeQuery( //
@@ -58,7 +61,7 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public Board findByNo(int no) throws Exception {
-    try (Connection con = conFactory.getConnection();
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select board_id, conts, cdt, vw_cnt from lms_board where board_id=" + no)) {
@@ -79,7 +82,7 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public int update(Board board) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
       int result = stmt.executeUpdate("update lms_board set conts = '" + //
           board.getTitle() + "' where board_id=" + board.getNo());
@@ -90,7 +93,7 @@ public class BoardDaoImpl implements BoardDao {
 
   @Override
   public int delete(int no) throws Exception {
-    try (Connection con = conFactory.getConnection(); //
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
         Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("delete from lms_board where board_id=" + no);
