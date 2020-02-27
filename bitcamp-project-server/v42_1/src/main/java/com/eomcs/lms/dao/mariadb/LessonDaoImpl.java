@@ -33,7 +33,7 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public List<Lesson> findAll() throws Exception {
-    try (Connection con = dataSource.getConnection();
+    try (Connection con = dataSource.getConnection(); //
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select lesson_id, titl, sdt, edt, tot_hr from lms_lesson")) {
@@ -58,7 +58,7 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public Lesson findByNo(int no) throws Exception {
-    try (Connection con = dataSource.getConnection();
+    try (Connection con = dataSource.getConnection(); //
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select lesson_id, titl, conts, sdt, edt, tot_hr, day_hr" + " from lms_lesson"
@@ -83,7 +83,8 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public int update(Lesson lesson) throws Exception {
-    try (Connection con = dataSource.getConnection(); Statement stmt = con.createStatement()) {
+    try (Connection con = dataSource.getConnection(); //
+        Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("update lms_lesson set" //
           + " titl='" + lesson.getTitle() //
@@ -100,7 +101,8 @@ public class LessonDaoImpl implements LessonDao {
 
   @Override
   public int delete(int no) throws Exception {
-    try (Connection con = dataSource.getConnection(); Statement stmt = con.createStatement()) {
+    try (Connection con = dataSource.getConnection(); //
+        Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate("delete from lms_lesson where lesson_id=" + no);
 

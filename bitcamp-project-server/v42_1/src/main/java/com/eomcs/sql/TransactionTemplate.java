@@ -1,16 +1,17 @@
 package com.eomcs.sql;
 
 public class TransactionTemplate {
+
   PlatformTransactionManager txManager;
 
-  public TransactionTemplate(PlatformTransactionManager txmanager) {
-    this.txManager = txmanager;
+  public TransactionTemplate(PlatformTransactionManager txManager) {
+    this.txManager = txManager;
   }
 
   public Object execute(TransactionCallback action) throws Exception {
     // 이 메서드는 반복적으로 실행하는 코드를 정의한 것이다.
     // 반복 코드 안에서 특별하게 수행할 작업은 파라미터로 받는다.
-    // 주석 업데이트 할 것
+    // 파라미터로 받은 객체를 실행 코드의 틀(템플릿) 안에서 실행한다.
     //
     txManager.beginTransaction();
 
@@ -29,7 +30,7 @@ public class TransactionTemplate {
       return result;
 
     } catch (Exception e) {
-      // 예외가 발생하면 즉시 지금까지 한 작업을 취소한다.
+      // 예외가 발생하면 지금까지 한 작업을 취소한다.
       txManager.rollback();
 
       // 발생된 예외는 이 메서드를 호출한 쪽에 그대로 전달한다.

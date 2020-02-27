@@ -18,6 +18,7 @@ public class BoardAddServlet implements Servlet {
   public void service(Scanner in, PrintStream out) throws Exception {
 
     Board board = new Board();
+
     board.setTitle(Prompt.getString(in, out, "제목? "));
 
     if (boardDao.insert(board) > 0) {

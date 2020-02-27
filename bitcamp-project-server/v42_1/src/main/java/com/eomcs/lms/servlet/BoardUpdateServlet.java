@@ -28,12 +28,12 @@ public class BoardUpdateServlet implements Servlet {
 
     Board board = new Board();
 
-    // 아래 부분 다시한번 점검하기!
     board.setTitle(Prompt.getString(//
         in, //
         out, //
         String.format("제목(%s)? \n", old.getTitle()), //
         old.getTitle()));
+
     board.setNo(no);
 
     if (boardDao.update(board) > 0) { // 변경했다면,

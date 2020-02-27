@@ -10,8 +10,6 @@ public class PhotoFile implements Serializable {
   String filepath;
   int boardNo;
 
-
-  // 인스턴스의 초기 값을 설정할 수 있도록 생성자를 추가함.
   public PhotoFile() {}
 
   public PhotoFile(String filepath, int boardNo) {
@@ -24,15 +22,10 @@ public class PhotoFile implements Serializable {
     this.no = no;
   }
 
-
-
-  // toString을 사용하는 이유는? 간단한 조회를 하기 위해서
   @Override
   public String toString() {
     return "PhotoFile [no=" + no + ", filepath=" + filepath + ", boardNo=" + boardNo + "]";
   }
-
-
 
   public int getNo() {
     return no;
@@ -60,7 +53,6 @@ public class PhotoFile implements Serializable {
     this.boardNo = boardNo;
     return this;
   }
-
 
 
 }

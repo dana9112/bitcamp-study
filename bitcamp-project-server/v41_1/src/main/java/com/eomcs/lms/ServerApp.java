@@ -83,7 +83,7 @@ public class ServerApp {
 
     notifyApplicationInitialized();
 
-    // ConnectionPool 꺼낸다.
+    // 커넥션풀을 꺼낸다.
     DataSource dataSource = (DataSource) context.get("dataSource");
 
     // DataLoaderListener가 준비한 DAO 객체를 꺼내 변수에 저장한다.
@@ -138,7 +138,6 @@ public class ServerApp {
 
         executorService.submit(() -> {
           processRequest(socket);
-
           // 스레드에 보관된 커넥션 객체를 제거한다.
           // => 스레드에서 제거한 Connection 객체는 다시 사용할 수 있도록
           // DataSource에 반납된다.

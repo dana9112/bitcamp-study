@@ -19,15 +19,12 @@ public class Lesson implements Serializable {
   private int totalHours;
   private int dayHours;
 
-
-
   @Override
   public String toString() {
     return "Lesson [no=" + no + ", title=" + title + ", description=" + description + ", startDate="
         + startDate + ", endDate=" + endDate + ", totalHours=" + totalHours + ", dayHours="
         + dayHours + "]";
   }
-
 
   public static Lesson valueOf(String csv) {
     String[] data = csv.split(",");
@@ -130,8 +127,8 @@ public class Lesson implements Serializable {
     return startDate;
   }
 
-  public void setStartDate(Date string) {
-    this.startDate = string;
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
   }
 
   public Date getEndDate() {

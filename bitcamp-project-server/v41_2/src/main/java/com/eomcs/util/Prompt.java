@@ -9,11 +9,9 @@ public class Prompt {
     return Integer.parseInt(getString(in, out, title));
   }
 
-  // 오버로딩을 할 것임
   public static int getInt(Scanner in, PrintStream out, String title, String defaultValue) {
     return Integer.parseInt(getString(in, out, title, defaultValue));
   }
-
 
   public static String getString(Scanner in, PrintStream out, String title) {
     out.println(title);
@@ -33,7 +31,6 @@ public class Prompt {
     } else {
       return defaultValue;
     }
-
   }
 
   public static Date getDate(Scanner in, PrintStream out, String title) {
@@ -43,5 +40,4 @@ public class Prompt {
   public static Date getDate(Scanner in, PrintStream out, String title, String defaultValue) {
     return Date.valueOf(getString(in, out, title, defaultValue));
   }
-
 }
