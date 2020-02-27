@@ -1,46 +1,72 @@
-# 40_3 - Connection을 스레드에 보관하기: 트랜젝션 적용하기 
+# 42_2 - SQL 삽입 공격과 자바 시큐어 코딩: PreparedStatement로 전환하기
+
+PreparedStatedment를 이용하여 SQL 문과 값을 분리하여 실행하면,
+
 
 ## 학습목표
 
-- ConnectionFactory를 통해 얻은 Connection 객체를 가지고 트랜젝션을 다루기
-
-### 메서드 별로 커넥션을 개별화 한 상태에서 트랜잭션을 적용하기
-
-- 39,40 단계로 가면서 커넥션을 메서드에서 준비하여 사용하였따.
-- 이런 관계로 PhotoBoardAddServlet/PhotoBoardUpdateServlet/ PhotoBoardDeleteServlet
-- 이제 다시 현 상태에서 트랜잭션 제어코드를 추가해보자. 
+- SQL 삽입 공격이 무엇인지 안다.
+- SQL 삽입 공격을 막기 위한 방법을 안다.
+- Statement와 PreparedStatement의 차이점을 이해한다.
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/sql/ConnectionProxy.java 추가
-- src/main/java/com/eomcs/util/ConnectionFactory.java 변경
-- src/main/java/com/eomcs/lms/ServletApp.java 변경
+- src/main/java/com/eomcs/lms/dao/MemberDao.java 변경
+- src/main/java/com/eomcs/lms/dao/mariadb/MemberDaoImpl.java 변경
+- src/main/java/com/eomcs/lms/servlet/LoginServlet.java 추가
+- src/main/java/com/eomcs/lms/ServerApp.java 변경
 
 ## 실습  
 
-### 훈련1: PhotoBoardAddServler
+### 훈련1: 사용자 로그인 기능을 만들라.
 
-- com.eomcs.sql.ConnectionProxy 추가
-  - close()를 구현한다.
-    - 호출되면 아무런 일을 하지 않게 한다.
-    - 즉 커넥션을 닫지 않는다.
-  - realClose() 추가한다.
-    - 실제 커넥션을 닫는 일을 한다.
-  - 나머지 메서드는 원래 Connection 객체에 위임한다.
-    - eclipse / 소스창의 컨텍스트 메뉴 / source /generate delegate methods... 실행 
-    
-### 훈련2: ConnectionFactory가 ConnectionProxy 객체를 리턴하게 하라.
-
-- com.eomcs.util.ConnectionFactory 변경
-  - getConnection() 변경
-  - 원래의 Connection 객체 대신에 ConnectionProxy를 리턴한다.
-  
-### 훈련3: 스레드에서 Connection을 제거하기 전에 서버와의 연결을 끊어라.
-
-- com.eomcs.util.ConnectionFactory 변경
-  - removeConnection()이 스레드에서 제거한 Connection을 리턴하게 변경한다.
+- lms_member 테이블의 암호 초기화
+  - 테스트하기 위해 모든 회원의 암호를 '1111'로 초기화 한다.
+  - update lms_member set pwd=password('1111') 실행
+- com.eomcs.lms.dao.MemberDao 변경
+  - 이메일과 암호를 가지고 사용자를 조회하는 메서드를 추가한다.
+  - Member findByEmailAndPassword(String email, String password)
+- com.eomcs.lms.dao.mariadb.MemberDaoImpl 변경
+  - MemberDao에 추가한 메서드를 구현한다.
+  - insert(), update()의 SQL 문에서 암호를 입력하거나 변경할 때 
+    password() SQL 함수로 인코딩하도록 SQL 문을 변경한다.
+- com.eomcs.lms.servlet.LoginServlet 추가
+  - 사용자로부터 이메일과 암호를 입력받아 인증을 수행한다.
 - com.eomcs.lms.ServerApp 변경
-  - ConnectionFactory에서 리턴 받은 Connection 객체에 대해 
-    realClose()를 호출한다.
-    
+  - "/auth/login" 명령을 처리할 LoginServlet 객체를 맵에 추가한다.
   
+'ClientApp' 실행 예:
+```
+명령> /auth/login
+이메일?
+user1@test.com
+암호?
+1111
+'홍길동'님 환영합니다.
+
+명령> /auth/login
+이메일?
+user1@test.com
+암호?
+2222
+사용자가 정보가 유효하지 않습니다.
+```
+
+### 훈련2: SQL 삽입 공격을 통해 유효하지 않은 사용자 정보로 로그인 해 보라.
+
+'ClientApp' 실행 예:
+```
+명령> /auth/login
+이메일?
+user3@test.com
+암호?
+aaa') or (email='user3@test.com' and 'a'='a
+'user3'님 환영합니다.
+
+```
+
+
+
+
+
+
