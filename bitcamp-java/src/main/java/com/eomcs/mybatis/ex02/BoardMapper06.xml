@@ -11,9 +11,10 @@
        예) #{title} ==> getTitle()의 리턴 값을 의미한다.
           #{content} ==> getContent()의 리턴 값을 의미한다.
         -->
+  <!--  insert(sqlId, Board) -->
   <insert id="insertBoard" parameterType="Board">
-    insert into ex_board(titl,cont,rdt) 
-    values(#{title},#{content},now())
+    insert into x_board(title,contents,created_Date) 
+    values(#{title},#{content},now()) <!-- now는 mysql에만 있음.  -->
   </insert>  
 </mapper>
 
