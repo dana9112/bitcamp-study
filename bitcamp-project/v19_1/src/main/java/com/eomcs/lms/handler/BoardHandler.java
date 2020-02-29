@@ -87,7 +87,7 @@ public class BoardHandler {
     Board newBoard = new Board();
     newBoard.setNo(oldBoard.getNo());
     newBoard.setViewCount(oldBoard.getViewCount());
-    newBoard.setTitle(title);
+    newBoard.setTitle(oldBoard.getTitle());
     newBoard.setDate(new Date(System.currentTimeMillis()));
     
     this.boardList.set(index, newBoard);
