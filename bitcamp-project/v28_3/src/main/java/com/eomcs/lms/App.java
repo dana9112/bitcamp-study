@@ -156,7 +156,6 @@ public class App {
       // 방법1) JSON ===> List
       // Gson json도구 = new Gson();
       // Lesson[] 배열 = json도구.fromJson(in, Lesson[].class);
-      // lessonList = new ArrayList<>();
       // for (Lesson 수업 : 배열) {
       // lessonList.add(수업);
       // }
