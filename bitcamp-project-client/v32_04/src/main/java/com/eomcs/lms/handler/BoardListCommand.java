@@ -55,7 +55,7 @@ public class BoardListCommand implements Command {
       }
 
     } catch (Exception e) {
-      System.out.println("통신 오류 발생!");
+      System.out.println("명령 실행 중 오류 발생!");
     }
   }
 }

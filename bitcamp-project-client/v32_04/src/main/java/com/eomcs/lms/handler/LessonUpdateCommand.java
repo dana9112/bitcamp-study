@@ -21,7 +21,6 @@ public class LessonUpdateCommand implements Command {
   @Override
   public void execute() {
     try {
-
       int no = prompt.inputInt("번호? ");
 
       out.writeUTF("/lesson/detail");
