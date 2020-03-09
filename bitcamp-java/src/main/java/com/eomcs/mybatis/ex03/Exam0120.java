@@ -41,7 +41,8 @@ public class Exam0120 {
     } catch (Exception e) {
       e.printStackTrace();
 
-      // 게시글 번호가 없거나 예외가 발생하면 전체 게시글을 출력한다.
+      // 게시글 번호가 없거나 예외가 발생하면 전체 게시글을 출력한다. 
+      // (숫자 이외의 문자열을 넣었을 때 전체 게시글이 출력됨)
       list = sqlSession.selectList("BoardMapper.select3");
 
       // 이때 같은 SQL 문(select3)을 실행한다.

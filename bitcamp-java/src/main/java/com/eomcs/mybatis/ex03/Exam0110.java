@@ -36,8 +36,15 @@ public class Exam0110 {
       // select1 SQL을 실행한다.
       list = sqlSession.selectList("BoardMapper.select1", Integer.parseInt(str));
 
+      // (게시글에 없는 번호를 넣으면 예외로 가지 않는다.
+      // 왜냐하면 Integer.parseInt(str) -> 여기서 숫자를 처리하기 때문이다.
+      // 어떻게 처리하느냐?
+      // BoardMapper에 #{value}의 값에 숫자가 들어가기 때문에
+      // 어찌됐든 숫자를 받아서 예외로 넘어가지 않기 때문이다. )
+
     } catch (Exception e) {
       // => 게시글 번호가 없으면 전체 게시글을 조회하는
+      // (즉 공란이나, 숫자 외의 문자열을 넣으면 예외로 넘어간다.)
       // select2 SQL을 실행한다.
       list = sqlSession.selectList("BoardMapper.select2");
     }

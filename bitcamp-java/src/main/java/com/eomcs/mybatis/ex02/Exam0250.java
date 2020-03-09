@@ -18,9 +18,9 @@ public class Exam0250 {
 
     // 변경할 데이터를 객체에 담아서 넘긴다.
     Board board = new Board();
-    board.setNo(5);
-    board.setTitle("aaaaa");
-    board.setContent("bbbbb");
+    board.setNo(8);
+    board.setTitle("bcbcbcb");
+    board.setContent("aaaaa");
 
     int count = sqlSession.update("BoardMapper.updateBoard", board);
     System.out.println(count);
