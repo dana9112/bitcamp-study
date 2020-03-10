@@ -64,7 +64,7 @@
 </delete>
 
 
-<select id= "selectByKeyWord" parameterType="string">
+<select id= "selectByKeyWord" resultMap="MemberMap" parameterType="string">
 <bind name="keywordPattern" value="'%' + _parameter + '%'"/>
 select 
   member_id, 
@@ -78,7 +78,7 @@ where name like #{keywordPattern}
   or tel like #{keywordPattern}
 </select>
 
-  <select id= "selectByEmailPassword">
+  <select id= "selectByEmailPassword" resultMap="MemberMap" parameterType="map">
   select 
 	  member_id, 
 	  name, 
