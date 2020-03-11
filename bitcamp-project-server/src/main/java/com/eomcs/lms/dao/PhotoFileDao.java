@@ -1,6 +1,7 @@
 package com.eomcs.lms.dao;
 
 import java.util.List;
+import com.eomcs.lms.domain.PhotoBoard;
 import com.eomcs.lms.domain.PhotoFile;
 
 // 데이터를 저장하고 꺼내는 방식(파일, 클라우드저장소, DB 등)에 상관없이
@@ -8,7 +9,7 @@ import com.eomcs.lms.domain.PhotoFile;
 // 메서드 호출 규칙을 정의한다.
 //
 public interface PhotoFileDao {
-  int insert(PhotoFile photoFile) throws Exception;
+  int insert(PhotoBoard photoBoard) throws Exception;
 
   List<PhotoFile> findAll(int boardNo) throws Exception;
 

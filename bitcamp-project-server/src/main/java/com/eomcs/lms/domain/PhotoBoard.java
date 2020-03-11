@@ -12,15 +12,21 @@ public class PhotoBoard implements Serializable {
   String title;
   Date createdDate;
   int viewCount;
-  Lesson lesson; // 수업 정보는 레슨에 따로 닮겟다
+  Lesson lesson;
   List<PhotoFile> files;
-
-
 
   @Override
   public String toString() {
     return "PhotoBoard [no=" + no + ", title=" + title + ", createdDate=" + createdDate
-        + ", viewCount=" + viewCount + ", lesson=" + lesson + "]";
+        + ", viewCount=" + viewCount + ", lesson=" + lesson + ", files=" + files + "]";
+  }
+
+  public List<PhotoFile> getFiles() {
+    return files;
+  }
+
+  public void setFiles(List<PhotoFile> files) {
+    this.files = files;
   }
 
   public Lesson getLesson() {
