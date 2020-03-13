@@ -1,8 +1,9 @@
-# 45_2 - Mybatis를 이용하여 DAO 구현체 자동 생성하기
+# 45_1 - Java Proxy를 이용하여 DAO 구현체 자동 생성하기
 
 ## 학습목표
 
-- Mybatis의 SqlSession을 이용하여 Dao 구현체를 자동으로 생성할 수 있다.
+- Java Proxy의 구동 원리를 이해한다.
+- Java Proxy를 이용하여 인터페이스 구현체를 자동으로 생성할 수 있다.
 
 ## 실습 소스 및 결과
 
