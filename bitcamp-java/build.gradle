@@ -30,9 +30,12 @@ repositories {
 dependencies {
     implementation 'org.mybatis:mybatis:3.5.4'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.11'
+    implementation 'org.springframework:spring-context:5.2.4.RELEASE'
     implementation 'com.google.guava:guava:28.0-jre'
     testImplementation 'junit:junit:4.12'
     implementation 'org.mariadb.jdbc:mariadb-java-client:2.5.4'
+    
+    
 }
 
 application {
