@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 // @Component
 // => 스프링 IoC 컨테이너는 이 애노테이션이 붙은 클래스에 대해 객체를 자동 생성한다.
-// 문법: 
+// 문법: (자바문법)
 //      @Component(value="객체이름")
 //      @Component("객체이름")
 // 만약 다음과 같이 객체의 이름을 생략하면 클래스 이름을 객체 이름으로 사용한다.
-//      예) bitcamp.java106.step09.Car => "car"
+//      예) com.eomcs.spring.ioc.ex09.Car => "car"
 // 즉 클래스 이름에서 첫 알파벳을 소문자로 한 이름을 객체 이름으로 사용한다.
 // 
 @Component
