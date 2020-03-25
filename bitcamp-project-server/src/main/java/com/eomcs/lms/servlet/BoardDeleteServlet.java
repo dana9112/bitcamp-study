@@ -27,7 +27,6 @@ public class BoardDeleteServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시물 입력결과</h1>");
-    out.println("<p>새 게시글을 등록했습니다.</p>");
 
     int no = Integer.parseInt(params.get("no"));
     if (boardService.delete(no) > 0) { // 삭제했다면,

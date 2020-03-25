@@ -1,7 +1,7 @@
 package com.eomcs.lms.servlet;
 
 import java.io.PrintStream;
-import java.util.Scanner;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 import com.eomcs.lms.service.LessonService;
 import com.eomcs.util.RequestMapping;
@@ -16,7 +16,7 @@ public class LessonAddFormServlet {
   }
 
   @RequestMapping("/lesson/add")
-  public void service(Scanner in, PrintStream out) throws Exception {
+  public void service(Map<String, String> params, PrintStream out) throws Exception {
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
@@ -27,13 +27,18 @@ public class LessonAddFormServlet {
     out.println("<body>");
     out.println("<h1>강의 입력</h1>");
     out.println("<form action=/lesson/add>");
-    out.println("강의명:<br>");
-    out.println("내용:<br>");
-    out.println("강의 시작일:<br>");
-    out.println("강의 종료일:<br>");
-    out.println("총 강의시간:<br>");
-    out.println("일 강의시간:<br>");
-    out.println("<textarea name='title' rows='1' cols='60'></textarea><br>");
+    out.println("수업명:<br>");
+    out.println("<textarea name='title' rows='1' cols='60 '></textarea><br>");
+    out.println("설명:<br>");
+    out.println("<textarea name='description' rows='1' cols='60 '></textarea><br>");
+    out.println("시작일:<br>");
+    out.println("<textarea name='startDate' rows='1' cols='60 '></textarea><br>");
+    out.println("종료일:<br>");
+    out.println("<textarea name='endDate' rows='1' cols='60 '></textarea><br>");
+    out.println("총수업시간:<br>");
+    out.println("<textarea name='totalHours' rows='1' cols='60 '></textarea><br>");
+    out.println("일수업시간:<br>");
+    out.println("<textarea name='dayHours' rows='1' cols='60 '></textarea><br>");
     out.println("<button>제출</button>");
     out.println("</form>");
     out.println("</body>");

@@ -3,7 +3,7 @@ package com.eomcs.lms.servlet;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.domain.PhotoBoard;
@@ -27,12 +27,12 @@ public class PhotoBoardAddServlet {
   }
 
   @RequestMapping("/photoboard/add")
-  public void service(Scanner in, PrintStream out) throws Exception {
+  public void service(Map<String, String> params, PrintStream out) throws Exception {
 
     PhotoBoard photoBoard = new PhotoBoard();
-    photoBoard.setTitle(Prompt.getString(in, out, "제목? "));
+    photoBoard.setTitle(params.get("title"));
 
-    int lessonNo = Prompt.getInt(in, out, "수업 번호? ");
+    int lessonNo = Integer.parseInt(params.get("no"));
 
     Lesson lesson = lessonService.get(lessonNo);
     if (lesson == null) {
@@ -49,10 +49,10 @@ public class PhotoBoardAddServlet {
     out.println("새 사진 게시글을 등록했습니다.");
   }
 
-  private List<PhotoFile> inputPhotoFiles(Scanner in, PrintStream out) {
+  private List<PhotoFile> inputPhotoFiles(Map<String, String> params, PrintStream out) {
     // 첨부 파일을 입력 받는다.
-    out.println("최소 한 개의 사진 파일을 등록해야 합니다.");
-    out.println("파일명 입력 없이 그냥 엔터를 치면 파일 추가를 마칩니다.");
+    out.println("<p>최소 한 개의 사진 파일을 등록해야 합니다.</p>");
+    out.println("<p>파일명 입력 없이 그냥 엔터를 치면 파일 추가를 마칩니다.</p>");
 
     ArrayList<PhotoFile> photoFiles = new ArrayList<>();
 

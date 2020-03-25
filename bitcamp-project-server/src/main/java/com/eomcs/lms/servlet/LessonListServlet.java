@@ -28,11 +28,11 @@ public class LessonListServlet {
     out.println("</head>");
     out.println("<body>");
     out.println("   <h1> 수업 목록 </h1>");
-    out.println("   <a href='/board/addForm'>수업추가</a><br>");
+    out.println("   <a href='/lesson/addForm'>수업추가</a><br>");
     out.println("   <table border='1'>");
     out.println("   <tr>");
     out.println("   <th>번호</th>");
-    out.println("   <th>내용</th>");
+    out.println("   <th>강의명</th>");
     out.println("   <th>수업기간</th>");
     out.println("   <th>총수업시간</th>");
     out.println("   </tr>");
@@ -40,8 +40,18 @@ public class LessonListServlet {
 
     List<Lesson> lessons = lessonService.list();
     for (Lesson l : lessons) {
-      out.printf("<tr><td>%d</td>, <td>%s</td>, <td>%s ~ %s</td>, <td>%d</td>\n", l.getNo(),
-          l.getTitle(), l.getStartDate(), l.getEndDate(), l.getTotalHours());
+      out.printf("<tr><td>%d</td>, "//
+          + "<td><a href='/lesson/detail?no=%d'>%s</a></td>, "//
+          + "<td>%s ~ %s</td>, "//
+          + "<td>%d</td>\n", //
+          l.getNo(), //
+          l.getNo(), //
+          l.getTitle(), //
+          l.getStartDate(), //
+          l.getEndDate(), //
+          l.getTotalHours());
     }
+    out.println("</body>");
+    out.println("</html>");
   }
 }
