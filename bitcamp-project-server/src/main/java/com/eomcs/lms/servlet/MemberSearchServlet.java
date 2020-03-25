@@ -2,11 +2,10 @@ package com.eomcs.lms.servlet;
 
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.service.MemberService;
-import com.eomcs.util.Prompt;
 import com.eomcs.util.RequestMapping;
 
 @Component
@@ -19,8 +18,13 @@ public class MemberSearchServlet {
   }
 
   @RequestMapping("/member/search")
-  public void service(Scanner in, PrintStream out) throws Exception {
-    String keyword = Prompt.getString(in, out, "검색어? ");
+  public void service(Map<String, String> params, PrintStream out) throws Exception {
+    String keyword = params.get("검색어");
+
+    if (keyword.length() > 0) {
+      params.put("title", keyword);
+    }
+
 
     List<Member> members = memberService.search(keyword);
     for (Member m : members) {
