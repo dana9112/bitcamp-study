@@ -18,7 +18,6 @@ public class BoardUpdateServlet {
 
   @RequestMapping("/board/update")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
-
     Board board = new Board();
     board.setNo(Integer.parseInt(params.get("no")));
     board.setTitle(params.get("title"));
@@ -28,19 +27,19 @@ public class BoardUpdateServlet {
     out.println("<head>");
     out.println("<meta charset='UTF-8'>");
     out.println("<meta http-equiv='refresh' content='2;url=/board/list'>");
-    out.println("<title>게시글 입력</title>");
+    out.println("<title>게시글 변경</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시물 입력결과</h1>");
+    out.println("<h1>게시물 변경 결과</h1>");
 
     if (boardService.update(board) > 0) { // 변경했다면,
       out.println("<p>게시글을 변경했습니다.</p>");
 
     } else {
-      out.println("<p해당 번호의 게시글이 없습니다.</p>");
+      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
     }
+
     out.println("</body>");
     out.println("</html>");
-
   }
 }

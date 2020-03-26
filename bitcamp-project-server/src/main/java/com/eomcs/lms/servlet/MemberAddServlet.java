@@ -18,13 +18,13 @@ public class MemberAddServlet {
 
   @RequestMapping("/member/add")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
-
     Member member = new Member();
     member.setName(params.get("name"));
     member.setEmail(params.get("email"));
     member.setPassword(params.get("password"));
     member.setPhoto(params.get("photo"));
     member.setTel(params.get("tel"));
+
     memberService.add(member);
 
     out.println("<!DOCTYPE html>");
@@ -32,13 +32,12 @@ public class MemberAddServlet {
     out.println("<head>");
     out.println("<meta charset='UTF-8'>");
     out.println("<meta http-equiv='refresh' content='2;url=/member/list'>");
-    out.println("<title>회원정보 입력</title>");
+    out.println("<title>회원 입력</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원정보 입력결과</h1>");
-    out.println("<p>신규 회원을 등록했습니다.</p>");
+    out.println("<h1>회원 입력 결과</h1>");
+    out.println("<p>새 회원을 등록했습니다.</p>");
     out.println("</body>");
     out.println("</html>");
-
   }
 }

@@ -10,7 +10,6 @@ public class BoardAddFormServlet {
 
   @RequestMapping("/board/addForm")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
-
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
@@ -26,6 +25,5 @@ public class BoardAddFormServlet {
     out.println("</form>");
     out.println("</body>");
     out.println("</html>");
-
   }
 }

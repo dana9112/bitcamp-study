@@ -18,7 +18,6 @@ public class BoardAddServlet {
 
   @RequestMapping("/board/add")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
-
     Board board = new Board();
     board.setTitle(params.get("title"));
     boardService.add(board);
@@ -31,7 +30,7 @@ public class BoardAddServlet {
     out.println("<title>게시글 입력</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시물 입력결과</h1>");
+    out.println("<h1>게시물 입력 결과</h1>");
     out.println("<p>새 게시글을 등록했습니다.</p>");
     out.println("</body>");
     out.println("</html>");

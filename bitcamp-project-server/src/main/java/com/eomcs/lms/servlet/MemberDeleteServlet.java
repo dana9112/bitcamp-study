@@ -17,16 +17,15 @@ public class MemberDeleteServlet {
 
   @RequestMapping("/member/delete")
   public void service(Map<String, String> params, PrintStream out) throws Exception {
-
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
     out.println("<meta charset='UTF-8'>");
     out.println("<meta http-equiv='refresh' content='2;url=/member/list'>");
-    out.println("<title>회원정보 입력</title>");
+    out.println("<title>회원 삭제</title>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>회원정보 입력결과</h1>");
+    out.println("<h1>회원 삭제 결과</h1>");
 
     int no = Integer.parseInt(params.get("no"));
     if (memberService.delete(no) > 0) { // 삭제했다면,
@@ -35,6 +34,7 @@ public class MemberDeleteServlet {
     } else {
       out.println("<p>해당 번호의 회원이 없습니다.</p>");
     }
+
     out.println("</body>");
     out.println("</html>");
   }
