@@ -117,6 +117,7 @@ $ git config --global core.editor emacs
 
 ```
 예3) 설정 확인하기
+$ git config --l
 $ git config --list
 ```
 
@@ -163,7 +164,8 @@ $ git config --help
 예2) bin/ 디렉토리를 통째로 무시하기
 bin/
 
-예3) 현재 디렉토리의 *.log 파일만 무시하기. src/*.log처럼 기타 하위 디렉토리에 있는 *.log 파일은 포함하기
+예3) 현재 디렉토리의 *.log 파일만 무시하기. 
+- src/*.log처럼 기타 하위 디렉토리에 있는 *.log 파일은 포함하기
 /*.log
 
 예4) src/*.class 파일은 무시하고, src/main/*.class 파일은 포함하기
@@ -177,12 +179,16 @@ src/**/*.class
 
 예7) 확장자가 '.o' 또는 '.a'인 파일 무시하기
 *.[oa]
+-위의 방식 대신에 아래처럼 낱개를 일일이 지정해도 된다. 
+*.o
+*.a
 
 예8) *~
 파일명이 ~로 끝나는 파일
 
-예9) 만약 *.log 파일을 무시한다면, cotext.log 파일은 무시하지 않고 포함하기
-!context.log
+예9) 만약 *.log 파일 중에서 cotext.log 파일은 무시하지 않고 포함하기
+- 문법) !(무시하지말아야할 파일)
+- 예) !context.log
 ```
 
 ### git clone [url] [폴더]
@@ -223,12 +229,12 @@ $ git add LICENSE
 $ git add .
 ```
 
-### git commit -m '이번 스냅샷을 저장하는 이유'
+### git commit -m "이번 스냅샷을 저장하는 이유"
 
 - Staging Area에 기록된 파일들(스냅샷)을 로컬 저장소에 보관한다.
 - 파일을 새로 추가하거나 변경하였다면 반드시 `git add`를 실행하여 Staging Area에 기록해야 한다.
 - 기록되어 있지 않은 파일이나 변경 사항은 저장소에 보관되지 않는다.
-- 커밋 할 때 마다 스냅샷에 대해 새 체크섬(checksum) 값이 부여되고 이 값이 스냅샷을 구분하는 식별자로 사용된다.
+- 커밋 할 때 마다 스냅샷에 대해 새 체크섬(checksum -> 해시코드) 값이 부여되고 이 값이 스냅샷을 구분하는 식별자로 사용된다.
 
 ```
 예1) Staging Area에 있는 파일을 저장소에 보관하기
@@ -239,8 +245,8 @@ $ git commit -m '첫 번째 버전'
 예2) git add + git commit = git commit -a -m '설명'
     저장소에 넣기 전에 매번 Staging Area에 기록하는 것은 매우 귀찮은 일이다.
     이를 한 번에 할 수 있다.
-    단 Tracked 파일(Staging Area에 있거나 저장소에 있는 파일)만 대상으로 한다.
-    새로 추가한 파일 중에 아직 staged 상태가 아닌 파일은 제외한다.
+   " 단 Tracked 파일(Staging Area에 있거나 저장소에 있는 파일)만 대상으로 한다.
+           새로 추가한 파일 중에 아직 staged 상태가 아닌 파일은 제외한다.(새로추가한건 무조건 add해야함)"
 $ git commit -a -m '바로 저장소로 보관하기'
 ```
 
@@ -361,8 +367,11 @@ index 0000000..3081b8d
 ### git checkout [파일]
 
 - 작업 디렉토리의 파일을 변경한 후 변경 전으로 되돌릴 때 사용한다.
-- Staging Area에 마지막으로 기록된 버전으로 되돌린다.
-- `git add`를 수행한 적이 없다면 Staging Area에는 마지막으로 커밋한 파일을 가리킨다. 따라서 마지막으로 커밋된 파일로 되돌릴 것이다.
+- Staging Area에 등록된 것이 없다면, 최종 커밋한 버전으로 되돌린다.
+- Staging Area에 등록된 것이 있다면, 현재 Staging Area에 기록된 버전으로 되돌린다.
+- `git add`를 수행한 적이 없다면 
+   Staging Area에는 마지막으로 커밋한 파일을 가리킨다.
+   따라서 마지막으로 커밋된 파일로 되돌릴 것이다.
 
 ```
 예) src/main/webapp/index.html 파일을 편집 전으로 되돌리기
@@ -371,9 +380,10 @@ $ git checkout src/main/webapp/index.html
 
 ### git rm [파일]
 
-- Staging Area의 기록에서 지정된 파일을 뺀다.
+- Staging Area의 기록에서 지정된 파일을 뺀다.(파일을 지우고 stage area에 add한 것이랑 같다.)
 - 작업 디렉토리에 해당 파일이 있다면 그 파일도 자동 삭제된다.
 - 이전 스냅샷에는 해당 파일이 계속 남아 있다.
+- 파일 삭제 + git add = git rm
 
 ```
 예1) 작업 디렉토리에 있는 파일을 삭제한 후 Git에서도 제거하기
@@ -491,6 +501,25 @@ index 0afb588..c0e04ec 100644
  </html>
 ```
 
+```
+예5) 커밋정보를 한줄로 출력해서 보기
+$ git log --oneline
+
+f559e21 (HEAD -> master, b1) v0.3
+5896279 v0.2
+8dd76bf v0.1
+5d8d97b (origin/master, origin/HEAD) Initial commit 
+```
+
+````
+예6) 커밋 정보와 브랜치 정보를 함께 보기
+$ git log --oneline --graph --all
+
+
+````
+
+
+
 ### git commit --amend
 
 - 마지막 커밋을 다시 현재의 Staging Area의 내용으로 덮어쓴다.
@@ -555,8 +584,8 @@ cs	https://github.com/eomcs/test.git (push)
 $ git remote show [원격 저장소 이름]
 $ git remote show origin
 * remote origin
-  Fetch URL: https://github.com/eomjinyoung/test.git
-  Push  URL: https://github.com/eomjinyoung/test.git
+  Fetch URL: https://github.com/eomjinyoung/test.git // 다운로드 받는 주소
+  Push  URL: https://github.com/eomjinyoung/test.git // 업로드 하는 주소
   HEAD branch: master
   Remote branch:                           <=== 로컬 저장소와 연결된 원격 저장소의 브랜치
     master tracked                         
