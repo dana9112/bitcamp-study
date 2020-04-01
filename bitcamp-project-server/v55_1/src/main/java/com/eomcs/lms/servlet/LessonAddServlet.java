@@ -13,14 +13,13 @@ import org.springframework.context.ApplicationContext;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.service.LessonService;
 
-@WebServlet("/lesson/update")
-public class LessonUpdateServlet extends GenericServlet {
+@WebServlet("/lesson/add")
+public class LessonAddServlet extends GenericServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
@@ -31,7 +30,6 @@ public class LessonUpdateServlet extends GenericServlet {
       LessonService lessonService = iocContainer.getBean(LessonService.class);
 
       Lesson lesson = new Lesson();
-      lesson.setNo(Integer.parseInt(req.getParameter("no")));
       lesson.setTitle(req.getParameter("title"));
       lesson.setDescription(req.getParameter("description"));
       lesson.setStartDate(Date.valueOf(req.getParameter("startDate")));
@@ -39,23 +37,18 @@ public class LessonUpdateServlet extends GenericServlet {
       lesson.setTotalHours(Integer.parseInt(req.getParameter("totalHours")));
       lesson.setDayHours(Integer.parseInt(req.getParameter("dayHours")));
 
+      lessonService.add(lesson);
+
       out.println("<!DOCTYPE html>");
       out.println("<html>");
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
       out.println("<meta http-equiv='refresh' content='2;url=list'>");
-      out.println("<title>강의 변경</title>");
+      out.println("<title>강의 입력</title>");
       out.println("</head>");
       out.println("<body>");
-      out.println("<h1>강의 변경 결과</h1>");
-
-      if (lessonService.update(lesson) > 0) {
-        out.println("<p>강의를 변경했습니다.</p>");
-
-      } else {
-        out.println("<p>변경에 실패했습니다.</p>");
-      }
-
+      out.println("<h1>강의 입력 결과</h1>");
+      out.println("<p>새 강의를 등록했습니다.</p>");
       out.println("</body>");
       out.println("</html>");
     } catch (Exception e) {

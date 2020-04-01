@@ -2,7 +2,6 @@ package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,14 +12,14 @@ import org.springframework.context.ApplicationContext;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.service.LessonService;
 
-@WebServlet("/lesson/update")
-public class LessonUpdateServlet extends GenericServlet {
+@WebServlet("/photoboard/addForm")
+public class PhotoBoardAddFormServlet extends GenericServlet {
   private static final long serialVersionUID = 1L;
+
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
-
     try {
       res.setContentType("text/html;charset=UTF-8");
       PrintWriter out = res.getWriter();
@@ -30,32 +29,31 @@ public class LessonUpdateServlet extends GenericServlet {
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       LessonService lessonService = iocContainer.getBean(LessonService.class);
 
-      Lesson lesson = new Lesson();
-      lesson.setNo(Integer.parseInt(req.getParameter("no")));
-      lesson.setTitle(req.getParameter("title"));
-      lesson.setDescription(req.getParameter("description"));
-      lesson.setStartDate(Date.valueOf(req.getParameter("startDate")));
-      lesson.setEndDate(Date.valueOf(req.getParameter("endDate")));
-      lesson.setTotalHours(Integer.parseInt(req.getParameter("totalHours")));
-      lesson.setDayHours(Integer.parseInt(req.getParameter("dayHours")));
+      int lessonNo = Integer.parseInt(req.getParameter("lessonNo"));
+      Lesson lesson = lessonService.get(lessonNo);
 
       out.println("<!DOCTYPE html>");
       out.println("<html>");
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
-      out.println("<meta http-equiv='refresh' content='2;url=list'>");
-      out.println("<title>강의 변경</title>");
+      out.println("<title>사진 입력</title>");
       out.println("</head>");
       out.println("<body>");
-      out.println("<h1>강의 변경 결과</h1>");
-
-      if (lessonService.update(lesson) > 0) {
-        out.println("<p>강의를 변경했습니다.</p>");
-
-      } else {
-        out.println("<p>변경에 실패했습니다.</p>");
-      }
-
+      out.println("<h1>사진 입력</h1>");
+      out.println("<form action='add'>");
+      out.printf("강의번호: <input name='lessonNo' type='text' value='%d' readonly><br>\n", //
+          lesson.getNo());
+      out.printf("강의명: %s<br>\n", lesson.getTitle());
+      out.println("내용:<br>");
+      out.println("<textarea name='title' rows='5' cols='60'></textarea><br>");
+      out.println("<hr>");
+      out.println("사진: <input name='photo1' type='file'><br>");
+      out.println("사진: <input name='photo2' type='file'><br>");
+      out.println("사진: <input name='photo3' type='file'><br>");
+      out.println("사진: <input name='photo4' type='file'><br>");
+      out.println("사진: <input name='photo5' type='file'><br>");
+      out.println("<button>제출</button>");
+      out.println("</form>");
       out.println("</body>");
       out.println("</html>");
     } catch (Exception e) {
