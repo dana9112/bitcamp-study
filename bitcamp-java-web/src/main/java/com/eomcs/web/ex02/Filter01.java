@@ -35,7 +35,6 @@ public class Filter01 implements Filter {
   public void init(FilterConfig filterConfig) throws ServletException {
     // 필터 객체를 생성한 후 제일 처음으로 호출된다.
     // 필터가 사용할 자원을 이 메서드에서 준비한다.
-    // 웹 애플리케이션을 시작할 때 필터는 자동 생성된다.
     // => 웹 애플리케이션을 시작할 때 필터는 자동 생성된다.
     System.out.println("Filter01.init()");
   }
@@ -57,12 +56,13 @@ public class Filter01 implements Filter {
     System.out.println("Filter01.doFilter() : 시작");
 
     // 다음 필터를 실행한다.
-    // 만약 다음 필더가 없으면,
+    // 만약 다음 필터가 없으면,
     // 요청한 서블릿의 service() 메서드를 호출한다.
     // service() 메서드 호출이 끝나면 리턴된다.
     chain.doFilter(request, response);
 
-    // 체인에 연결된 필터나 서블릿이 모두 실행된 다음에 다시 이 필터로 리턴될 것이다.
+    // 체인에 연결된 필터나 서블릿이 모두 실행된 다음에
+    // 다시 이 필터로 리턴될 것이다.
     System.out.println("Filter01.doFilter() : 종료");
   }
 }

@@ -6,54 +6,129 @@
   version="4.0"
   metadata-complete="false">
   
-  <!-- 리스터 등록 -->
+  <!-- 컨텍스트(웹 애플리케이션 환경) 초기화 파라미터
+  => Servlet, listener, Filter에서 모두 사용할 수 있다. 
+   (모든 서블릿에서 공통으로 사용하기 위해서 context-param을 쓴다.)-->
+  <context-param>
+    <param-name>jdbc2.driver</param-name>
+    <param-value>org.mariadb.jdbc.Drivser</param-value>
+  </context-param>
+    
+  <context-param>
+    <param-name>jdbc2.url</param-name>
+    <param-value>jdbc:mariadb://localhost:3306/studydb</param-value>
+   </context-param>
+    
+  <context-param>
+    <param-name>jdbc2.username</param-name>
+    <param-value>study</param-value>
+  </context-param>
+    
+  <context-param>
+    <param-name>jdbc2.password</param-name>
+    <param-value>1111</param-value>
+  </context-param>
+  
+  
+
+<!-- 리스너 등록 -->
   <listener>
     <listener-class>com.eomcs.web.ex02.Listener01</listener-class>
   </listener>
+
+<!-- 필터 등록 -->
+  <filter>
+    <filter-name>Filter01</filter-name>
+    <filter-class>com.eomcs.web.ex02.Filter01</filter-class>
+  </filter>
   
-  <!-- 필터 등록 -->
-    <filter>
-      <filter-name>Filter01</filter-name>
-      <filter-class>com.eomcs.web.ex02.Filter01</filter-class>
-    </filter>
-  
-  <!-- 필터를 적용할 URL을 지정 -->
-    <filter-mapping>
+<!-- 필터를 적용할 URL을 지정 -->
+  <filter-mapping>
     <filter-name>Filter01</filter-name>
     <url-pattern>/ex02/s1</url-pattern>
-   </filter-mapping>
+  </filter-mapping>
 
 <!-- 서블릿 등록 -->
   <servlet>
-  <servlet-name>s01</servlet-name>
-  <servlet-class>com.eomcs.web.ex01.Servlet01</servlet-class>
+    <servlet-name>s01</servlet-name>
+    <servlet-class>com.eomcs.web.ex01.Servlet01</servlet-class>
   </servlet>
-  
   <servlet>
     <servlet-name>Servlet02</servlet-name>
     <servlet-class>com.eomcs.web.ex01.Servlet02</servlet-class>
   </servlet>
-
   <servlet>
     <servlet-name>Servlet03</servlet-name>
     <servlet-class>com.eomcs.web.ex01.Servlet03</servlet-class>
   </servlet>
-
-
+  
 <!-- 서블릿을 실행할 때 사용할 URL path를 설정 -->
   <servlet-mapping>
     <servlet-name>s01</servlet-name>
     <url-pattern>/ohora/haha</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>Servlet02</servlet-name>
     <url-pattern>/ex01/s02</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>Servlet03</servlet-name>
     <url-pattern>/ex01/s03</url-pattern>
+  </servlet-mapping>  
+
+  <!--  
+  <servlet>
+    <servlet-name>ex04.Servlet05</servlet-name>
+    <servlet-class>com.eomcs.web.ex04.Servlet05</servlet-class>
+    <multipart-config>
+      <max-file-size>10000000</max-file-size>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ex04.Servlet05</servlet-name>
+    <url-pattern>/ex04/s5</url-pattern>
   </servlet-mapping>
+  -->  
   
+  
+  <!-- 서블릿에서 초기화 작업을 한다고 생각하면 됨. 
+   왜 만들었을까? 다른 서블릿들이 만들어야 할 도구로만 사용할 용도로만 사용됨.  
+   -->
+  <servlet>
+    <servlet-name>ex06.Servlet02</servlet-name>
+    <servlet-class>com.eomcs.web.ex06.Servlet02</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ex06.Servlet02</servlet-name>
+    <url-pattern>/ex06/s2</url-pattern>
+  </servlet-mapping>  
+  
+  
+  <!--  특정 서버에서 쓰는거면 init에서 사용해라  -->
+  <servlet>
+    <servlet-name>ex06.Servlet04</servlet-name>
+    <servlet-class>com.eomcs.web.ex06.Servlet04</servlet-class>
+      <init-param>
+        <param-name>jdbc.driver</param-name>
+        <param-value>org.mariadb.jdbc.Drivser</param-value>
+      </init-param>
+    
+    <init-param>
+    <param-name>jdbc.url</param-name>
+    <param-value>jdbc:mariadb://localhost:3306/studydb</param-value>
+    </init-param>
+    
+     <init-param>
+    <param-name>jdbc.username</param-name>
+    <param-value>study</param-value>
+    </init-param>
+    
+    <init-param>
+    <param-name>jdbc.password</param-name>
+    <param-value>1111</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
 </web-app>

@@ -10,18 +10,16 @@ import javax.servlet.ServletResponse;
 
 // 서블릿 클래스를 만든 후,
 // 배치 파일(web.xml; DD 파일)에 서블릿 정보를 등록해야만 실행될 수 있다.
-// => DD File: Deployment Descriptor File
 // => WEB-INF/web.xml
-// => 배치예:
-// <!-- 서블릿 등록 -->
+// => DD File: Deployment Descriptor File
+// => 배치 예:
 // <servlet>
-// <servlet-name>서블릿 별명</servlet-name>
+// <servlet-name>서블릿별명</servlet-name>
 // <servlet-class>서블릿 클래스의 전체이름(패키지명 포함)</servlet-class>
 // </servlet>
 //
-// <!-- 서블릿을 실행할 때 사용할 URL path를 설정 -->
 // <servlet-mapping>
-// <servlet-name>서블릿 별명</servlet-name>
+// <servlet-name>서블릿별명</servlet-name>
 // <url-pattern>클라이언트에서 요청할 때 사용할 URL(/로 시작해야 한다.)</url-pattern>
 // </servlet-mapping>
 //
@@ -32,12 +30,12 @@ import javax.servlet.ServletResponse;
 // 서블릿 구동 과정
 // 1) 웹 브라우저가 서블릿 실행을 요청한다.
 // 2) 서블릿 컨테이너는 해당 URL의 서블릿 객체를 찾는다.
-// 3.1) 서블릿 객체가 없다면
+// 3.1) 서블릿 객체를 아직 만들지 않았다면,
 // => 서블릿 클래스에 대해 인스턴스를 생성한다.
-// => 서블릿 객체의 생성자를 호출한다.
+// => 생성자를 호출한다.
 // => init()를 호출한다.
 // => service()를 호출한다.
-// 3.2) 서블릿 객체가 있다면
+// 3.2) 서블릿 객체가 생성되어 있다면,
 // => service()를 호출한다.
 //
 // 만약 웹 애플리케이션이 종료된다면
@@ -86,8 +84,6 @@ public class Servlet01 implements Servlet {
   public void destroy() {
     // 웹 애플리케이션을 종료할 때(서버 종료 포함) 호출된다.
     // => 이 서블릿이 만든 자원을 해제하는 코드를 이 메서드에 둔다.
-    // 서블릿 컨테이너가 이 메서드를 호출한다.
-    // => init()에서 준비한 자원을 보통 이 메서드에서 해제한다.
     System.out.println("Servlet01.destroy()");
   }
 
