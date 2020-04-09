@@ -1,20 +1,24 @@
-# 56_1 - HttpServlet 클래스를 상속 받아서 서블릿 만들기
+# 56_4 - 포워딩과 인클루딩 활용
 
 ## 학습목표
 
-- GET/POST 요청을 구분하여 처리할 수 있다. 
-- HttpServlet과 GenericServlet의 차이점을 이해한다.
+- 포워딩과 인클루딩을 구현할 수 있다.
+- 포워딩과 인클루딩의 동작을 이해한다.
 
 ## 실습 소스 및 결과
 
-- build.gradle 변경
-- src/main/webapp/index.html 추가
+- src/main/java/com/eomcs/lms/servlet/ErrorServlet.java 추가
+- src/main/java/com/eomcs/lms/servlet/XxxServlet 변경
 
 
 ## 실습  
 
-### 훈련1: 이클립스에 톰캣 서버 환경을 추가한다.
+### 훈련1: 오류가 발생하면 ErrorServlet 으로 포워딩 한다.
 
-- Window 메뉴/Preferences/Server/Runtime Environment 설정 추가
-
+- com.eomcs.lms.servlet.XxxServlet 변경
+  - 정상적으로 실행했을 경우 목록 화면으로 리다이렉트 한다.
+  - 오류가 발생했을 경우 ErrorServlet 으로 포워딩 한다.
+- com.eomcs.lms.servlet.ErrorServlet 변경
+  - ServletRequest 보관소에서 오류 객체를 꺼내 오류 내용을 출력한다. 
+  
 

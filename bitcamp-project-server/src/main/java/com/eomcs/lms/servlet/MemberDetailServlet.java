@@ -23,7 +23,7 @@ public class MemberDetailServlet extends HttpServlet {
       response.setContentType("text/html;charset=UTF-8");
       PrintWriter out = response.getWriter();
 
-      ServletContext servletContext = request.getServletContext();
+      ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       MemberService memberService = iocContainer.getBean(MemberService.class);
@@ -32,14 +32,8 @@ public class MemberDetailServlet extends HttpServlet {
 
       Member member = memberService.get(no);
 
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<meta charset='UTF-8'>");
-      out.println("<title>회원 상세정보</title>");
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<h1>회원 상세정보</h1>");
+
+      request.getRequestDispatcher("/header").include(request, response);
 
       if (member != null) {
         out.println("<form action='update' method='post'>");
@@ -61,11 +55,13 @@ public class MemberDetailServlet extends HttpServlet {
       } else {
         out.println("<p>해당 번호의 회원이 없습니다.</p>");
       }
-      out.println("</body>");
-      out.println("</html>");
-    } catch (Exception e) {
-      throw new ServletException(e);
-    }
 
+      request.getRequestDispatcher("/footer").include(request, response);
+
+    } catch (Exception e) {
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
+    }
   }
 }

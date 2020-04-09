@@ -5,10 +5,10 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.service.LessonService;
@@ -17,27 +17,20 @@ import com.eomcs.lms.service.LessonService;
 public class LessonListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-
   @Override
-  public void service(ServletRequest req, ServletResponse res)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     try {
-      res.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = res.getWriter();
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
 
-      ServletContext servletContext = req.getServletContext();
+      ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       LessonService lessonService = iocContainer.getBean(LessonService.class);
 
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("  <meta charset='UTF-8'>");
-      out.println("  <title>강의 목록</title>");
-      out.println("</head>");
-      out.println("<body>");
+      request.getRequestDispatcher("/header").include(request, response);
+
       out.println("  <h1>강의</h1>");
       out.println("  <a href='add'>새 강의</a><br>");
       out.println("  <table border='1'>");
@@ -47,6 +40,8 @@ public class LessonListServlet extends HttpServlet {
       out.println("    <th>기간</th>");
       out.println("    <th>총강의시간</th>");
       out.println("  </tr>");
+
+
 
       List<Lesson> lessons = lessonService.list();
       for (Lesson l : lessons) {
@@ -76,11 +71,12 @@ public class LessonListServlet extends HttpServlet {
       out.println("일 강의시간: <input name='dayHours' type='number'><br>");
       out.println("<button>검색</button>");
 
-      out.println("</body>");
-      out.println("</html>");
+      request.getRequestDispatcher("/footer").include(request, response);
 
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

@@ -23,24 +23,21 @@ public class LoginServlet extends HttpServlet {
       response.setContentType("text/html;charset=UTF-8");
       PrintWriter out = response.getWriter();
 
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<meta charset='UTF-8'>");
-      out.println("<title>로그인</title>");
-      out.println("</head>");
-      out.println("<body>");
+      request.getRequestDispatcher("/header").include(request, response);
+
       out.println("<h1>로그인</h1>");
       out.println("<form action='login' method='post'>");
       out.println("이메일: <input name='email' type='email'><br>");
       out.println("암호: <input name='password' type='password'><br>");
       out.println("<button>로그인</button>");
       out.println("</form>");
-      out.println("</body>");
-      out.println("</html>");
+
+      request.getRequestDispatcher("/footer").include(request, response);
 
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 
@@ -61,18 +58,13 @@ public class LoginServlet extends HttpServlet {
 
       Member member = memberService.get(email, password);
 
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
+      request.getRequestDispatcher("/header").include(request, response);
       out.println("<meta charset='UTF-8'>");
       if (member != null) {
         out.println("<meta http-equiv='refresh' content='2;url=../board/list'>");
       } else {
         out.println("<meta http-equiv='refresh' content='2;url=login'>");
       }
-      out.println("<title>로그인</title>");
-      out.println("</head>");
-      out.println("<body>");
       out.println("<h1>로그인 결과</h1>");
 
       if (member != null) {
@@ -81,10 +73,12 @@ public class LoginServlet extends HttpServlet {
         out.println("<p>사용자 정보가 유효하지 않습니다.</p>");
       }
 
-      out.println("</body>");
-      out.println("</html>");
+      request.getRequestDispatcher("/footer").include(request, response);
+
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "login");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

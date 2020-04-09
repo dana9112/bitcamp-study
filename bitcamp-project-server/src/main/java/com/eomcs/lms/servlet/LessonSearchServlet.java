@@ -22,11 +22,10 @@ public class LessonSearchServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     try {
-      request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html;charset=UTF-8");
       PrintWriter out = response.getWriter();
 
-      ServletContext servletContext = request.getServletContext();
+      ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       LessonService lessonService = iocContainer.getBean(LessonService.class);
@@ -92,9 +91,10 @@ public class LessonSearchServlet extends HttpServlet {
       out.println("</table>");
       out.println("</body>");
       out.println("</html>");
-
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

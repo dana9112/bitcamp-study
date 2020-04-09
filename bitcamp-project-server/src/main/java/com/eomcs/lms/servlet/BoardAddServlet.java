@@ -14,7 +14,6 @@ import com.eomcs.lms.service.BoardService;
 
 @WebServlet("/board/add")
 public class BoardAddServlet extends HttpServlet {
-
   private static final long serialVersionUID = 1L;
 
   @Override
@@ -22,13 +21,9 @@ public class BoardAddServlet extends HttpServlet {
       throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<meta charset='UTF-8'>");
-    out.println("<title>게시글 입력</title>");
-    out.println("</head>");
-    out.println("<body>");
+
+    request.getRequestDispatcher("/header").include(request, response);
+
     out.println("<h1>게시물 입력</h1>");
     out.println("<form action='add' method='post'>");
     out.println("내용:<br>");
@@ -36,46 +31,32 @@ public class BoardAddServlet extends HttpServlet {
     out.println("<button>등록</button>");
     out.println("</form>");
     out.println("</body>");
-    out.println("</html>");
-  }
 
+    request.getRequestDispatcher("/footer").include(request, response);
+  }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     try {
-      request.setCharacterEncoding("UTF-8"); // 값을 꺼내기 전에 UTF-8 임을 알려줌
-      response.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = response.getWriter();
+      request.setCharacterEncoding("UTF-8");
 
-      // request / this / 안 주는 경우가 있다. (상속받은 서블릿에도 getservlet이 있다.
-      ServletContext servletContext = request.getServletContext();
+      ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       BoardService boardService = iocContainer.getBean(BoardService.class);
-
 
       Board board = new Board();
       board.setTitle(request.getParameter("title"));
 
       boardService.add(board);
 
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<meta charset='UTF-8'>");
-      out.println("<meta http-equiv='refresh' content='2;url=list'>");
-      out.println("<title>게시글 입력</title>");
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<h1>게시물 입력 결과</h1>");
-      out.println("<p>새 게시글을 등록했습니다.</p>");
-      out.println("</body>");
-      out.println("</html>");
+      response.sendRedirect("list");
 
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }
