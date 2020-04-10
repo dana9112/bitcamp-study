@@ -1,24 +1,16 @@
-# 56_4 - 포워딩과 인클루딩 활용
+# 56_8 - 파일 업로드 기능 추가
 
 ## 학습목표
 
-- 포워딩과 인클루딩을 구현할 수 있다.
-- 포워딩과 인클루딩의 동작을 이해한다.
+- multipart 형식으로 파일을 업로드하고 처리할 수 있다.
 
 ## 실습 소스 및 결과
+- src/main/java/com/eomcs/lms/filter/AuthFilter.java 추가
 
-- src/main/java/com/eomcs/lms/servlet/ErrorServlet.java 추가
-- src/main/java/com/eomcs/lms/servlet/XxxServlet 변경
+## 실습
 
+### 훈련1: 회원 추가 및 변경에 파일 업로드 기능을 추가한다.
 
-## 실습  
-
-### 훈련1: 오류가 발생하면 ErrorServlet 으로 포워딩 한다.
-
-- com.eomcs.lms.servlet.XxxServlet 변경
-  - 정상적으로 실행했을 경우 목록 화면으로 리다이렉트 한다.
-  - 오류가 발생했을 경우 ErrorServlet 으로 포워딩 한다.
-- com.eomcs.lms.servlet.ErrorServlet 변경
-  - ServletRequest 보관소에서 오류 객체를 꺼내 오류 내용을 출력한다. 
-  
-
+- com.eomcs.lms.servlet.MemberAddServlet 변경
+  - 입력폼에 multipart/form-data 인코딩 적용한다.
+  - 서블릿 3.0에 추가된 멀티파트 데이터 처리 기능 활용하여 파일을 서버에 저장한다.
