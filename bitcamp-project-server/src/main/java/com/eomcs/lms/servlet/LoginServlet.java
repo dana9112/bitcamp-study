@@ -21,14 +21,12 @@ public class LoginServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     try {
-
       String email = "";
       Cookie[] cookies = request.getCookies();
       if (cookies != null) {
         for (Cookie cookie : cookies) {
           if (cookie.getName().equals("email")) {
             email = cookie.getValue();
-            // 찾았으면 나머지 쿠키는 필요없기 때문에 break 걸기
             break;
           }
         }
@@ -72,13 +70,10 @@ public class LoginServlet extends HttpServlet {
       String password = request.getParameter("password");
       String saveEmail = request.getParameter("saveEmail");
 
-      // 쿠키 추가
       Cookie cookie = new Cookie("email", email);
       if (saveEmail != null) {
         cookie.setMaxAge(60 * 60 * 24 * 30);
-
       } else {
-        // 체크 안 하면 지우기 -> 0로 하면 기존에 존재한 쿠키 삭제
         cookie.setMaxAge(0);
       }
       response.addCookie(cookie);
@@ -101,16 +96,13 @@ public class LoginServlet extends HttpServlet {
 
       if (member != null) {
         out.printf("<p>'%s'님 환영합니다.</p>\n", member.getName());
-
-        // 로그인 정보를 session에 저장한다.
         request.getSession().setAttribute("loginUser", member);
-
       } else {
         out.println("<p>사용자 정보가 유효하지 않습니다.</p>");
       }
+
       out.println("</body>");
       out.println("</html>");
-
     } catch (Exception e) {
       request.setAttribute("error", e);
       request.setAttribute("url", "login");

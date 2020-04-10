@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome</title>
+<title>Welcome!</title>
 </head>
 <body>
 <h1>환영합니다!</h1>

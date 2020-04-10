@@ -24,16 +24,11 @@ public class MemberDeleteServlet extends HttpServlet {
       MemberService memberService = iocContainer.getBean(MemberService.class);
 
       int no = Integer.parseInt(request.getParameter("no"));
-
-      request.getRequestDispatcher("/header").include(request, response);
-
       if (memberService.delete(no) > 0) { // 삭제했다면,
         response.sendRedirect("list");
       } else {
         throw new Exception("삭제할 회원 번호가 유효하지 않습니다.");
       }
-
-      request.getRequestDispatcher("/footer").include(request, response);
 
     } catch (Exception e) {
       request.setAttribute("error", e);

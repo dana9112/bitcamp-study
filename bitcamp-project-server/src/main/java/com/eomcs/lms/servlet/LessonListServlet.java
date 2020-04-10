@@ -41,8 +41,6 @@ public class LessonListServlet extends HttpServlet {
       out.println("    <th>총강의시간</th>");
       out.println("  </tr>");
 
-
-
       List<Lesson> lessons = lessonService.list();
       for (Lesson l : lessons) {
         out.printf("  <tr>"//

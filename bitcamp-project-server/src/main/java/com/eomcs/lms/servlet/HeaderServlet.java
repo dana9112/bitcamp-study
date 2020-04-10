@@ -9,14 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.eomcs.lms.domain.Member;
 
-@WebServlet("/header") // root -> context root임
+@WebServlet("/header")
 public class HeaderServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
 
@@ -27,18 +26,17 @@ public class HeaderServlet extends HttpServlet {
     out.println("<title>Bitcamp-LMS</title>");
     out.println(
         "<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous'>");
-
     out.println("<style>");
-    out.println("body { ");
-    out.println("  background-color: FloralWhite;");
-    out.println(" }");
-    out.println(" div.container {");
-    out.println("   background: Linen;");
-    out.println("   border:1px solid gray;");
-    out.println("   width:600px;");
-    out.println(" }");
-    out.println("</style>");
+    out.println("body {");
+    out.println("  background-color: LightGray;");
+    out.println("}");
 
+    out.println("div.container {");
+    out.println("  background: white;");
+    out.println("  border: 1px solid gray;");
+    out.println("  width: 600px;");
+    out.println("}");
+    out.println("</style>");
     out.println("</head>");
     out.println("<body>");
     out.println("<nav class='navbar navbar-expand-lg navbar-light bg-light'>");
@@ -62,17 +60,16 @@ public class HeaderServlet extends HttpServlet {
     out.println("      <a class='nav-link' href='../auth/login'>로그인</a>");
     out.println("    </li>");
     out.println("  </ul>");
-
     Member loginUser = (Member) request.getSession().getAttribute("loginUser");
     if (loginUser != null) {
-      out.printf("   <span class='navbar-text'>%s</span>\n", loginUser.getName());
-      out.println("    <a href='../auth/logout' class='btn btn-success btn-sm'> 로그아웃</a>");
+      out.printf("  <span class='navbar-text'>%s</span>\n", //
+          loginUser.getName());
+      out.println("  <a href='../auth/logout' class='btn btn-success btn-sm'>로그아웃</a>");
     } else {
-      out.println("    <a href='../auth/login' class='btn btn-success btn-sm'> 로그인</a>");
+      out.println("  <a href='../auth/login' class='btn btn-success btn-sm'>로그인</a>");
     }
     out.println("</div>");
     out.println("</nav>");
     out.println("<div class='container'>");
-
   }
 }

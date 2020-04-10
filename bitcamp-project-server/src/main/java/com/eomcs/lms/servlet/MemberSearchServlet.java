@@ -29,7 +29,6 @@ public class MemberSearchServlet extends HttpServlet {
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       MemberService memberService = iocContainer.getBean(MemberService.class);
 
-
       request.getRequestDispatcher("/header").include(request, response);
 
       out.println("  <h1>회원 검색 결과</h1>");
