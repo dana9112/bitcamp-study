@@ -28,7 +28,6 @@ dependencies {
   // Thumbnailator 썸네일 생성 라이브러리
   implementation 'net.coobird:thumbnailator:0.4.11'
   
-  
   // Apache의 파일업로드 처리 라이브러리
   implementation 'commons-fileupload:commons-fileupload:1.4'
   
@@ -38,6 +37,8 @@ dependencies {
   // => 왜? 서버에 이미 이 라이브러리가 있기 때문이다.
   // 
   compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
+  implementation 'jstl:jstl:1.2'
 
   implementation 'com.google.guava:guava:28.1-jre'
 

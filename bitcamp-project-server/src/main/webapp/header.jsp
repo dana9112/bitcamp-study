@@ -19,8 +19,8 @@ div.container {
 </style>
 </head>
 <body>
-<nav class='navbar navbar-expand-lg navbar-light bg-light'>
-<a class='navbar-brand' href='#'>비트캠프</a>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+<a class='navbar-brand' href='../../index.html'>비트캠프</a>
 <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
   <span class='navbar-toggler-icon'></span>
 </button>
@@ -39,19 +39,19 @@ div.container {
       <a class='nav-link' href='../auth/login'>로그인</a>
     </li>
   </ul>
-<%
+<% 
 Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 if (loginUser != null) {
 %>
-   <span class='navbar-text'><%=loginUser.getName()%></span>
-   <a href='../auth/logout' class='btn btn-success btn-sm'>로그아웃</a>
-<% 
- } else {
+  <span class='navbar-text'><%=loginUser.getName()%></span>
+  <a href='../auth/logout' class='btn btn-success btn-sm'>로그아웃</a>
+<%
+} else {
 %>
-   <a href='../auth/login' class='btn btn-success btn-sm'>로그인</a>
-<% 
- }
-%>
+  <a href='../auth/login' class='btn btn-success btn-sm'>로그인</a>
+<%
+}
+%> 
 </div>
 </nav>
 <div class='container'>

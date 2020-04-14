@@ -10,13 +10,13 @@
 <title>JSTL</title>
 </head>
 <body>
-<h1>JSTL - c:import</h1>
+<h1>JSTL - c:import</h1> 
 <pre>
 - HTTP 요청을 수행하는 코드를 만든다.
 </pre>
 
 <h2>HTTP 요청하기</h2>
-<c:url value="http://localhost:8888/bitcamp-java-web/jstl/ex10_sub.jsp" 
+<c:url value="http://localhost:9999/bitcamp-java-web/jstl/ex10_sub.jsp" 
        var="url1">
     <c:param name="name" value="홍길동"/>
     <c:param name="age" value="20"/>
@@ -25,6 +25,7 @@
 
 <%-- 지정된 URL을 요청하고 서버로부터 받은 콘텐트를 contents라는 이름으로 
      PageContext 보관소에 저장한다. --%>
+<pre>${url1}</pre>
 <c:import url="${url1}" var="contents"/>
 
 <textarea cols="120" rows="20">${pageScope.contents}</textarea>
