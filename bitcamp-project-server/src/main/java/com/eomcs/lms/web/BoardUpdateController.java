@@ -16,7 +16,6 @@ public class BoardUpdateController {
 
   @RequestMapping("/board/update")
   public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
     if (request.getMethod().equals("GET")) {
       int no = Integer.parseInt(request.getParameter("no"));
       Board board = boardService.get(no);
@@ -33,7 +32,5 @@ public class BoardUpdateController {
     } else {
       throw new Exception("변경할 게시물 번호가 유효하지 않습니다.");
     }
-
-
   }
 }

@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/header.jsp"/>
 
+<jsp:include page="/header.jsp"/>
 
 <h1>수업 상세정보(JSP + EL + JSTL)</h1>
 
-<c:if test="${not empty requestScope.lesson }">
+<c:if test="${not empty lesson}">
 <form action='update' method='post'>
 번호: <input name='no' readonly type='text' value='${lesson.no}'><br>
 강의명: <input name='title' type='text' value='${lesson.title}'><br>
@@ -26,9 +25,8 @@
 </form>
 </c:if>
 
-
-<c:if test="${empty requestScope.lesson }">
-<p>해당 번호의 수업이 없습니다.</p>
+<c:if test="${empty lesson}">
+<p>해당 수업이 없습니다.</p>
 </c:if>
 
 <jsp:include page="/footer.jsp"/>

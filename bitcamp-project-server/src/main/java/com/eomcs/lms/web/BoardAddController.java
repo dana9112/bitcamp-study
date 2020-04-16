@@ -11,7 +11,6 @@ import com.eomcs.util.RequestMapping;
 @Component
 public class BoardAddController {
 
-
   @Autowired
   BoardService boardService;
 
@@ -20,11 +19,10 @@ public class BoardAddController {
     if (request.getMethod().equals("GET")) {
       return "/board/form.jsp";
     }
+
     Board board = new Board();
     board.setTitle(request.getParameter("title"));
     boardService.add(board);
     return "redirect:list";
-
-
   }
 }

@@ -5,20 +5,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.eomcs.lms.domain.Board;
-import com.eomcs.lms.service.BoardService;
+import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.service.MemberService;
 import com.eomcs.util.RequestMapping;
 
 @Component
-public class BoardListController {
+public class MemberListController {
 
   @Autowired
-  BoardService boardService;
+  MemberService memberService;
 
-  @RequestMapping("/board/list")
+  @RequestMapping("/member/list")
   public String list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    List<Board> boards = boardService.list();
-    request.setAttribute("list", boards);
-    return "/board/list.jsp";
+    List<Member> members = memberService.list();
+    request.setAttribute("list", members);
+    return "/member/list.jsp";
   }
 }

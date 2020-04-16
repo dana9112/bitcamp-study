@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <jsp:include page="/header.jsp"/>
 
   <h1>강의(JSP + EL + JSTL)</h1>
