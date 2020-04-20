@@ -59,7 +59,7 @@ public class Controller05_1 {
     // 이 경우에는 리턴 타입으로 콘텐트임을 알 수 있기 때문에 
     // @ResponseBody 애노테이션을 붙이지 않아도 된다.
     
-    HttpEntity<String> entity = new HttpEntity<>(
+    HttpEntity<String> entity = new HttpEntity<>(//
         "<html><body><h1>abc가각간<h1></body></html>");
     
     // 이 경우에는 출력할 때 ISO-8859-1 문자표의 코드로 변환하여 출력한다.
@@ -71,9 +71,9 @@ public class Controller05_1 {
   // 테스트:
   //   http://localhost:8080/java-spring-webmvc/app1/c05_1/h5
   @GetMapping(value="h5", produces="text/html;charset=UTF-8") 
-  public HttpEntity<String> handler5(HttpServletResponse response) {
+  public HttpEntity<String> handler5(HttpServletResponse response) {//
     // 한글을 제대로 출력하고 싶으면 위 애노테이션의 produces 속성에 콘텐트 타입을 지정한다. 
-    HttpEntity<String> entity = new HttpEntity<>(
+    HttpEntity<String> entity = new HttpEntity<>(//
         "<html><body><h1>abc가각간<h1></body></html>");
     
     return entity;
@@ -89,8 +89,8 @@ public class Controller05_1 {
     HttpHeaders headers = new HttpHeaders();
     headers.add("Content-Type", "text/html;charset=UTF-8");
     
-    HttpEntity<String> entity = new HttpEntity<>(
-        "<html><body><h1>abc가각간<h1></body></html>",
+    HttpEntity<String> entity = new HttpEntity<>(//
+        "<html><body><h1>abc가각간<h1></body></html>",//
         headers);
     
     return entity;
@@ -111,8 +111,8 @@ public class Controller05_1 {
     headers.add("BIT-OK", "ohora");
     
     ResponseEntity<String> entity = new ResponseEntity<>(
-        "<html><body><h1>abc가각간<h1></body></html>",
-        headers,
+        "<html><body><h1>abc가각간<h1></body></html>",//
+        headers,//
         HttpStatus.OK // 응답 status 코드를 지정할 수 있다.
     );
     
