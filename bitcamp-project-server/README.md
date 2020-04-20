@@ -1,53 +1,49 @@
-# 59_1 - Spring WebMVC 적용하기
+# 59_2 - Spring WebMVC 적용하기 II : MultipartResolver, ViewResolver 등
 
 ## 학습목표
 
-- Spring WebMVC 프레임워크를 프로젝트에 적용할 수 있다.
-- Spring WebMVC 프레임워크의 규칙에 따라 웹 애플리케이션을 작성할 수 있다.
-
+- @RequestMapping, @GetMapping, @PostMapping의 사용법을 안다.
+- 멀티파트 데이터를 처리하기 위해 MultipartResolver를 설정할 수 있다.
+- ViewResolver의 동작원리를 이해한다.
+- ViewResolver를 교체할 수 있다.
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/ContextLoaderListener.java 삭제
-- src/main/java/com/eomcs/lms/servlet/DispatcherServlet.java 삭제
-- src/main/java/com/eomcs/lms/filter/CharacterEncodingFilter.java 삭제
-- src/main/java/com/eomcs/util/RequestHandler.java 삭제
-- src/main/java/com/eomcs/util/RequestMapping.java 삭제
-- src/main/java/com/eomcs/util/RequestMappingHandlerMapping.java 삭제
-- src/main/java/com/eomcs/lms/web/XxxController.java 변경
 - src/main/webapp/WEB-INF/web.xml 변경
-
-
+- src/main/java/com/eomcs/lms/AppWebApplicationInitializer.java 추가
+- src/main/java/com/eomcs/lms/AppConfig.java 변경
+- src/main/java/com/eomcs/lms/web/XxxController.java 변경
+- src/main/webapp/**/*.jsp 이동 및 변경
+  - src/main/webapp/WEB-INF/jsp/ 폴더로 이동
+  
 ## 실습  
 
-### 훈련1: Spring WebMVC 프레임워크를 프로젝트에 적용한다.
+### 훈련1: WebApplicationInitializer를 사용하여 DispatcherServlet을 설정한다.
 
-- 라이브러리 가져오기
-  - search.maven.org 에서 'spring-webmvc' 검색한다.
-  - 라이브러리 정보를 build.gradle에 추가한다.
-  - 'gradle eclipse'를 실행하여 이클립스 설정 파일을 갱신한다.
-  - 이클립스에서 프로젝트를 갱신한다.
+- com.eomcs.lms.web.AppWebApplicationInitializer 추가 
+- com.eomcs.lms.AppConfig 변경
+  - ViewResolver 객체 등록
+  - MultipartResolver 객체 등록
+  - WebMVC 관련 애노테이션을 처리할 객체 등록 : @EnableWebMVC
+ 
 
-### 훈련2: Spring WebMVC에서 제공하는 프론트 컨트롤러 서블릿을 설정한다.
+### 훈련2: JSP 파일을 /WEB-INF/jsp/ 폴더로 옮긴다.
 
-- 기존의 프론트 컨트롤러 관련 클래스는 삭제한다.
-  - com.eomcs.lms.ContextLoaderListener 삭제
-  - com.eomcs.lms.filter.CharacterEncodingFilter 삭제
-  - com.eomcs.lms.servlet.DispatcherServlet 삭제
-  - com.eomcs.util.RequestMapping 삭제
-  - com.eomcs.util.RequestHandler 삭제
-  - com.eomcs.util.RequestMappingHandlerMapping 삭제
-- src/main/webapp/WEB-INF/web.xml 변경
-  - DispatcherServlet 클래스를 등록한다.
-  - CharacterEncodingFilter 클래스를 등록한다.
-  - multipart-config를 설정한다.
+- src/main/webapp/**/*.jsp 를 /WEB-INF/jsp/ 로 옮긴다.
+- src/main/webapp/**/*.jsp 변경
+  - header.jsp, footer.jsp 경로를 변경한다.
 
-### 훈련3: 페이지 컨트롤러를 Spring WebMVC 프레임워크 사용법에 따라 변경한다.
+### 훈련3: 페이지 컨트롤러를 Spring WebMVC 에 맞춰 변경한다.
 
-- com.eomcs.lms.web.XxxController.java 변경
-  - @Component 대신에 @Controller로 교체한다.
-  - @RequestMapping 애노테이션의 패키지를 Spring WebMVC 라이브러리 것으로 교체한다.
+- com.eomcs.lms.web.*Controller 변경
+  - @RequestMapping을 클래스 선언부에도 붙인다.
+  - @RequestMapping 대신에 @GetMapping 또는 @PostMapping을 사용한다.
+  - 멀티파트 파라미터 값을 받는 객체를 Part에서 MultipartFile로 교체한다.
+  - InternalResourceViewResolver의 동작에 맞춰 리턴 값을 변경한다.
 
+### 훈련4: 날짜 형식의 요청 데이터를 다룰 프로퍼티 에디터를 등록한다.
 
-
+- com.eomcs.lms.web.GlobalControllerAdvice 추가 
+  - 페이지 컨트롤러에 보조할 객체를 등록하기 위해 @ControllerAdvice 클래스를 정의한다.
+  - 날짜 파라미터를 처리하기 위해 @InitBinder 메서드를 정의한다.
 
