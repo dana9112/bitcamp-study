@@ -1,5 +1,4 @@
 // request handler를 구분하는 방법 - 파라미터 이름으로 구분하기
-// 회원검색할때 낱개로 나누어서 처리할 수 있겠음.
 package bitcamp.app1;
 
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Controller03_1 {
 
   // 테스트 방법:
-  // => http://localhost:9999/bitcamp-spring-webmvc/app1/c03_1?name=kim
+  // => http://localhost:9999/eomcs-spring-webmvc/app1/c03_1?name=kim
   @GetMapping(params = "name")
   @ResponseBody
   public String handler1() {
@@ -20,7 +19,7 @@ public class Controller03_1 {
   }
 
   // 테스트 방법:
-  // => http://localhost:8080/java-spring-webmvc/app1/c03_1?age=20
+  // => http://localhost:9999/eomcs-spring-webmvc/app1/c03_1?age=20
   @GetMapping(params = "age")
   @ResponseBody
   public String handler2() {
@@ -28,18 +27,18 @@ public class Controller03_1 {
   }
 
   // 테스트 방법:
-  // => http://localhost:8080/java-spring-webmvc/app1/c03_1?name=kim&age=20
+  // => http://localhost:9999/eomcs-spring-webmvc/app1/c03_1?name=kim&age=20
   @GetMapping(params = {"age", "name"})
   @ResponseBody
   public String handler3() {
     return "handler3";
   }
 
-  // 파라미터 이름으로 정교하게 구분할 수 있다.
+  // 테스트 방법:
+  // => http://localhost:9999/eomcs-spring-webmvc/app1/c03_1
   @GetMapping
   @ResponseBody
   public String handler4() {
     return "handler4";
   }
-
 }

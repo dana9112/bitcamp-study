@@ -29,7 +29,6 @@ public class Controller04_4 {
       PrintWriter out, //
       String model, //
       @RequestParam(defaultValue = "0") int capacity, // String ===> int : Integer.parseInt(String)
-      // int capacity는 값이 안 들어가면 에러가 뜬다.
       boolean auto, // String ===> boolean : Boolean.parseBoolean(String)
       Date createdDate // 프로퍼티 에디터를 설정하지 않으면 변환 오류 발생
   ) {
@@ -82,7 +81,6 @@ public class Controller04_4 {
   @InitBinder
   public void initBinder(WebDataBinder binder) {
     System.out.println("Controller04_4.initBinder()...");
-    // requtest Handler 출력되기 전에 출력된다.
     // 프로퍼티 에디터를 등록하려면 그 일을 수행할 객체(WebDataBinder)가 필요하다.
     // request handler 처럼 아규먼트를 선언하여
     // 프론트 컨트롤러에게 달라고 요청하라.
@@ -91,8 +89,7 @@ public class Controller04_4 {
     DatePropertyEditor propEditor = new DatePropertyEditor();
 
     // WebDataBinder에 프로퍼티 에디터 등록하기
-    binder.registerCustomEditor(java.util.Date.class, // 무조건 class 타입으로 선언해야 한다.
-        // String을 Date 타입으로 바꾸는 에디터임을 지정한다.
+    binder.registerCustomEditor(java.util.Date.class, // String을 Date 타입으로 바꾸는 에디터임을 지정한다.
         propEditor // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
     );
 
@@ -123,12 +120,13 @@ public class Controller04_4 {
       // 문자열을 Date 객체로 바꾸기 위해 이 메서드를 호출할 것이다.
       // 그러면 이 메서드에서 문자열을 프로퍼티가 원하는 타입으로 변환한 후 저장하면 된다.
       try {
+
         // 1) String ==> java.util.Date
-        // this.format = new SimpleDateFormat("yyyy-MM-dd");
+        // SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         // Date date = format.parse(text); // String ===> java.util.Date
         // setValue(date); // 내부에 저장
 
-        // 2) String ==> java.sql.Date // sql은 util의 하위이다.
+        // 2) String ==> java.sql.Date
         setValue(java.sql.Date.valueOf(text));
 
       } catch (Exception e) {

@@ -35,7 +35,7 @@ public class App1WebApplicationInitializer
 
 
   // @Override
-  // protected void customizeRegistration(//
+  // protected void customizeRegistration( //
   // javax.servlet.ServletRegistration.Dynamic registration) {
   // // Servlet 3.0 API의 파일 업로드를 사용하려면 다음과 같이
   // // DispatcherServlet에 설정을 추가해야 한다.

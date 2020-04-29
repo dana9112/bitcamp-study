@@ -7,21 +7,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+@Controller 
 @RequestMapping("/c02_2")
 public class Controller02_2 {
 
   // 테스트 방법:
-  // => http://localhost:9999/bitcamp-spring-webmvc/html/app1/c02_2.html
-
-  @GetMapping // GET 요청일 때만 호출된다.
-  @ResponseBody
+  // => http://localhost:8080/java-spring-webmvc/html/app1/c02_2.html
+  
+  @GetMapping // GET 요청일 때만 호출된다. 
+  @ResponseBody 
   public String handler1() {
     return "get";
   }
-
-  @PostMapping // POST 요청일 때만 호출된다.
-  @ResponseBody
+  
+  @PostMapping // POST 요청일 때만 호출된다. 
+  @ResponseBody 
   public String handler2() {
     return "post";
   }

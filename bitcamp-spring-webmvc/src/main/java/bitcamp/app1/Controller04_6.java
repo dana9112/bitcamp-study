@@ -21,14 +21,16 @@ public class Controller04_6 {
   // http://.../c04_6/h1
   @GetMapping("h1")
   @ResponseBody
-  public void handler1(PrintWriter out, @RequestHeader("Accept") String accept,
+  public void handler1(//
+      PrintWriter out, //
+      @RequestHeader("Accept") String accept, //
       @RequestHeader("User-Agent") String userAgent) {
 
     out.printf("Accept=%s\n", accept);
-    out.printf("User-Agent=%s\n", userAgent); // 요즘에는 개인정보 보호로 user-agent 잘 안 씀(구글에서 서비스 종료 할 예정)
+    out.printf("User-Agent=%s\n", userAgent);
 
     if (userAgent.matches(".*Edg.*")) {
-      out.println("Edg");
+      out.println("Edge");
     } else if (userAgent.matches(".*Chrome.*")) {
       out.println("chrome");
     } else if (userAgent.matches(".*Safari.*")) {

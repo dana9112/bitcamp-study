@@ -27,7 +27,7 @@ public class Controller02_3 {
   }
   
   // 테스트:
-  //   http://.../app2/c02_3/h1/hongkildong/010-1111-2222/man
+  //   http://.../app2/c02_3/h2/hongkildong/010-1111-2222/man
   @GetMapping(
       value="h2/{name:[a-zA-Z0-9]+}/{tel:[0-9]+-[0-9]+-[0-9]+}/{gender:man|woman}", 
       produces="text/plain;charset=UTF-8")

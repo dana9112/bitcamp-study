@@ -19,21 +19,21 @@ public class Controller01_1 {
 
     model.addAttribute("name", "홍길동");
     model.addAttribute("age", 20);
-    // 프리머티브 타입은 넣지 못한다. 20은 auto-boxing 을 한다.
+    // 위의 애들은 servletRequest에서 보내는 것임
 
     return "/jsp/c01_1.jsp";
     // 기본 ViewResolver는 리턴 값으로 URL을 받아
     // 웹 애플리케이션 디렉토리에서 JSP를 찾는다.
-    // 웹 애프리케이션이 경로가 /bitcamp-spring-webmvc 라면, JSP 경로는 다음과 같다.
-    // /bitcamp-spring-webmvc/jsp/c01_1.jsp
+    // 웹 애프리케이션이 경로가 /eomcs-spring-webmvc 라면,
+    // JSP 경로는 다음과 같다.
+    // ==> /eomcs-spring-webmvc/jsp/c01_1.jsp
     //
     // InternalResourceViewResolver로 교체한 다음의 JSP URL은?
     // => /WEB-INF/jsp2//jsp/c01_1.jsp.jsp
-
   }
 
   // 테스트:
-  // http://localhost:8080/java-spring-webmvc/app2/c01_1/h2
+  // http://localhost:9999/bicamp-spring-webmvc/app2/c01_1/h2
   @GetMapping("h2")
   public void handler2(Model model) {
     model.addAttribute("name", "홍길동2");
@@ -44,11 +44,13 @@ public class Controller01_1 {
     //
     // InternalResourceViewResolver로 교체한 다음은?
     // => 리턴 값이 없으면 요청 URL(/c01_1/h2)을 리턴 값으로 사용한다.
-    // => 따라서 ViewResolver가 계산한 최종 URL은 /WEB-INF/jsp2/c01_1/h2.jsp
+    // => 따라서 ViewResolver가 계산한 최종 URL은
+    // /WEB-INF/jsp2/c01_1/h2.jsp
+    //
   }
 
   // 테스트:
-  // http://localhost:8080/java-spring-webmvc/app2/c01_1/h3
+  // http://localhost:9999/bicamp-spring-webmv/app2/c01_1/h3
   @GetMapping("h3")
   public String handler3(Map<String, Object> map) {
 

@@ -21,13 +21,12 @@ public class Controller04_8 {
 
   // ServletContext는 메서드의 아규먼트로 받을 수 없다.
   // 의존 객체로 주입 받아야 한다.
-  // 리얼패스를 알기 위해 넣은 것
   @Autowired
   ServletContext sc;
 
   // 클라이언트가 멀티파트 형식으로 전송한 데이터를 꺼내기
   // => Servlet API에서 제공하는 Part를 사용하거나
-  // .. 또는 Spring에서 제공하는 MultipartFile 타입의 아규먼트를 선언하면 된다.
+  // 또는 Spring에서 제공하는 MultipartFile 타입의 아규먼트를 선언하면 된다.
   //
   // 주의!
   // => DispatcherServlet을 web.xml을 통해 배치했다면,
@@ -36,7 +35,6 @@ public class Controller04_8 {
   // App1WebApplicationInitializer 클래스를 참고하라!
   //
 
-
   // 테스트:
   // http://.../html/app1/c04_8.html
   @PostMapping(value = "h1", produces = "text/html;charset=UTF-8")
@@ -44,7 +42,7 @@ public class Controller04_8 {
   public String handler1(//
       String name, //
       int age, //
-      Part photo//
+      Part photo // Servlet API의 객체
   ) throws Exception {
 
     String filename = null;
@@ -54,29 +52,26 @@ public class Controller04_8 {
       photo.write(path);
     }
 
-    return "<html><head><title>c04_8/h1</title></head><body>" + //
-        "<h1>업로드 결과</h1>" + //
-        "<p>이름:" + name + "</p>" + //
-        "<p>나이:" + age + "</p>" + //
+    return "<html><head><title>c04_8/h1</title></head><body>" + "<h1>업로드 결과</h1>" + "<p>이름:" + name
+        + "</p>" + "<p>나이:" + age + "</p>" +
         // 현재 URL이 다음과 같기 때문에 업로드 이미지의 URL을 이 경로를 기준으로 계산해야 한다.
         // http://localhost:8080/java-spring-webmvc/app1/c04_8/h1
         //
-        (filename != null ? "<p><img src='../../html/app1/" + filename + "'></p>" : "") + //
-        "</body></html>";
+        (filename != null ? "<p><img src='../../html/app1/" + filename + "'></p>" : "")
+        + "</body></html>";
   }
-
 
   // MultipartFile로 멀티파트 데이터를 받으려면,
   // Spring WebMVC 설정에서 MultipartResolver 객체를 등록해야 한다.
   //
-  // 테스트: (현업에서 많이 볼 수 있는 구성)
+  // 테스트:
   // http://.../html/app1/c04_8.html
   @PostMapping(value = "h2", produces = "text/html;charset=UTF-8")
   @ResponseBody
   public String handler2(//
       String name, //
       @RequestParam(defaultValue = "0") int age, //
-      MultipartFile photo// spring API의 객체
+      MultipartFile photo // Spring API의 객체
   ) throws Exception {
 
     String filename = null;
@@ -86,15 +81,13 @@ public class Controller04_8 {
       photo.transferTo(new File(path));
     }
 
-    return "<html><head><title>c04_8/h2</title></head><body>" + //
-        "<h1>업로드 결과</h1>" + //
-        "<p>이름:" + name + "</p>" + //
-        "<p>나이:" + age + "</p>" + //
+    return "<html><head><title>c04_8/h2</title></head><body>" + "<h1>업로드 결과</h1>" + "<p>이름:" + name
+        + "</p>" + "<p>나이:" + age + "</p>" +
         // 현재 URL이 다음과 같기 때문에 업로드 이미지의 URL을 이 경로를 기준으로 계산해야 한다.
         // http://localhost:8080/java-spring-webmvc/app1/c04_8/h2
         //
-        (filename != null ? "<p><img src='../../html/app1/" + filename + "'></p>" : "") + //
-        "</body></html>";
+        (filename != null ? "<p><img src='../../html/app1/" + filename + "'></p>" : "")
+        + "</body></html>";
   }
 
   // 테스트:

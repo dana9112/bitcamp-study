@@ -24,7 +24,8 @@ public class Controller04_7 {
   @ResponseBody
   public void handler1(//
       PrintWriter out, //
-      HttpServletResponse response) {
+      HttpServletResponse response//
+  ) {
     // 이 메서드에서 쿠키를 클라이언트로 보낸다.
     try {
       // 쿠키의 값이 ASCII가 아니라면 URL 인코딩 해야만 데이터가 깨지지 않는다.
@@ -47,7 +48,6 @@ public class Controller04_7 {
   @ResponseBody
   public String handler2(//
       @CookieValue(value = "name1", required = false) String name1, //
-      // required를 없애면 에러남. required나 default 값으로 해줘야만 값이 없어도 에러가 안 뜨고 null값이 나옴.
       @CookieValue(value = "name2", defaultValue = "") String name2, //
       @CookieValue(value = "name3", defaultValue = "") String name3, //
       @CookieValue(value = "age", defaultValue = "0") int age // String ===> int 자동 변환
@@ -87,7 +87,8 @@ public class Controller04_7 {
     // 0041 0042 ac00 ac01
     String namex = new String(originBytes, "UTF-8");
 
-    return String.format("name1=%s\n name2=%s\n name2=%s\n name3=%s\n age=%d\n", //
+    return String.format(//
+        "name1=%s\n name2=%s\n name2=%s\n name3=%s\n age=%d\n", //
         name1, name2, namex, name3, age);
   }
 

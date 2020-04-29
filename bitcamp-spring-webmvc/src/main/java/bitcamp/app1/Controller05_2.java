@@ -1,4 +1,4 @@
-// 요청 핸들러의 리턴 값 - view URL 리턴하기, 리다이렉트, forward/include (가장 많이 씀)
+// 요청 핸들러의 리턴 값 - view URL 리턴하기, 리다이렉트, forward/include
 package bitcamp.app1;
 
 import org.springframework.stereotype.Controller;
@@ -60,7 +60,6 @@ public class Controller05_2 {
   public String handler5() {
     // 리다이렉트를 지정할 때는 URL 앞에 "redirect:" 접두어를 붙인다.
     // 즉 HTTP 응답이 다음과 같다.
-
     // HTTP/1.1 302
     // Location: h4
     // Content-Language: ko-KR

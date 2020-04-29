@@ -19,11 +19,11 @@ public class Controller04_2 {
   // 단 파라미터 앞에 @RequestParam 애노테이션을 붙인다.
   // 그리고 클라이언트가 보낸 파라미터 이름을 지정한다.
   // 테스트:
-  // http://localhost:9999/bitcamp-spring-webmvc/app1/c04_2/h1?name=kim
+  // http://localhost:9999/eomcs-spring-webmvc/app1/c04_2/h1?name=kim
   @GetMapping("h1")
   @ResponseBody
   public void handler1(//
-      PrintWriter out, // 직접출력하게 값 주셈
+      PrintWriter out, //
       ServletRequest request, //
       @RequestParam(value = "name") String name1, //
       @RequestParam(name = "name") String name2, // value와 name은 같은 일을 한다.
@@ -43,17 +43,17 @@ public class Controller04_2 {
   // http://.../app1/c04_2/h2?name1=kim&name2=park
   @GetMapping("h2")
   @ResponseBody
-  public void handler2(PrintWriter out, @RequestParam("name1") String name1,
-      // 애노테이션을 붙이면 필수 항목으로 인지한다.
-      // 따라서 파라미터 값이 없으면 예외가 발생한다.
-
+  public void handler2(//
+      PrintWriter out, //
+      @RequestParam("name1") String name1, // 애노테이션을 붙이면 필수 항목으로
+                                           // 인지한다.
+                                           // 따라서 파라미터 값이 없으면 예외가
+                                           // 발생한다.
       String name2, // 애노테이션을 붙이지 않으면 선택 항목으로 인지한다.
                     // 따라서 파라미터 값이 없으면 null을 받는다.
-
-      @RequestParam(value = "name3", required = false) String name3,
+      @RequestParam(value = "name3", required = false) String name3, //
       // required 프로퍼티를 false로 설정하면 선택 항목으로 인지한다.
-
-      @RequestParam(value = "name4", defaultValue = "ohora") String name4
+      @RequestParam(value = "name4", defaultValue = "ohora") String name4//
   // 기본 값을 지정하면 파라미터 값이 없어도 된다.
   ) {
 
