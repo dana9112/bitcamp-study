@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+  <!-- 어러 템플리세엇 공통으로 사용할 레이아웃을 정의한다. -->
+  <definition name="base" template="/WEB-INF/tiles/template.jsp"> 
+    <!-- templet.jsp 안에서 사용할 JSP 파일의 이름을 설정한다. -->
+    <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+  
+  </definition>
+  
+  
+  <!-- request handler가 리턴할 JSP의 경로가 'board/*'일 경우
+       TilesView 템플릿 엔진이 사용할 레이아웃을 정의한다. 
+       request -jsp 컨트롤러의 이름이 같아야만 사용이 가능하다
+       -->
+  <definition name="*/*"  extends ="base">
+    <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+  </definition>
+  
+  
+
+</tiles-definitions>

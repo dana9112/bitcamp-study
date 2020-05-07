@@ -26,13 +26,13 @@ obj.other = obj2;
 
 // 객체의 프로퍼티 값 꺼내기
 console.log(obj.name);
-console.log(obj.other.v1);
+console.log(obj.other.v1); // 자바의 OGNL(Object Graph Navigation Language)와 비슷하다.
 console.log(obj.other.v2);
 console.log(obj.other.v3);
 
 // 객체의 함수 호출
 obj.f1();
-obj.other.v4();
+obj.other.v4(); // 객체 안에 들어 있는 함수를 표기하는 방식
 
 </script>
 </body>
