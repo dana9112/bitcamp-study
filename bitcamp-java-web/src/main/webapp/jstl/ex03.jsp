@@ -15,19 +15,17 @@
 - 보관소에 값을 저장한다.
 </pre>
 <%
-request.setAttribute("name1", "홍길동");
+//request.setAttribute("name1", "홍길동");
 %>
-<!--  
-<c:set scope="request" var="name1" value="홍길동"/>
--->
+<c:set scope="request" var="name1" value="홍길동2"/>
 1: ${requestScope.name1}<br>
 2: ${pageScope.name1}<br>
 3: ${name1}<br> 
 <hr>
 
 <%--
-scope을 생략하면 기본이 PageContext이다.
---%>
+scope을 생략하면 기본이 PageContext 이다.
+ --%>
 <c:set var="name2" value="임꺽정"/>
 1: ${requestScope.name2}<br>
 2: ${pageScope.name2}<br>
@@ -43,7 +41,7 @@ scope을 생략하면 기본이 PageContext이다.
 3: ${name3}<br>
 
 <h2>객체의 프로퍼티 값 설정하기</h2>
-<jsp:useBean id="m1" class="com.eomcs.web.vo.Member"/> <!-- 맴버 객체를 pageContext에 보관한다.  -->
+<jsp:useBean id="m1" class="com.eomcs.web.vo.Member"/>
 <%--
 Member m1 = (Member) pageContext.getAttribute("m1");
 if (m1 == null) {
@@ -56,7 +54,7 @@ if (m1 == null) {
 m1.setNo(100);
 --%>
 
-<c:set target="${pageScope.m1}" property="email" value="hong@test.com"/> <!-- 실무에서 많이 씀 -->
+<c:set target="${pageScope.m1}" property="email" value="hong@test.com"/>
 <%--
 Object obj = pageContext.getAttribute("m1");
 Method m = obj.getClass().getMethod("setEmail", String.class);

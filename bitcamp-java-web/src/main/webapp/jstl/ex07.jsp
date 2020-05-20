@@ -14,7 +14,7 @@
 <title>JSTL</title>
 </head>
 <body>
-<h1>JSTL - c:forEach</h1> <!-- forEach: 반목문 -->
+<h1>JSTL - c:forEach</h1>
 <pre>
 - 반복문을 만든다.
 </pre>
@@ -26,13 +26,13 @@ pageContext.setAttribute("names", new String[]{"홍길동", "임꺽정", "유관
 /*
 String[] names = (String[]) pageContext.getAttribute("names");
 for (String n : names) {
-  out.println("<li>" + n + "</li>");// 하단 n과는 성격이 다르다
+  out.println("<li>" + n + "</li>");
 }
 */
 %>
 
 <ul>
-<c:forEach items="${pageScope.names}" var="n"><!-- 로컬변수 n이 아니라 pageContext에 보관된 n임 -->
+<c:forEach items="${pageScope.names}" var="n">
     <li>${n}</li>
 </c:forEach>
 </ul>
@@ -65,7 +65,7 @@ pageContext.setAttribute("names3", names3);
 <%-- Map 객체에 대해 반복문을 돌리면 var로 저장되는 것은 
      key와 value를 갖고 있는 Entry 객체이다. --%>
 <c:forEach items="${pageScope.names3}" var="n">
-    <li>${n.getKey()} : ${n.getValue()}</li>
+    <li>${n.getKey()} : ${n.getValue()}</li>   
 </c:forEach>
 </ul>
 

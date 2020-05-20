@@ -8,36 +8,26 @@
 <h1>함수 - 클로저(closure)를 객체에 담아 리턴하기</h1>
 <script>
 "use strict"
-// 함수 안에 정의된 함수를 보통 클로저(closure)라 부른다.
-// => inner functoin, nested function 이라고도 표현한다.
-// => 클로저의 핵심 개념 
-//    closure에서 바깥 함수의 로컬 변수를 사용할 때, 
-//    바깥 함수의 호출이 끝나면 해당 로컬 변수가 제거되기 때문에
-//    클로저는 존재하지 않는 변수를 사용하는 상황이 발생한다.
-//    그래서 이런 경우를 방지하고자, 
-//    클로저에서 사용하는 바깥 함수의 로컬 변수는 클로저의 별도 메모리에 복제된다.
-//
-//    setValue와 getValue의 각각의 값은 공유한다.
 //
 function createBox() { 
-	var value;
-	
-	var box = new Object();
-	box.setValue = function(v){
-		// 이 클로저가 사용하는 value 변수는 바깥 함수의 로컬 변수이기 때문에
-		// 클로저 메모리로 복사해둔다.
-	
-		value = v;
-	};
-	
-	box.getValue = function(a) { // 리턴되는 함수
-		// 함수가 호출될 때 함께 생성된 클러스는 메모리를 공유한다.
-		// 따라서 setValue()와 getValue()가 사용하는 value 변수는 같은 변수이다. 
-		return value;
-	};
-	return box;
+  var value;
+  
+  var box = new Object();
+  box.setValue = function(v) {
+    // 이 클로저가 사용하는 value 변수는 바깥 함수의 로컬 변수이기 때문에
+    // 클로저 메모리로 복사해둔다.
+    value = v;
+  };
+  box.getValue = function() {
+    // 함수가 호출될 때 함께 생성된 클로저는 메모리를 공유한다.
+    // 따라서 setValue()와 getValue()가 사용하는 value 변수는  
+    // 같은 변수이다.
+    return value;
+  };
+  
+  return box;
 }
-	
+
 var box1 = createBox();
 var box2 = createBox();
 

@@ -1,10 +1,10 @@
+<%@page import="java.sql.Date"%>
 <%@ page 
     language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
-<%@ page import="bitcamp.vo.Board"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.eomcs.web.vo.Board"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +14,12 @@
 <body>
 <h1>JSP 액션 태그 - jsp:useBean, jsp:setProperty</h1>
 <%-- bitcamp.vo.Board 객체 생성하기 --%>
-<jsp:useBean id="b1" class="bitcamp.vo.Board" scope="page"/>
+<jsp:useBean id="b1" class="com.eomcs.web.vo.Board" scope="page"/>
 
 <%-- scope을 생략하면 기본이 page(PageContext)이다. --%>
-<jsp:useBean id="b2" class="bitcamp.vo.Board"/>
+<jsp:useBean id="b2" class="com.eomcs.web.vo.Board"/>
 
-<jsp:useBean id="b3" class="bitcamp.vo.Board"/>
+<jsp:useBean id="b3" class="com.eomcs.web.vo.Board"/>
 
 <%-- 객체의 setter 메서드를 호출하기 --%>
 <jsp:setProperty name="b3" property="no" value="100"/>
@@ -31,10 +31,10 @@
 <jsp:setProperty name="b3" property="createdDate" value="2019-4-8"/>
 --%>
 
-<%=b1%><br>
-<%=b2%><br>
-<%=b3%><br>
-<%=b3.toString()%><br>
+<%=b1%> => out.print(b1);<br>  
+<%=b2%> => out.print(b2);<br>
+<%=b3%> => out.print(b3);<br> 
+<%=b3.toString()%> => out.print(b3.toString());<br>
 
 </body>
 </html>

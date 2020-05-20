@@ -16,9 +16,8 @@
   <c:out value="출력될 값" default="기본 값"/>
   <c:out value="출력될 값>기본값<c:out>
 --%>
-
 <%
-pageContext.setAttribute("name","유관순");
+pageContext.setAttribute("name", "유관순");
 %>
 <c:out value="임꺽정"/><br>
 <c:out value="${null}" default="홍길동"/><br>
@@ -28,6 +27,9 @@ pageContext.setAttribute("name","유관순");
 <c:out value="${name2}" default="홍길동"/><br>
 </body>
 </html>
+
+
+
 
 
 

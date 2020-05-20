@@ -17,7 +17,7 @@
 </pre>
 
 <fmt:parseDate value="2020-04-14" pattern="yyyy-MM-dd" var="d1"/>
-<fmt:parseDate value="10/08/2018" pattern="MM/dd/yyyy" var="d2"/>
+<fmt:parseDate value="04/14/2020" pattern="MM/dd/yyyy" var="d2"/>
 
 <%
 Date date1 = (Date)pageContext.getAttribute("d1");

@@ -10,7 +10,7 @@
 "use strict"
 
 // 객체에 저장된 값을 꺼낼 때는 다음의 문법을 사용할 수 있다.
-// => 객체.변수명(=프로퍼티명)
+// => 객체.변수명
 // => 객체["변수명"]
 // => 객체['변수명']
 
@@ -22,13 +22,13 @@ console.log(window.v1);
 console.log(window["v1"]);
 console.log(window['v1']);
 
-window.v2 = "임꺽정"; //변수 지정에 공백이나 특수문자를 넣을 수 없다. 
+window.v2 = "임꺽정";
 console.log(v2);
 console.log(window.v2);
 console.log(window["v2"]);
 console.log(window['v2']);
 
-// 대괄호를 사용하면 공백이나 특수문자를 포함하는 변수를 만들 수 있다. (자바의 map 객체에 값을 넣는거랑 같음)
+// 대괄호를 사용하면 공백이나 특수문자를 포함하는 변수를 만들 수 있다.
 window["오호라 ^^"] = 100;
 console.log(window["오호라 ^^"]);
 console.log(window['오호라 ^^']);

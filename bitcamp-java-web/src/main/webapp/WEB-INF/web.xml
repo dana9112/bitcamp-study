@@ -5,31 +5,26 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0"
   metadata-complete="false">
-  
-  <!-- 컨텍스트(웹 애플리케이션 환경) 초기화 파라미터
-  => Servlet, listener, Filter에서 모두 사용할 수 있다. 
-   (모든 서블릿에서 공통으로 사용하기 위해서 context-param을 쓴다.)-->
+
+<!-- 컨텍스트(웹 애플리케이션 환경) 초기화 파라미터 
+  => Servlet, Listener, Filter 에서 모두 사용할 수 있다.
+-->
   <context-param>
     <param-name>jdbc2.driver</param-name>
-    <param-value>org.mariadb.jdbc.Drivser</param-value>
+    <param-value>org.mariadb.jdbc.Driver</param-value>
   </context-param>
-    
   <context-param>
     <param-name>jdbc2.url</param-name>
     <param-value>jdbc:mariadb://localhost:3306/studydb</param-value>
-   </context-param>
-    
+  </context-param>
   <context-param>
     <param-name>jdbc2.username</param-name>
     <param-value>study</param-value>
   </context-param>
-    
   <context-param>
     <param-name>jdbc2.password</param-name>
     <param-value>1111</param-value>
   </context-param>
-  
-  
 
 <!-- 리스너 등록 -->
   <listener>
@@ -90,10 +85,6 @@
   </servlet-mapping>
   -->  
   
-  
-  <!-- 서블릿에서 초기화 작업을 한다고 생각하면 됨. 
-   왜 만들었을까? 다른 서블릿들이 만들어야 할 도구로만 사용할 용도로만 사용됨.  
-   -->
   <servlet>
     <servlet-name>ex06.Servlet02</servlet-name>
     <servlet-class>com.eomcs.web.ex06.Servlet02</servlet-class>
@@ -102,41 +93,36 @@
   <servlet-mapping>
     <servlet-name>ex06.Servlet02</servlet-name>
     <url-pattern>/ex06/s2</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
   
-  
-  <!--  특정 서버에서 쓰는거면 init에서 사용해라  -->
   <servlet>
     <servlet-name>ex06.Servlet04</servlet-name>
     <servlet-class>com.eomcs.web.ex06.Servlet04</servlet-class>
-      <init-param>
-        <param-name>jdbc.driver</param-name>
-        <param-value>org.mariadb.jdbc.Drivser</param-value>
-      </init-param>
-    
     <init-param>
-    <param-name>jdbc.url</param-name>
-    <param-value>jdbc:mariadb://localhost:3306/studydb</param-value>
+      <param-name>jdbc.driver</param-name>
+      <param-value>org.mariadb.jdbc.Driver</param-value>
     </init-param>
-    
-     <init-param>
-    <param-name>jdbc.username</param-name>
-    <param-value>study</param-value>
-    </init-param>
-    
     <init-param>
-    <param-name>jdbc.password</param-name>
-    <param-value>1111</param-value>
+      <param-name>jdbc.url</param-name>
+      <param-value>jdbc:mariadb://localhost:3306/studydb</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jdbc.username</param-name>
+      <param-value>study</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jdbc.password</param-name>
+      <param-value>1111</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  
-  <!-- 세션의 타임 아웃 설정하기 
-        => 단위는 분(minute)이다. -->
+
+  <!-- 세션의 타임아웃 설정하기 
+       => 단위는 분(minute)이다. -->
   <!--  
   <session-config>
     <session-timeout>1</session-timeout> 
   </session-config>
   -->
-
+  
 </web-app>

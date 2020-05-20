@@ -13,23 +13,21 @@ function f1(a) {
 	console.log("a =", a);
 	console.log("----------------");
 	
-	// Array()로 만든 오리지널 배열은 forEach메서드가 있다.
-	// argumet는 array로 만든 오리지널 배열이 아니다.
-	// 따라서 forEach() 함수가 없다.
-	
+	// Array()로 만든 오리지널 배열은 forEach() 메서드가 있다.
+	// => arguments는 Array()로 만든 오리지널 배열이 아니다.
+	// => 따라서 forEach() 함수가 없다.
 	/*
-	arr.forEach(function(value){ // 실행오류
-		console.log(value)
-	});
-	*/
-	
+  arr.forEach(function(value) { // 실행 오류!
+    console.log(value);
+  });
+  */
+  
   console.log("----------------");
-  // forEach()를 사용하고 싶다면 진짜 배열로 바꾼 후 사용해야 한다. 
+  // forEach()를 사용하고 싶다면 진짜 배열로 바꾼후 사용해야 한다.
   var arr = Array.from(arguments);
   arr.forEach(function(value) {
     console.log(value);
   });
-  
   
   console.log("----------------");
   // 참고!

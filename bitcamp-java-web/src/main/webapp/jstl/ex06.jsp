@@ -15,14 +15,13 @@
 - 다중 조건문을 만든다.
 - 자바의 switch와 유사하다.
 </pre>
-<!-- set으로 해둔 것은 보관소에 저장해둔 것이다.  -->
-<c:set var="name" value="홍길동"/> 
+
+<c:set var="name" value="홍길동"/>
 <c:set var="age" value="26"/>
 <%--
 pageContext.setAttribute("name", "홍길동");
 pageContext.setAttribute("age", "16");
 --%>
-
 
 <c:choose>
     <c:when test="${age < 19}">
